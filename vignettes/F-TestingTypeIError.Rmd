@@ -1,0 +1,298 @@
+---
+title: "Testing type-I error rates"
+bibliography: "../inst/REFERENCES.bib"
+csl: "../inst/apa-6th.csl"
+output: 
+  rmarkdown::html_vignette
+description: >
+  This vignette describes how to test type-I error rates in the ANOPA.
+vignette: >
+  %\VignetteIndexEntry{Testing type-I error rates}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+cat("this is hidden; general initializations.\n")
+
+```
+
+
+**A valid statistical test is one where the amount of type-I errors
+(rejecting the null when it should not) does not exceed the test
+threshold (often 5%).** We say it in bold because it seems to be commonly
+forgotten. Logistic regressions applied to proportions deviates massively from 
+this rule, becoming very liberal tests.
+
+ANOPA respect very closely this rule when the corrected statistics are 
+consulted.
+
+The following code shows how to test the type-I error rate for ANOPA.It uses simulated
+data with no differences. The only limitations herein is that no
+correlations is added when repeated measures are used.
+
+We suggests here to shut down error and feedback messages:
+
+```{r, warning=FALSE, message=FALSE}
+options("ANOPA.feedback" = 'none')
+library(ANOPA)
+library(testthat)
+nsim   <- 1000     # increase for more reliable simulations.
+theN   <- 20       # number of participants
+```
+
+Note that the simulations are actually not run in this vignette, as 
+they take times. We wished to provide code in case you wished to test
+type-I error rate by yourself. The present code is also not optimized 
+for speed (and in particular, is not parallelized); we wished to 
+keep the code as simple as possible for readability. In all the following,
+the number of simulated participants per group is small (20) but can be
+varied.
+
+
+# Simulations with a single factor
+
+## Simulation with one between factor
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- s ~ grp         # the formula
+BSDesign <- list(grp = c("ctrl","plcbo")) #one factor, two groups
+thePs    <- c(0.3, 0.3)     # the true proportions, equal
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(41)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, BSDesign )
+    w   <- anopa(frm, smp[,2:3] )
+    res <- c(res, if(summarize(w)[1,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design B,     testing B: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035) 
+```
+
+
+## Simulation with one within factor
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- cbind(s.early, s.middle, s.late) ~ .
+WSDesign <- list(moment = c("early","middle","late"))
+thePs    <- c(0.3, 0.3, 0.3)
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(42)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, NULL, WSDesign )
+    w   <- anopa(frm, smp[,2:4] , WSFactors = "M(3)" )
+    res <- c(res, if(summarize(w)[1,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design W,     testing W: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+# Simulations with two factors
+
+## Simulation with two factors, between design
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- s ~ grp * eta
+WSDesign <- list()
+BSDesign <- list(eta = c("repue","ajun"), grp = c("early","middle","late"))
+thePs    <- c(0.3, 0.3, 0.5, 0.5, 0.7, 0.7)
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(41)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, BSDesign )
+    w   <- anopa(frm, smp )
+    res <- c(res, if(summarize(w)[2,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design BxB,   testing B: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+## Simulation with two factors, within design
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- cbind(s.repue.early, s.ajun.early, 
+                  s.repue.middle, s.ajun.middle, 
+                  s.repue.late, s.ajun.late) ~ .
+BSDesign <- list()
+WSDesign <- list(eta = c("repue","ajun"), moment = c("early","middle","late"))
+thePs    <- c(0.3, 0.3, 0.5, 0.5, 0.7, 0.7)
+# thePs    <- c(0.3, 0.7, 0.3, 0.7, 0.3, 0.7) # or no effect on factor 1
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(41)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, NULL, WSDesign )
+    w   <- anopa(frm, smp, WSFactors = c("e(2)", "m(3)") )
+    res <- c(res, if(summarize(w)[2,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design WxW,   testing W: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+
+## Simulation with two factors, mixed design
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- cbind(s.early, s.middle, s.late) ~ grp
+BSDesign <- list(grp = c("ctrl","plcbo"))
+WSDesign <- list(moment = c("early","middle","late"))
+thePs    <- c(0.3, 0.3, 0.5, 0.5, 0.7, 0.7)
+# thePs    <- c(0.3, 0.7, 0.3, 0.7, 0.3, 0.7) # or no effect on factor 1
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(41)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, BSDesign, WSDesign )
+    w   <- anopa(frm, smp[,2:5] , WSFactors = "M(3)")
+    res <- c(res, if(summarize(w)[2,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design WxB,   testing B: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+
+# Simulations with three factors
+
+## Simulation with three factors, all between design
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- s ~ grp * eta * a
+BSDesign <- list(eta = c("repue","ajun"), 
+                 grp = c("early","middle","late"), a = c("1","2","3","4"))
+thePs    <- rep(0.3, 24)
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(41)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, BSDesign )
+    w   <- anopa(frm, smp )
+    res <- c(res, if(summarize(w)[2,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design BxBxB, testing B: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+
+## Simulation with three factors, within design
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- cbind(s.repue.early.1,  s.ajun.early.1,  s.repue.middle.1,
+            s.ajun.middle.1, s.repue.late.1,   s.ajun.late.1,   s.repue.early.2, 
+            s.ajun.early.2,  s.repue.middle.2, s.ajun.middle.2, s.repue.late.2,
+            s.ajun.late.2,   s.repue.early.3,  s.ajun.early.3,  s.repue.middle.3,
+            s.ajun.middle.3, s.repue.late.3,   s.ajun.late.3,   s.repue.early.4, 
+            s.ajun.early.4,  s.repue.middle.4, s.ajun.middle.4, s.repue.late.4,
+            s.ajun.late.4 ) ~ .
+WSDesign <- list(eta = c("repue","ajun"), grp = c("early","middle","late"), a = c("1","2","3","4"))
+thePs    <- rep(0.3, 24)
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(43)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, NULL, WSDesign )
+    w   <- anopa(frm, smp, WSFactors = c("e(2)","g(3)", "a(4)") )
+    res <- c(res, if(summarize(w)[2,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design WxWxW, testing W: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+
+## Simulation with three factors, mixed design, testing within
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- cbind(s.repue.early,  s.ajun.early,  s.repue.middle,
+s.ajun.middle, s.repue.late,  s.ajun.late ) ~ a
+BSDesign <- list( a = c("1","2","3","4") )
+WSDesign <- list(eta = c("repue","ajun"), grp = c("early","middle","late") )
+thePs    <- rep(0.3, 24)
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(43)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, BSDesign, WSDesign )
+    w   <- anopa(frm, smp, WSFactors = c("e(2)","g(3)") )
+    res <- c(res, if(summarize(w)[1,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design BxWxW, testing W: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+## Simulation with three factors, mixed design, testing between
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+frm      <- cbind(s.repue.early,  s.ajun.early,  s.repue.middle,
+s.ajun.middle, s.repue.late,  s.ajun.late ) ~ a
+BSDesign <- list( a = c("1","2","3","4") )
+WSDesign <- list(eta = c("repue","ajun"), grp = c("early","middle","late") )
+thePs    <- rep(0.3, 24)
+
+# test type-I error rate when no effect as is the case for factor 2
+set.seed(42)
+res <- c()
+for (i in 1:nsim) {
+    smp <- GRP( thePs, theN, BSDesign, WSDesign )
+    w   <- anopa(frm, smp, WSFactors = c("e(2)","g(3)") )
+    res <- c(res, if(summarize(w)[3,4]<.05) 1 else 0)
+}
+typeI <- mean(res)
+cat( "Design BxWxW, testing B: ", typeI, "\n")
+
+# tolerance is large as the number of simulations is small
+expect_equal( typeI, .05, tolerance = 0.035)
+```
+
+
+# The end
+
+Let's restore the warnings and messages before leaving:
+
+```{r}
+options("ANOPA.feedback" = 'all')
+```
+
+
+
+

@@ -1,0 +1,103 @@
+---
+title: "Confidence intervals with proportions"
+bibliography: "../inst/REFERENCES.bib"
+csl: "../inst/apa-6th.csl"
+output: 
+  rmarkdown::html_vignette
+description: >
+  This vignette describes how to plot confidence intervals with proportions.
+vignette: >
+  %\VignetteIndexEntry{Confidence intervals with proportions}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+cat("this will be hidden; use for general initializations.\n")
+library(ANOPA)
+```
+
+Probably the most useful tools for data analysis is a plot with
+suitable error bars [@cgh21]. In this vignette, we show how
+to make confidence intervals for proportions.
+
+## Theory behind Confidence intervals for proportions
+
+For proportions, ANOPA is based on the Anscombe transform 
+\insertCite{a48}{ANOPA}. This measure has a known theoretical 
+standard error which depends only on sampe size $n$:
+
+$$SE_{A}(n) = 1/\sqrt{4(n+1/2)}.$$ 
+
+Consequently, when the groups'
+sizes are similar, homogeneity of variances holds.
+
+From this, we can decomposed the total test statistic $F$ into 
+a component for each cell of the design. We thus get
+
+$$\left[
+A + z_{0.5-\gamma/2} \times SE_{A}(n), \; A + z_{0.5+\gamma/2} \times SE_{A}(n)
+\right]$$
+
+in which $SE_{A}(n)$ is the theoretical standard error based
+only on $n$, and $\gamma$ is the desired confidence level (often .95).
+
+This technique returns _stand-alone_ confidence intervals, that is, intervals
+which can be used to compare the proportion to a fixed point. However,
+such _stand-alone_ intervals cannot be used to compare one proportion
+to another proportion [@cgh21]. To compare an observed
+proportion to another observed proportion, it is necessary to adjust them
+for pair-wise differences [@b12]. This is achieved by 
+increasing the wide of the intervals by $\sqrt{2}$.
+
+Also, in repeated measure designs, the correlation is beneficial to improve
+estimates. As such, the interval wide can be reduced when correlation is
+positive by multiplying its length by $1-\alpha_1$, where $\alpha_1$ is 
+a measure of correlation in a matrix containing repeated measures
+(based on the unitary alpha measure).
+
+Finally, the above returns confidence intervals for the *transformed* scores. 
+However, when used in a plot, it is typically more convenient to plot
+proportions (from 0 to 1) rather than Anscombe-scores (from 0 to $\pi/2 \approx$ 1.57).
+Thus, it is possible to rescale the vertical axis using the inverse Anscombe
+transform and be shown proportions.
+
+This is it.
+
+## Complicated?
+
+Well, not really:
+
+```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=3, fig.cap="**Figure 1**. The proportions as a function of class and Difficulty. Error bars show difference-adjusted 95% confidence intervals."}
+library(ANOPA)
+w <- anopa( {success;total} ~ Class * Difficulty, twoWayExample)
+anopaPlot(w) 
+```
+
+Because the analyses ``summary(w)`` suggests that only the factor
+`Difficulty` has a significant effect, you may select only that factors for plotting, 
+with e.g., 
+
+```{r, message=FALSE, warning=FALSE, fig.width=4, fig.height=3,  fig.cap="**Figure 2**. The proportions as a function of Difficulty only. Error bars show difference-adjusted 95% confidence intervals."}
+anopaPlot(w, ~ Difficulty ) 
+```
+
+As is the case with any ``ggplot2`` figure, you can customize it at will. 
+For example,
+
+```{r, message=FALSE, warning=FALSE, fig.width=4, fig.height=3, fig.cap="**Figure 3**. Same as Figure 2 with some visual improvements."}
+library(ggplot2)
+anopaPlot(w, ~ Difficulty) + 
+            theme_bw() +  # change theme
+            scale_x_discrete(limits = c("Easy", "Moderate", "Difficult")) #changer order
+```
+
+As you can see from this plot, Difficulty is very significant, and the most different
+conditions are Moderate vs. Difficult.
+
+Here you go.
+
+
+# References
+
+

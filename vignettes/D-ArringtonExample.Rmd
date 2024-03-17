@@ -1,0 +1,95 @@
+---
+title: "Analyzing proportions with the Arrington et al. 2002 example"
+bibliography: "../inst/REFERENCES.bib"
+csl: "../inst/apa-6th.csl"
+output: 
+  rmarkdown::html_vignette
+description: >
+  This vignette describes how a real dataset with 4 factors can be analyzed.
+vignette: >
+  %\VignetteIndexEntry{Analyzing proportions with the Arrington et al. 2002 example}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+cat("this is hidden; general initializations.\n")
+library(ANOPA)
+
+```
+
+@a02 published a data set available from the web.
+It presents species of fish and what proportion of them were empty stomached 
+when catched. The dataset contained 36000+ catches, which where identified by
+their Location (Africa, North America, rest of America), by their Trophism
+(their diet, Detritivore, Invertivore, Omnivore, Piscivore) and by the moment
+of feeding (Diel: Diurnal or Nocturnal).
+
+The compiled scores can be consulted with
+```{r}
+ArringtonEtAl2002
+```
+
+One first difficulty with this dataset is that some of the cells are missing
+(e.g., African fish that are Detrivore during the night). As is the case for 
+other sorts of analyses (e.g., ANOVAs), data with missing cells cannot be 
+analyzed because the error terms cannot be computed.
+
+One solution adopted by @wh11 was to impute the missing
+value. We are not aware if this is an adequate solution, and if so, what imputation
+would be acceptable. Consider the following with adequate care.
+
+Warton imputed the missing cells with a very small proportion. In ANOPA, both the 
+proportions and the group sizes are required. We implemented a procedure that 
+impute a count of 0.05 (fractional counts are not possible from observations, but
+are not forbidden in ANOPA) obtained from a single observation.
+
+Consult the default option with 
+
+```{r}
+getOption("ANOPA.zeros")
+```
+
+The analysis is obtained with
+
+```{r}
+w <- anopa( {s; n} ~  Location * Diel * Trophism, ArringtonEtAl2002)
+```
+
+The `fyi` message lets you know that cells are missing; the `Warning` message lets you 
+know that these cells were imputed.
+
+To see the result (using the uncorrected results as the samples are not small), 
+
+```{r}
+uncorrected(w)
+```
+
+These suggests an interaction Diel : Trophism close to significant.
+
+You can easily make a plot with all the factors using
+
+```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=5, fig.cap="**Figure 1**. The proportions in the Arrington et al. 2002 data. Error bars show difference-adjusted 95% confidence intervals."}
+anopaPlot(w)
+```
+
+The missing cells are absent from the plot. To highlight the interaction, restrict the plot to
+
+```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=3, fig.cap="**Figure 1**. The proportions as a function of class and Difficulty. Error bars show difference-adjusted 95% confidence intervals."}
+anopaPlot(w, ~ Trophism * Location)
+```
+
+which shows clearly massive difference between Trophism, and small differences between
+Omnivorous and Piscivorous fishes with regards to Location.
+
+This can be confirmed by examining simple effects (a.k.a. expected marginal analyzes):
+
+```{r}
+e <- emProportions( w, ~ Location * Trophism | Diel  ) 
+```
+
+(but it will have to wait for the next version of ANOPA ;-)
+
+
+# References
+

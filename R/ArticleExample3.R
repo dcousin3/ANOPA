@@ -1,0 +1,43 @@
+###################################################################################
+#' @title ArticleExample3
+#'
+#' @name ArticleExample3
+#'
+#' @description These are the data from the third example reported in 
+#'    \insertCite{lc23}{ANOPA}. It shows ficticious data with regards to 
+#'	  the proportion of patients suffering delirium tremens as a function 
+#'    of the drug adminstered (cBau, eaPoe, R&V, Placebo).
+#'    The design is a within-subject design with 4 measurements (order of 
+#'    adminstration randomized).
+#'
+#' @md
+#'
+#' @docType data
+#'
+#' @format An object of class data.frame.
+#'
+#' @keywords datasets
+#'
+#' @references 
+#' \insertAllCited{}
+#'
+#' @source \doi{10.20982/tqmp.19.2.p173}
+#'
+#' @examples
+#' library(ANOPA)
+#'
+#' # the ArticleExample3 data shows an effect of the drug administered on the 
+#' # proportion of participants who had an episode of delirium tremens 
+#' ArticleExample3
+#' 
+#' # perform an anopa on this dataset
+#' w <- anopa( cbind(cBau,eaPoe,RnV,Placebo) ~ ., ArticleExample3, WSFactors = "Drug(4)")
+#' 
+#' # We finish with post-hoc Tukey test
+#' e <- posthocProportions( w )
+#' 
+#' # a small plot is *always* a good idea
+#' anopaPlot(w)
+#' 
+#' 
+"ArticleExample3"

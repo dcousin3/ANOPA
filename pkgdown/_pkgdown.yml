@@ -1,0 +1,42 @@
+---
+title: ANOPA
+url: https://dcousin3.github.io/ANOPA
+reference:
+  - title: Main functions
+    desc: Main functions to perform an ANOPA analysis.
+    contents:
+      - "`anopa`"
+      - "`anopaPlot`"
+      - "`emProportions`"
+      - "`contrastProportions`"
+      - "`posthocProportions`"
+      - "`anopaN2Power`"
+      - "`rBernoulli`"
+  - title: Subsidiary functions
+    desc: These subsidiary functions perform useful tasks.
+    contents:
+      - "`A`"
+      - "`explain`"
+      - "`summarize`"
+      - "`corrected`"
+      - "`uncorrected`"
+      - "`toWide`"
+      - "`unitaryAlpha`"
+  - title: Datasets
+    desc: Examples of data sets, ficticious, found in the main article, or from a real dataset.
+    contents:
+      - "`minimalExamples`"
+      - "`ArticleExample1`"
+      - "`ArticleExample2`"
+      - "`ArticleExample3`"
+      - "`ArringtonEtAl2002`"
+articles:
+  - title: Vignettes
+    navbar: null
+    contents:
+      - A-WhatIsANOPA
+      - B-DataFormatsForProportions
+      - C-ConfidenceIntervals
+      - D-ArringtonExample
+      - E-ArcsineIsAsinine
+      - F-TestingTypeIError

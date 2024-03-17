@@ -1,0 +1,94 @@
+---
+title: "Is the ArcSine transformation so asinine in the end?"
+bibliography: "../inst/REFERENCES.bib"
+csl: "../inst/apa-6th.csl"
+output: 
+  rmarkdown::html_vignette
+description: >
+  This vignette describes what an analysis of frequency data is.
+vignette: >
+  %\VignetteIndexEntry{Is the ArcSine transformation so asinine in the end?}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+Some authors documented that analyses of proportions can be performed 
+with as few as 3 participants per group [e.g., @wh11]. 
+Some also reported finiding multiple configurations with significant results
+using logistic regressions.
+
+We do not think this is sensible. 
+
+
+```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+cat("this will be hidden; use for general initializations.\n")
+library(ANOPA)
+library(ggplot2)
+```
+
+Let's generate compiled data with two groups. In the `warton` scenario,
+the first group has only successes and in the second group, 2 out of 3
+participants have failure.
+
+```{r}
+warton <- data.frame(
+  grp = c(1,2),
+  s   = c(3,1),
+  n   = c(3,3)  
+)
+```
+
+Analyzing this, the ANOPA suggests no difference...
+
+```{r}
+w <- anopa( {s;n}~grp, warton)
+summary( w )
+```
+
+... something quite evident from the plot:
+
+```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=3, fig.cap="**Figure 1**. The proportions for two groups. Error bars show difference-adjusted 95% confidence intervals."}
+anopaPlot(w)
+```
+
+(one tip of the confidence intervals is so off the scale that it is missing.)
+
+Because the sample is so small, it is actually possible to enumerate all the possible
+results (there are 64 of them). If we allow no success or a single success in one group,
+and all success in the other group, there are 14 cases. 14 out of 64 is far from being 
+exceptional, and thus, there is no significant result here, congruent with the result 
+of the ANOPA analysis (and contradicting the results from a logistic regression).
+
+Lets consider a more extreme result: The first group has only successes and the second, only
+failures (there is two such cases out of 64):
+
+```{r}
+laurencelle <- data.frame(
+  grp = c(1,2),
+  s   = c(3,0),
+  n   = c(3,3)  
+)
+```
+
+The analyse using ANOPA says:
+
+```{r}
+l <- anopa( {s;n}~grp, laurencelle)
+summary(l)
+```
+
+that is, a significant result (and note that 2 out of 64 is indeed rare at the .05 threshold
+with a p of .031 = 2/64).
+The plot is congruent with this result:
+
+```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=3, fig.cap="**Figure 2**. The proportions for two extremely different groups. Error bars show difference-adjusted 95% confidence intervals."}
+anopaPlot(l)
+```
+
+The logistic regression, when applied to proportions, has very inflated 
+type-I error rates so that this technique should be avoided. The reason is quite
+simple: the logit transformation is not variance-stabilizing. In fact, it 
+exaggerate the variances across levels of population proportions.
+
+
+# References

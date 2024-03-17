@@ -1,0 +1,257 @@
+---
+title: "Data formats for proportions"
+bibliography: "../inst/REFERENCES.bib"
+csl: "../inst/apa-6th.csl"
+output: 
+  rmarkdown::html_vignette
+description: >
+  This vignette describes the various ways that proportions can be entered in a data.frame.
+vignette: >
+  %\VignetteIndexEntry{Data formats for proportions}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+cat("this is hidden; general initializations.\n")
+library(ANOPA)
+w1 <- anopa( {success;total} ~ Class * Difficulty, twoWayExample)
+dataWide1     <- toWide(w1)
+dataCompiled1 <-toCompiled(w1)
+dataLong1     <- toLong(w1)
+rownames(dataLong1) <- NULL
+
+w2 <- anopa( cbind(bpre, bpost, b1week, b5week) ~ Status, minimalMxExample, WSFactors = "Moment(4)")
+dataWide2     <- toWide(w2)
+dataCompiled2 <-toCompiled(w2)
+dataLong2     <- toLong(w2)
+rownames(dataLong2) <- NULL
+```
+
+
+
+# Data formats for proportions
+
+proportions are actually not raw data: they are the proportion of one response 
+(typically called a `success`) over all the responses (the other responses being
+called collectively a `failure`). As such, a proportion is a _summary statistic_, 
+a bit like the mean is a summary statistic of continuous data. 
+
+Very often, the `success` are coded using the digit `1` and the `failure`, with 
+the digit `0`. When this is the case, computing the mean is actually the same
+as computing the proportion of successes. However, it is a conceptual mistake to 
+think of proportions as means, because they must the processed completely differently 
+from averages. For example, standard error and confidence intervals for proportions
+are obtained using very different procedures than standard error and confidence intervals 
+for the mean.
+
+In this vignette, we review various ways that data can be coded in a data frame. 
+In a nutshell, there are three ways to represent success or failures, Wide, 
+Long, and Compiled. The first two shows raw scores whereas the last shows 
+a summary of the data.
+
+Before we begin, we load the package ``ANOPA``
+(if is not present on your computer, first upload it to your computer from 
+CRAN or from the source repository
+``devtools::install_github("dcousin3/ANOPA")``): 
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+library(ANOPA)   
+```
+
+
+
+## First format: Wide data format
+
+In this format, there is one line per _subject_ and one column for each 
+measurements. The columns contain only 1s (`success`) or 0s (`failure). 
+
+If the particpant was measured multiple times, there is one (or some) within-subject
+factor(s) resulting in multiple columns of measurements. In between-group design,
+there is only a single column of scores.
+
+As an example, consider the following data for a between-subject factor design
+with two factors: Class (2 levels) and Difficulty (3 levels) for 6 groups. There
+is an identical number of participants in each, 12, for a total of 72 participants.
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+dataWide1
+```
+
+When the data are in a wide format, the formula in ``anopa()`` must
+provide the columns where the success/failure are stored, and the conditions
+after the usual ~, as in 
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w1 <- anopa( success ~ Class * Difficulty, dataWide1)
+```
+
+(how dataWide1 was obtained is shown below in the Section 
+*Converting between formats* below.)
+
+As another example, consider the following example obtained in a mixed, within- and between-
+subject design. It has a factor `Status` with 8, 9 and 7 participants per group respectively. It 
+also has four repeated measures, `bpre`, `bpost`, `b1week` and `b5week` which represent
+four different Moments of measurements. The data frame is
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+dataWide2
+```
+
+The formula for analyzing these data in this format is 
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w2 <- anopa( cbind(bpre, bpost, b1week, b5week) ~ Status, dataWide2, WSFactors = "Moment(4)" )
+```
+
+It is necessary to (a) group all the measurement columns using `cbind()`;
+(b) indicate the within-subject factor(s) using the argument `WSFactors`
+along with the number of levels each in a string.
+
+
+
+
+## Second format: Long data format
+
+This format may be prefered for linear modelers (but it may rapidly becomes
+_very_ long!). There is always at least these columns: One Id column, one
+column to indicate a within-subject level, and one column to indicate the observed 
+score.  On the other hand, this format has fewer columns in repeated measure designs.
+
+This example shows the first 6 lines of the 2-factor between design data above, stored in the long format.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE}
+head(dataLong1)
+```
+
+To analyse such data format within ``anopa()``, use
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w1Long <- anopa( Value ~ Class * Difficulty * Variable  | Id, dataLong1 )
+```
+
+The vertical line symbol indicates that the observations are nested within
+``Id`` (i.e., all the lines with the same Id are actually the same subject).
+
+
+With the mixed design described above, the data begin as:
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+head(dataLong2)
+```
+
+and are analyzed with the formula:
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w2Long <- anopa( Value ~ Status * Variable  | Id, dataLong2, WSFactors="Moment(4)" )
+```
+
+
+## Third format: Compiled data format
+
+This format is compiled, in the sense that the 0s and 1s have been
+replaced by a single count of success for each cell of the design. 
+Hence, we no longer have access to the raw data. This format 
+however has the advantage of being very compact, requiring
+few lines. Here is the data for the 2 between-subject factors example
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE}
+dataCompiled1
+```
+
+To use a compiled format in `anopa()`, use
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w1Compiled <- anopa( {success; Count} ~ Class * Difficulty, dataCompiled1 )
+```
+
+where ``succes`` identifies in which column the total number of successes 
+are stored. The column Count indicates the total number of observations in 
+that cell. The notation {s;n} is read ``s over n`` (note the curly braces and semicolon).
+
+For the mixed design presented earlier, the data looks like:
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE}
+dataCompiled2
+```
+
+where there are columns for the number of success for each repeated measures. A new
+columns appear ``uAlpha``. This column (called _unitary alpha_) is a measure of 
+correlation (between -1 and +1). In this ficticious example, the correlations are
+near zero (negative actually) by chance as the data were generated randomly.
+
+It is not possible to run an ANOPA analysis at this time on compiled data
+when there are repeated measures (but this may change in a future version).
+
+
+
+## Converting between formats
+
+Once entered in an ``anopa()`` structure, it is possible to 
+convert to any format using ``toWide()``, ``toCompiled()``
+and ``toLong()``. For example:
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+toCompiled(w1)
+toCompiled(w2)
+```
+
+The compiled format is probably the most compact format, but the 
+wide format is the most explicite format (as we see all the subjects and
+their scores on a single line, one subject per line).
+
+## Getting the example data frame
+
+Above, we used two examples. They are available in this package under the 
+names ``twoWayExample`` and ``minimalMxExample``. The first is available 
+in compiled form, the second in wide form.
+
+We converted these data set in other formats using:
+
+```{r}
+w1 <- anopa( {success;total} ~ Class * Difficulty, twoWayExample)
+dataWide1     <- toWide(w1)
+dataCompiled1 <-toCompiled(w1)
+dataLong1     <- toLong(w1)
+
+w2 <- anopa( cbind(bpre, bpost, b1week, b5week) ~ Status, minimalMxExample, WSFactors = "Moment(4)")
+dataWide2     <- toWide(w2)
+dataCompiled2 <-toCompiled(w2)
+dataLong2     <- toLong(w2)
+```
+
+## Multiple repeated-measure factors
+
+One limitation is with regards to repeated measures: It is not possible
+to guess the name of the within-subject factors from the names of the columns. 
+This is why, as soon as there are more than one measurement, the argument
+``WSFactors`` must be added. 
+
+Suppose a two-way within-subject design with 2 x 3 levels. The
+data set ``twoWayWithinExample`` has 6 columns; the first three are
+for the factor A, level 1, and the last three are for factor A, level 2.
+Within each triplet of column, the factor B goes from 1 to 3.
+
+
+```{r, message=TRUE, warning=FALSE, echo=TRUE, eval=TRUE}
+w3 <- anopa( cbind(r11,r12,r12,r21,r22,r23) ~ . , 
+             twoWayWithinExample, 
+             WSFactors = c("A(3)","B(2)") 
+            )
+toCompiled(w3)
+```
+
+A "fyi" message is shown which lets you see how the variables are interpreted.
+
+
+To know more about analyzing proportions with ANOPA, refer to @lc23 or to
+[What is an ANOPA?](../articles/A-WhatIsANOPA.html).
+
+
+
+# References
+
+
+
+
+

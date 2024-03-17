@@ -1,0 +1,122 @@
+---
+output: github_document
+bibliography: "inst/REFERENCES.bib"
+csl: "inst/apa-6th.csl"
+---
+
+# ANOPA: Analysis of Proportions using Anscombe transform
+
+<!-- badges: start -->
+[![CRAN Status](https://www.r-pkg.org/badges/version/ANOPA)](https://cran.r-project.org/package=ANOPA)
+<!-- badges: end -->
+
+```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+cat("this will be hidden; used for general initializations.\n")
+library(ANOPA)
+options("ANOPA.feedback" = "none") # shut down all information
+```
+
+The library `ANOPA` provides easy-to-use tools to analyze proportions . 
+With it, you can examine
+if proportions are significantly different (_show an effect_). In the
+case where there is more than one factor, you can also test if the
+interaction(s) are significant. You 
+can also test simple effects (a.k.a. _expected marginal_ analysis),
+as well as post-hoc tests (using Tukey's _Honestly Significant Difference_ test HSD). 
+Finally, you can assess differences based on orthogonal contrasts.
+You can consult @lc23 for details.
+
+ANOPA also comes (a) with tools to make a plot of the proportions along
+with 95% confidence intervals [these intervals are adjusted for pair-
+wise comparisons; @cgh21]; (b) with tools to compute statistical power given
+some _a priori_ expected proportions or sample size to reach a certain
+statistical power; (c) to generate random proportions if you wish to perform
+Monte Carlo simulations on proportions. 
+In sum, eveything you need to analyse proportions!
+
+The main function is `anopa()` which returns an omnibus analysis of the 
+proportions for the factors given. For example, if you have a data frame
+`ArticleExample2` which contains a column called `s` where the 
+number of successes per group are stored,
+and a column called `n` where the group sizes are stored, then the following
+performs an analysis of proportions as a function of the groups based on the
+columns `SES` and `MofDiagnostic`:
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w <- anopa( {s; n} ~ SES * MofDiagnostic, ArticleExample2 )
+summary(w)
+```
+
+As the results suggest (consult the first three columns), there is
+a main effect of the factor SES (F(2, inf) = 6.395, p = .002).
+A plot of the proportions can be obtained easily with 
+
+```{r, message=FALSE, warning=FALSE, fig.width=5.25, fig.height=3}
+anopaPlot(w) 
+```
+
+or just the main effect figure with 
+
+```{r, message=FALSE, warning=FALSE, fig.width=4, fig.height=3}
+anopaPlot(w, ~ SES)
+```
+
+If the interaction had been significant, simple effects can be analyzed from the _expected marginal
+frequencies_ with
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+#e <- emProportions(w, ~ SES | MofDiagnostic )
+#summary(e)
+```
+
+Follow-up analyses include contrasts examinations with `contrastProportions()`; finally,
+post-hoc pairwise comparisons can be obtained with `posthocProportions()`.
+
+
+Prior to running an experiment, you might consider some statistical power planning 
+on proportions using ``anopaPower2N()`` or
+``anopaN2Power()`` as long as you can anticipate the expected proportions. A 
+convenient effect size, the f-square and eta-square can be obtained with `anopaPropTofsq()`.
+
+Finally, `toCompiled()`, `toLong()` and `toWide()` 
+can be used to present the proportion in other formats.
+
+# Installation
+
+The official **CRAN** version can be installed with 
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages("ANOPA")
+library(ANOPA)
+```
+
+The development version `r packageVersion("ANOPA")` can be accessed through GitHub:
+
+```{r, echo = TRUE, eval = FALSE}
+devtools::install_github("dcousin3/ANOPA")
+library(ANOPA)
+```
+
+Note that the package `ANOPA` is named using UPPERCASE letters whereas the main function 
+`anopa()` is written using lowercase letters.
+
+The library is loaded with 
+
+```{r, echo = TRUE, eval = FALSE, results = FALSE}
+library(ANOPA)
+```
+
+# In sum
+
+As seen, the library `ANOPA` makes it easy to analyze proportions using the
+same general vocabulary found in ANOVAs.
+
+The complete documentation is available on this 
+[site](https://dcousin3.github.io/ANOPA/).
+
+A general introduction to the `ANOPA` framework underlying this 
+library can be found at @lc23.
+
+# References
+
+\insertAllCited{}

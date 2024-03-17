@@ -1,0 +1,26 @@
+citHeader("To cite ANOPA in publications use:")
+
+bibentry(
+  bibtype  = "Article",
+  title    = "Analysis of proportions using arcsine transform with any experimental design",
+  author   = c("Louis Laurencelle", "Denis Cousineau"),
+  journal  = "Frontiers in Psychology",
+  year     = "2023",
+  volume   = "13",
+  issue    = "1045436",
+  pages    = "1--12",
+  url      = "https://dcousin3.github.io/ANOPA/",
+  doi      = "10.3389/fpsyg.2022.1045436",
+  textVersion = paste(
+    "Laurencelle L and Cousineau D (2023)",
+    "Analysis of proportions using arcsine transform with any",
+    "experimental design.",
+    "Frontiers in Psychology, 13:1045436.",
+    "doi: 10.3389/fpsyg.2022.1045436"
+  )
+)
+
+citFooter(paste(
+    "We have invested a lot of time and effort in creating ANOPA.",
+    "Please cite it when using it. Academic retribution is citation!")
+)
