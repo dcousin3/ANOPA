@@ -238,23 +238,18 @@ details on the adjustment and its purpose.</p>
 <span class="r-plt img"><img src="anopa_asn_trans1-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># We can place the factor `Diel` on the x-axis (first):</span></span></span>
-<span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, <span class="op">~</span> <span class="va">Diel</span> <span class="op">*</span> <span class="va">Trophism</span> <span class="op">*</span> <span class="va">Location</span> <span class="op">)</span></span></span>
-<span class="r-plt img"><img src="anopa_asn_trans1-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co">#anopaPlot(w, ~ Diel * Trophism * Location )</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Change the style for a plot with bars instead of lines</span></span></span>
-<span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, plotStyle <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="anopa_asn_trans1-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co">#anopaPlot(w, plotStyle = "bar")   # to speed tests, we comment these two lines</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Changing the error bar style</span></span></span>
-<span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, plotStyle <span class="op">=</span> <span class="st">"bar"</span>, errorbarParams <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> width <span class="op">=</span><span class="fl">0.1</span>, linewidth<span class="op">=</span><span class="fl">0.1</span> <span class="op">)</span> <span class="op">)</span></span></span>
-<span class="r-plt img"><img src="anopa_asn_trans1-5.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co">#anopaPlot(w, plotStyle = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Illustrating the main effect of Location (not interacting with other factors)</span></span></span>
 <span class="r-in"><span><span class="co"># and the interaction Diel * Trophism separately</span></span></span>
-<span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, <span class="op">~</span> <span class="va">Location</span> <span class="op">)</span></span></span>
-<span class="r-plt img"><img src="anopa_asn_trans1-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, <span class="op">~</span> <span class="va">Diel</span> <span class="op">*</span> <span class="va">Trophism</span> <span class="op">)</span></span></span>
-<span class="r-plt img"><img src="anopa_asn_trans1-7.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co">#anopaPlot(w, ~ Location )        # to speed tests, we comment these two lines</span></span></span>
+<span class="r-in"><span><span class="co">#anopaPlot(w, ~ Diel * Trophism ) # to speed tests, we comment these two lines</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># All these plots are ggplot2 so they can be followed with additional directives, e.g.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
@@ -262,11 +257,11 @@ details on the adjustment and its purpose.</p>
 <span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, <span class="op">~</span> <span class="va">Location</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fl">0.0</span>, <span class="fl">1.0</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">y</span> is already present.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">y</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="anopa_asn_trans1-8.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="anopa_asn_trans1-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">anopaPlot</span><span class="op">(</span><span class="va">w</span>, <span class="op">~</span> <span class="va">Diel</span> <span class="op">*</span> <span class="va">Trophism</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fl">0.0</span>, <span class="fl">1.0</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">y</span> is already present.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">y</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="anopa_asn_trans1-9.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="anopa_asn_trans1-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># etc. Any ggplot2 directive can be added to customize the plot to your liking.</span></span></span>
 <span class="r-in"><span><span class="co"># See the vignette `ArringtonExample`.</span></span></span>
