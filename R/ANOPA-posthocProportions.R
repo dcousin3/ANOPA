@@ -70,8 +70,7 @@
 #' # There is a near-significant interaction of Trophism * Diel (if we consider
 #' # the unadjusted p value, but you really should consider the adjusted p value...).
 #' # If you generate the plot of the four factors, we don't see much:
-#' anopaPlot(w)
-#'
+#' # anopaPlot(w)
 #' #... but with a plot specifically of the interaction helps:
 #' anopaPlot(w, ~ Trophism * Diel )
 #' # it seems that the most important difference is for omnivorous fishes

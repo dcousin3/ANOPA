@@ -9,7 +9,7 @@ Authors@R: c(
              person("Louis", "Laurencelle", email = "louis.laurencelle@gmail.com",
                     role = c("aut", "ctb"))
            )
-Author: Denis Cousineau [aut, cre],
+Author: Denis Cousineau [aut, ctb, cre],
 		Louis Laurencelle [aut, ctb]
 Maintainer: Denis Cousineau <denis.cousineau@uottawa.ca>
 BugReports: https://github.com/dcousin3/ANOPA/issues/

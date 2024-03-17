@@ -84,18 +84,18 @@ anopaPlot(w)
 anopaPlot(w, allowImputing = TRUE)
 
 # We can place the factor `Diel` on the x-axis (first):
-anopaPlot(w, ~ Diel * Trophism * Location )
+#anopaPlot(w, ~ Diel * Trophism * Location )
 
 # Change the style for a plot with bars instead of lines
-anopaPlot(w, plotStyle = "bar")
+#anopaPlot(w, plotStyle = "bar")   # to speed tests, we comment these two lines
 
 # Changing the error bar style
-anopaPlot(w, plotStyle = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )
+#anopaPlot(w, plotStyle = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )
 
 # Illustrating the main effect of Location (not interacting with other factors)
 # and the interaction Diel * Trophism separately
-anopaPlot(w, ~ Location )
-anopaPlot(w, ~ Diel * Trophism )
+#anopaPlot(w, ~ Location )        # to speed tests, we comment these two lines
+#anopaPlot(w, ~ Diel * Trophism ) # to speed tests, we comment these two lines
 
 # All these plots are ggplot2 so they can be followed with additional directives, e.g.
 library(ggplot2)

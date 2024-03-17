@@ -8,7 +8,7 @@
 A data frame.
 }
 \source{
-\doi{10.1890/0012-9658(2002)083}
+\doi{10.1890/0012-9658(2002)083[2145:HODFRO]2.0.CO;2}
 }
 \usage{
 ArringtonEtAl2002
