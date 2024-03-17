@@ -82,18 +82,18 @@
 #' anopaPlot(w, allowImputing = TRUE)
 #' 
 #' # We can place the factor `Diel` on the x-axis (first):
-#' #anopaPlot(w, ~ Diel * Trophism * Location )
+#' \donttest{anopaPlot(w, ~ Diel * Trophism * Location )}
 #' 
 #' # Change the style for a plot with bars instead of lines
-#' #anopaPlot(w, plotStyle = "bar")   # to speed tests, we comment these two lines
+#' \donttest{anopaPlot(w, plotStyle = "bar")}
 #' 
 #' # Changing the error bar style
-#' #anopaPlot(w, plotStyle = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )
+#' \donttest{anopaPlot(w, plotStyle = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )}
 #' 
 #' # Illustrating the main effect of Location (not interacting with other factors)
 #' # and the interaction Diel * Trophism separately
-#' #anopaPlot(w, ~ Location )        # to speed tests, we comment these two lines
-#' #anopaPlot(w, ~ Diel * Trophism ) # to speed tests, we comment these two lines
+#' \donttest{anopaPlot(w, ~ Location ) }
+#' \donttest{anopaPlot(w, ~ Diel * Trophism ) }
 #' 
 #' # All these plots are ggplot2 so they can be followed with additional directives, e.g.
 #' library(ggplot2)
@@ -264,7 +264,7 @@ anopaPlot <- function(w,
             errorbar       = "CI",          # its precision define above
             gamma          = confidenceLevel,
 			adjustment     = list( 
-				purpose       = "difference",     # difference-adjusted CI
+#				purpose       = "difference",     # difference-adjusted CI done in CI.prop
 				decorrelation = if(length(tempvars)>1) "UA" else "none"
 			),
             # the following is for the look of the plot
@@ -284,7 +284,7 @@ anopaPlot <- function(w,
             errorbar       = "CI",          # its precision define above
             gamma          = confidenceLevel,
 			adjustment     = list( 
-				purpose       = "difference",     # difference-adjusted CI
+#				purpose       = "difference",     # difference-adjusted CI done in CI.prop
 				decorrelation = if(length(tempvars)>1) "UA" else "none"
 			)
         )#$summaryStatistics

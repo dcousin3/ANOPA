@@ -125,8 +125,9 @@ CI.prop <- function(v, gamma = 0.95) {
     y     <- Atrans(v)
     n     <- length(v)
     cilen <- CI.Atrans(v, gamma)
-    ylo   <- y - cilen
-    yhi   <- y + cilen
+    # the difference adjustment is done herein.
+    ylo   <- y - sqrt(2) * cilen
+    yhi   <- y + sqrt(2) * cilen
     # reverse arc-sin transformation
     xlo <- (n+3/4)*(sin(ylo)^2) - 3/8
     xhi <- (n+3/4)*(sin(yhi)^2) - 3/8
