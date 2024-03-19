@@ -36,24 +36,24 @@ The datasets present minimal examples that are analyzed with an
 Analysis of Frequency Data method (described in \insertCite{lc23;textual}{ANOPA}.
 The five datasets are
 \itemize{
-\item \code{minimalBSExample}: an example with a single factor (state of residency)
-\item \code{twoWayExample}: an example with two factors, Class and Difficulty
-\item \code{minimalWSExample}: an example with a within-subject design (three measurements)
-\item \code{twoWayWithinExample}: an example with two within-subject factors
-\item \code{minimalMxExample}: a mixed design having one within and one between-subject factors
+\item 'minimalBSExample': an example with a single factor (state of residency)
+\item 'twoWayExample': an example with two factors, Class and Difficulty
+\item 'minimalWSExample': an example with a within-subject design (three measurements)
+\item 'twoWayWithinExample': an example with two within-subject factors
+\item 'minimalMxExample': a mixed design having one within and one between-subject factors
 }
 }
 \examples{
 library(ANOPA)
 
-# the minimalBSExample data with proportions per state of residency for three states 
-minimalBSExample
+# the twoWayExample data with proportions per Classes and Difficulty levels 
+twoWayExample
 
 # perform an anopa on this dataset
-w <- anopa( {s;n} ~ state, minimalBSExample)
+w <- anopa( {success;total} ~ Difficulty * Class, twoWayExample) 
 
-# We analyse the intensity by levels of pitch
-#  e <- emProportions(w, ~ Intensity | Pitch)
+# We analyse the proportions by Difficulty for each Class
+e <- emProportions(w, ~ Difficulty | Class)
 
 }
 \references{

@@ -19,8 +19,8 @@ An ANOPA table of the various simple main effets and if relevant,
 of the simple interaction effets.
 }
 \description{
-The function \code{emProportions()} performs a \emph{simple effect} analyses
-of proportions after an omnibus analysis has been obtained with \code{anopa()}
+The function 'emProportions()' performs a \emph{simple effect} analyses
+of proportions after an omnibus analysis has been obtained with 'anopa()'
 according to the ANOPA framework. Alternatively, it is also called an
 \emph{expected marginal} analysis of proportions. See \insertCite{lc23b;textual}{ANOPA} for more.
 }
@@ -54,11 +54,7 @@ anopaPlot(w)
 
 # Let's execute the simple effect of Difficulty for every levels of Class
 e <- emProportions(w, ~ Difficulty | Class )
-#summary(e)
-
-# As a check, you can verify that the _F_s are decomposed additively
-#sum(e$results[,1])
-#w$results[3,1]+w$results[4,1] 
+summary(e)
 
 
 # -- SECOND EXAMPLE --
@@ -86,9 +82,6 @@ anopaPlot(w, ~ Trophism * Diel )
 e <- emProportions(w, ~ Trophism | Diel )
 summary(e)
 
-# Again, as a check, you can verify that the $F$s are decomposed additively
-#w$results[4,1]+w$results[7,1] # B + B:C
-#sum(e$results[,1])
 
 # You can ask easier outputs with
 corrected(w) # or summary(w) for the ANOPA table only

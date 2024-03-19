@@ -15,6 +15,6 @@ corrected(object, ...)
 An ANOPA table with the corrected test statistics.
 }
 \description{
-\code{corrected()} provides an ANOPA table with only the corrected
+'corrected()' provides an ANOPA table with only the corrected
 statistics.
 }

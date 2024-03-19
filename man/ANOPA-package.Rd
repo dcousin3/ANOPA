@@ -6,7 +6,7 @@
 \alias{ANOPA-package}
 \title{ANOPA: Analyses of Proportions using Anscombe Transform}
 \description{
-\code{ANOPA} is a library to perform proportion analyses.
+'ANOPA' is a library to perform proportion analyses.
 It is based on the F statistics (first developed by Fisher).
 This statistics is fully additive and can be decomposed in
 main effects and interaction effects, in simple effects in the
@@ -19,8 +19,8 @@ easy.
 
 The data supplied to an ANOPA can be in three formats: (i) long format,
 (ii) wide format, (iii) compiled format, or (iv) raw format. Check
-the \code{anopa} commands for more precision (in what follow, we assume
-the compiled format where the proportions are given in a column name \code{Freq})
+the 'anopa' commands for more precision (in what follow, we assume
+the compiled format where the proportions are given in a column name 'Freq')
 
 The main function is
 
@@ -59,7 +59,7 @@ and example datasets, some described in the article:  \itemize{
 }
 
 The functions uses the following options: \itemize{
-\item{\code{ANOPA.feedback}} ((currently unused));
+\item{\code{ANOPA.feedback}} 'design', 'warnings', 'summary', 'all' or 'none';
 \item{\code{ANOPA.zeros}}    how are handled the zero trials to avoid 0 divided by 0 error;
 \item{\code{ANOPA.digits}}   for the number of digits displayed in the summary table.
 }

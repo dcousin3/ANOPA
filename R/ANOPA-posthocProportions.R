@@ -3,8 +3,8 @@
 #'
 #' @md
 #'
-#' @description The function `posthocProportions()` performs post-hoc analyses 
-#'    of proportions after an omnibus analysis has been obtained with `anopa()`
+#' @description The function 'posthocProportions()' performs post-hoc analyses 
+#'    of proportions after an omnibus analysis has been obtained with 'anopa()'
 #'    according to the ANOPA framework. It is based on the tukey HSD test.
 #'    See \insertCite{lc23b;textual}{ANOPA} for more.
 #'
@@ -51,12 +51,8 @@
 #'
 #' # Let's execute the post-hoc tests
 #' e <- posthocProportions(w, ~ Difficulty | Class )
-#' #summary(e)
+#' summary(e)
 #'
-#' # As a check, you can verify that the $F$s are decomposed additively
-#' #sum(e$omnibus[,1])
-#' w$omnibus[3,1]+w$omnibus[4,1] 
-#' 
 #' 
 #' # -- SECOND EXAMPLE --
 #' # Example using the Arrington et al. (2002) data, a 3 x 4 x 2 design involving 
@@ -80,12 +76,9 @@
 #'
 #' # Let's analyse the simple effect of Tropism for every levels of Diel and Location
 #' e <- posthocProportions(w, ~ Tropism | Diel )
-#' #summary(e)
+#' summary(e)
 #'
-#' # Again, as a check, you can verify that the $F$s are decomposed additively
-#' w$omnibus[4,1]+w$omnibus[7,1] # B + B:C
-#' #sum(e$omnibus[,1])
-#' 
+#'
 #' # You can ask easier outputs with
 #' summarize(w) # or summary(w) for the ANOPA table only
 #' corrected(w)   # or uncorrected(w) for an abbreviated ANOPA table
@@ -102,5 +95,5 @@ posthocProportions <- function(
     w       = NULL,
     formula = NULL
 ){
-    print("Not yet programmed...")
+    ANOPAmessage("Not yet programmed...")
 }

@@ -18,8 +18,8 @@ as well.}
 A table of significance of the different contrasts.
 }
 \description{
-The function \code{contrastProportions()} performs contrasts analyses
-on proportion data after an omnibus analysis has been obtained with \code{anopa()}
+The function 'contrastProportions()' performs contrasts analyses
+on proportion data after an omnibus analysis has been obtained with 'anopa()'
 according to the ANOPA framework. See \insertCite{lc23;textual}{ANOPA} for more.
 }
 \details{
@@ -46,31 +46,8 @@ cw <- contrastProportions( w, list(
          contrast1 = c(1,  1, -2)/2,
          contrast2 = c(1, -1,  0) )
       )
-#summary(cw)
+summary(cw)
 
-# Example using the Arrington et al. (2002) data, a 3 x 4 x 2 design involving 
-# Location (3 levels), Trophism (4 levels) and Diel (2 levels).
-ArringtonEtAl2002
-
-# performs the omnibus analysis first (mandatory):
-w <- anopa( {s;n} ~ Location * Trophism * Diel, ArringtonEtAl2002) 
-corrected(w)
-
-# execute the simple effect of Trophism for every levels of Diel and Location
-e <- emProportions(w, ~ Trophism | Diel * Location)
-#summary(e)
-
-# For each of these sub-cells, contrast the four tropisms, first
-# by comparing the first two levels to the third (contrast1), second
-# by comparing the first to the second level (contrast2), and finally by
-# by comparing the first three to the last (contrast3) :
-#f <- contrastProportions( e, list(
-#              contrast1 = c(1,  1, -2, 0)/2,
-#              contrast2 = c(1, -1,  0, 0),
-#              contrast3 = c(1,  1,  1, -3)/3
-#           )
-#      )
-#summary(f)
 
 
 

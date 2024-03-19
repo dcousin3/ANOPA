@@ -5,11 +5,11 @@
 #'
 #' @md
 #'
-#' @description The function `anopaPlot()` performs a plot of proportions for designs 
+#' @description The function 'anopaPlot()' performs a plot of proportions for designs 
 #'      with up to 4 factors according to the
-#'      `ANOPA` framework. See \insertCite{lc23;textual}{ANOPA} for more. The plot is 
-#'      realized using the `suberb` library; see \insertCite{cgh21;textual}{ANOPA}.
-#'      It uses the arc-sine transformation `A()`.
+#'      'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for more. The plot is 
+#'      realized using the 'suberb' library; see \insertCite{cgh21;textual}{ANOPA}.
+#'      It uses the arc-sine transformation 'A()'.
 #'
 #'   
 #' @usage anopaPlot(w, formula, confidenceLevel = .95, allowImputing = FALSE,
@@ -134,11 +134,9 @@ anopa_asn_trans2 <- function(x) {
 anopa_asn_trans <- function () {
     scales::trans_new("asn2", 
 		function(x) {
-			#cat("1:",x," = ", sapply(x, anopa_asn_trans1),"\n"); 
 			sapply(x, anopa_asn_trans1)
 		}, 
 		function(x) {
-			#cat("2:",x," = ", sapply(x, anopa_asn_trans2),"\n"); 
 			sapply(x, anopa_asn_trans2)
 		},
 		domain = c(0, 1)

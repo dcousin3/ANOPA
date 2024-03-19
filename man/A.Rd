@@ -49,10 +49,10 @@ when \code{n} is small. Therefore, a test based on this transform is either exac
 or conservative.
 }
 \description{
-The transformation functions \code{A()} performs the
+The transformation functions 'A()' performs the
 Anscombe transformation on a pair \{number of success; number
 of trials\} = \{s; n\} (where the symbol ";" is to be read "over".
-The function \code{varA()} returns the theoretical variance from
+The function 'varA()' returns the theoretical variance from
 the pair \{s; n\}. Both functions are central to the ANOPA
 \insertCite{lc23}{ANOPA}. It was originally proposed by
 \insertCite{z35}{ANOPA} and formalized by \insertCite{a48}{ANOPA}.

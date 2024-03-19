@@ -22,8 +22,8 @@ decomposition of the main analyses, follow the analysis with \code{emProportions
 \code{contrastProportions()}, or \code{posthocProportions()})
 }
 \description{
-The function \code{anopa()} performs an ANOPA for designs with up to 4 factors
-according to the \code{ANOPA} framework. See \insertCite{lc23;textual}{ANOPA} for more.
+The function 'anopa()' performs an ANOPA for designs with up to 4 factors
+according to the 'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for more.
 }
 \details{
 Note the following limitations:

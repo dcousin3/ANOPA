@@ -26,7 +26,7 @@
 #' @md
 #'
 #' @description
-#' `explain()` provides a human-readable, exhaustive, description of
+#' 'explain()' provides a human-readable, exhaustive, description of
 #' the results. It also provides references to the key results.
 #' 
 #' @usage explain(object, ...)
@@ -47,8 +47,8 @@ explain.default <- function(object, ...) { print(object) }
 #'
 #' @md
 #'
-#' @description `summarize()` provides the statistics table an ANOPAobject. 
-#' It is synonym of `summary()` (but as actions are verbs, I used a verb).
+#' @description 'summarize()' provides the statistics table an ANOPAobject. 
+#' It is synonym of 'summary()' (but as actions are verbs, I used a verb).
 #' 
 #' @param object   an object to summarize
 #' @param ...      ignored
@@ -75,8 +75,7 @@ summary.ANOPAobject <- function(object, ...) {
 #' @method print ANOPAobject
 #' @export 
 print.ANOPAobject <- function(x, ...) {
-    cat("ANOPA completed. My first advise is to use anopaPlot() now. \n")
-    cat("Use summary() or summarize() to obtain the ANOPA table.\n")
+    ANOPAmessage("ANOPA completed! My first advise is to use anopaPlot() now. \nUse summary() or summarize() to obtain the ANOPA table.")
     y <- unclass(x)
     class(y) <- "list"
     print(y, digits = 5)
@@ -98,7 +97,7 @@ print.ANOPAtable <- function(x, ...) {
 #' @export 
 summarize.ANOPAobject <-  function(object, ...) {
     if (length(object$omnibus) == 1) 
-        cat(object$omnibus)
+        print(object$omnibus)
     else {
         u <- object$omnibus
         class(u) <- c("ANOPAtable", class(u))
@@ -123,7 +122,7 @@ explain.ANOPAobject <- function(object, ...) {
 #' @md
 #'
 #' @description
-#' `corrected()` provides an ANOPA table with only the corrected 
+#' 'corrected()' provides an ANOPA table with only the corrected 
 #' statistics.
 #' 
 #' @usage corrected(object, ...)
@@ -140,7 +139,7 @@ corrected.default <- function(object, ...) { print(object) }
 #' @export 
 corrected.ANOPAobject <- function(object, ...) {
     if (length(object$omnibus) == 1) 
-        cat(object$omnibus)
+        print(object$omnibus)
     else {
         u <- object$omnibus[,c(1,2,3,5,6,7)]
         class(u) <- c("ANOPAtable", class(u))
@@ -154,7 +153,7 @@ corrected.ANOPAobject <- function(object, ...) {
 #' @md
 #'
 #' @description
-#' `uncorrected()` provides an ANOPA table with only the uncorrected  
+#' 'uncorrected()' provides an ANOPA table with only the uncorrected  
 #' statistics.
 #' 
 #' @usage uncorrected(object, ...)
@@ -172,7 +171,7 @@ uncorrected.default <- function(object, ...) { print(object) }
 #' @export 
 uncorrected.ANOPAobject <- function(object, ...) {
     if (length(object$omnibus) == 1) 
-        cat(object$omnibus)
+        print(object$omnibus)
     else {
         u <- object$omnibus[,c(1,2,3,4)]
         class(u) <- c("ANOPAtable", class(u))

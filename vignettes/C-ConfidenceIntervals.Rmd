@@ -52,7 +52,7 @@ increasing the wide of the intervals by $\sqrt{2}$.
 
 Also, in repeated measure designs, the correlation is beneficial to improve
 estimates. As such, the interval wide can be reduced when correlation is
-positive by multiplying its length by $1-\alpha_1$, where $\alpha_1$ is 
+positive by multiplying its length by $\sqrt{1-\alpha_1}$, where $\alpha_1$ is 
 a measure of correlation in a matrix containing repeated measures
 (based on the unitary alpha measure).
 
@@ -89,11 +89,11 @@ For example,
 library(ggplot2)
 anopaPlot(w, ~ Difficulty) + 
             theme_bw() +  # change theme
-            scale_x_discrete(limits = c("Easy", "Moderate", "Difficult")) #changer order
+            scale_x_discrete(limits = c("Easy", "Moderate", "Difficult")) #change order
 ```
 
 As you can see from this plot, Difficulty is very significant, and the most different
-conditions are Moderate vs. Difficult.
+conditions are Easy vs. Difficult.
 
 Here you go.
 

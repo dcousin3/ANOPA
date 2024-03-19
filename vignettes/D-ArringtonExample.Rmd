@@ -57,9 +57,11 @@ w <- anopa( {s; n} ~  Location * Diel * Trophism, ArringtonEtAl2002)
 ```
 
 The `fyi` message lets you know that cells are missing; the `Warning` message lets you 
-know that these cells were imputed.
+know that these cells were imputed (you can suppress messages with 
+`options("ANOPA.feedback"="none")`.
 
-To see the result (using the uncorrected results as the samples are not small), 
+To see the result, use `summary(w)` (which shows the corrected and uncorrected statistics)
+or `uncorrected(w)` (as the sample is quite large, the correction will be immaterial...), 
 
 ```{r}
 uncorrected(w)

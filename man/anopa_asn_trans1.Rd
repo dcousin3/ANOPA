@@ -43,11 +43,11 @@ a list of attributes used to plot the error bars. See superb for more.}
 a ggplot2 object of the given proportions.
 }
 \description{
-The function \code{anopaPlot()} performs a plot of proportions for designs
+The function 'anopaPlot()' performs a plot of proportions for designs
 with up to 4 factors according to the
-\code{ANOPA} framework. See \insertCite{lc23;textual}{ANOPA} for more. The plot is
-realized using the \code{suberb} library; see \insertCite{cgh21;textual}{ANOPA}.
-It uses the arc-sine transformation \code{A()}.
+'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for more. The plot is
+realized using the 'suberb' library; see \insertCite{cgh21;textual}{ANOPA}.
+It uses the arc-sine transformation 'A()'.
 }
 \details{
 The plot shows the proportions on the vertical axis as a

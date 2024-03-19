@@ -15,6 +15,6 @@ explain(object, ...)
 a human-readable output with details of computations.
 }
 \description{
-\code{explain()} provides a human-readable, exhaustive, description of
+'explain()' provides a human-readable, exhaustive, description of
 the results. It also provides references to the key results.
 }

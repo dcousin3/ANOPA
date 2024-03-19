@@ -20,7 +20,7 @@ toCompiled(w)
 A data frame in the requested format.
 }
 \description{
-The functions \code{toWide()}, \code{toLong()}, and \code{toCompiled()}
+The functions 'toWide()', 'toLong()', and 'toCompiled()'
 converts the data into various formats.
 }
 \details{

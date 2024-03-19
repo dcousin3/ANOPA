@@ -39,10 +39,10 @@ across measurements.}
 and sample sizes.
 }
 \description{
-The function \code{anopaN2Power()} performs an analysis of statistical power
-according to the \code{ANOPA} framework. See \insertCite{lc23b;textual}{ANOPA} for more.
-\code{anopaPower2N()} computes the sample size to reach a given power.
-Finally, \code{anopaProp2fsq()} computes the f^2 effect size from a set of proportions.
+The function 'anopaN2Power()' performs an analysis of statistical power
+according to the 'ANOPA' framework. See \insertCite{lc23b;textual}{ANOPA} for more.
+'anopaPower2N()' computes the sample size to reach a given power.
+Finally, 'anopaProp2fsq()' computes the f^2 effect size from a set of proportions.
 }
 \details{
 Note that for \code{anopaProp2fsq()}, the expected effect size $f^2$

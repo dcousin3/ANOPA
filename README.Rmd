@@ -62,12 +62,7 @@ anopaPlot(w, ~ SES)
 ```
 
 If the interaction had been significant, simple effects can be analyzed from the _expected marginal
-frequencies_ with
-
-```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-#e <- emProportions(w, ~ SES | MofDiagnostic )
-#summary(e)
-```
+frequencies_ with `e <- emProportions(w, ~ SES | MofDiagnostic )`.
 
 Follow-up analyses include contrasts examinations with `contrastProportions()`; finally,
 post-hoc pairwise comparisons can be obtained with `posthocProportions()`.

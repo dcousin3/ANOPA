@@ -16,6 +16,6 @@ An ANOPA table with the un-corrected test statistics.
 That should be avoided, more so if your sample is rather small.
 }
 \description{
-\code{uncorrected()} provides an ANOPA table with only the uncorrected
+'uncorrected()' provides an ANOPA table with only the uncorrected
 statistics.
 }

@@ -5,10 +5,10 @@
 #'
 #' @md
 #'
-#' @description The function `anopaN2Power()` performs an analysis of statistical power
-#'      according to the `ANOPA` framework. See \insertCite{lc23b;textual}{ANOPA} for more.
-#'      `anopaPower2N()` computes the sample size to reach a given power.
-#'		Finally, `anopaProp2fsq()` computes the f^2 effect size from a set of proportions.
+#' @description The function 'anopaN2Power()' performs an analysis of statistical power
+#'      according to the 'ANOPA' framework. See \insertCite{lc23b;textual}{ANOPA} for more.
+#'      'anopaPower2N()' computes the sample size to reach a given power.
+#'		Finally, 'anopaProp2fsq()' computes the f^2 effect size from a set of proportions.
 #'
 #' @usage anopaPower2N(power, P, f2, alpha)
 #' @usage anopaN2Power(N, P, f2, alpha)

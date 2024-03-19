@@ -13,12 +13,12 @@ unitaryAlpha( m )
 A measure of correlation between -1 and +1.
 }
 \description{
-The function \code{unitaryAlpha()} computes
+The function 'unitaryAlpha()' computes
 the unitary alpha (\insertCite{lc23}{ANOPA}). This
 quantity is a novel way to compute correlation in a matrix
 where each column is a measure and each line, a subject.
 This measure is based on Cronbach's alpha (which could be
-labeled a \verb{global alpha}).
+labeled a 'global alpha').
 }
 \details{
 This measure is derived from Cronbach' measure of

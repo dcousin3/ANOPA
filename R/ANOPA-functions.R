@@ -5,10 +5,10 @@
 #'
 #' @md
 #'
-#' @description The transformation functions `A()` performs the
+#' @description The transformation functions 'A()' performs the
 #'      Anscombe transformation on a pair \{number of success; number
 #'      of trials\} = \{s; n\} (where the symbol ";" is to be read "over".
-#'      The function `varA()` returns the theoretical variance from
+#'      The function 'varA()' returns the theoretical variance from
 #'      the pair \{s; n\}. Both functions are central to the ANOPA
 #'	    \insertCite{lc23}{ANOPA}. It was originally proposed by 
 #'      \insertCite{z35}{ANOPA} and formalized by \insertCite{a48}{ANOPA}.
@@ -102,7 +102,6 @@ SE.Atrans <- function(v) {
 
 # its variance...
 var.Atrans <- function(v) {
-print(length(v))
     1 / (4*(length(v)+1/2))
 }
 
@@ -126,8 +125,8 @@ CI.prop <- function(v, gamma = 0.95) {
     n     <- length(v)
     cilen <- CI.Atrans(v, gamma)
     # the difference adjustment is done herein.
-    ylo   <- y - sqrt(2) * cilen
-    yhi   <- y + sqrt(2) * cilen
+    ylo   <- max( y - sqrt(2) * cilen, 0)
+    yhi   <- min( y + sqrt(2) * cilen, pi/2)
     # reverse arc-sin transformation
     xlo <- (n+3/4)*(sin(ylo)^2) - 3/8
     xhi <- (n+3/4)*(sin(yhi)^2) - 3/8

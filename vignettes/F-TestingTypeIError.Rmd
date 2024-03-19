@@ -38,7 +38,7 @@ options("ANOPA.feedback" = 'none')
 library(ANOPA)
 library(testthat)
 nsim   <- 1000     # increase for more reliable simulations.
-theN   <- 20       # number of participants
+theN   <- 20       # number of simulated participants
 ```
 
 Note that the simulations are actually not run in this vignette, as 

@@ -3,12 +3,12 @@
 #'
 #' @md
 #'
-#' @description The function `unitaryAlpha()` computes
+#' @description The function 'unitaryAlpha()' computes
 #'      the unitary alpha (\insertCite{lc23}{ANOPA}). This
 #'      quantity is a novel way to compute correlation in a matrix
 #'      where each column is a measure and each line, a subject.
 #'      This measure is based on Cronbach's alpha (which could be
-#'      labeled a `global alpha`).
+#'      labeled a 'global alpha').
 #'
 #' @usage unitaryAlpha( m )
 #'

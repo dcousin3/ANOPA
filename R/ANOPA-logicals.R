@@ -7,9 +7,9 @@
 ##
 ## @md
 ##
-## @description The functions `is.formula()`, `is.one.sided()`,
-##      `has.nested.terms()`, 
-##      `has.cbind.terms()`, `in.formula()` and `sub.formulas()`
+## @description The functions 'is.formula()', 'is.one.sided()',
+##      'has.nested.terms()', 
+##      'has.cbind.terms()', 'in.formula()' and 'sub.formulas()'
 ##      performs checks or extract sub-formulas from a given formula.
 ##s
 ## @usage is.formula(frm)

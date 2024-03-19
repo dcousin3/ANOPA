@@ -15,6 +15,6 @@ summarize(object, ...)
 an ANOPA table as per articles.
 }
 \description{
-\code{summarize()} provides the statistics table an ANOPAobject.
-It is synonym of \code{summary()} (but as actions are verbs, I used a verb).
+'summarize()' provides the statistics table an ANOPAobject.
+It is synonym of 'summary()' (but as actions are verbs, I used a verb).
 }

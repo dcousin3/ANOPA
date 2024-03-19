@@ -1,3 +1,7 @@
+# ANOPA 0.1.3 (March 2023)
+
+* removed some cats and a few `
+
 # ANOPA 0.1.2 (March 2023)
 
 * added \donttest{} to speed tests;

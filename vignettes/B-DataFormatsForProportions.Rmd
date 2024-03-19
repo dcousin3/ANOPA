@@ -241,8 +241,12 @@ w3 <- anopa( cbind(r11,r12,r12,r21,r22,r23) ~ . ,
 toCompiled(w3)
 ```
 
-A "fyi" message is shown which lets you see how the variables are interpreted.
+A "fyi" message is shown which lets you see how the variables are interpreted. Such
+messages can be inhibited by changing the option
 
+```{r, message=TRUE, warning=FALSE, echo=TRUE, eval=TRUE}
+options("ANOPA.feedback" = "none")
+```
 
 To know more about analyzing proportions with ANOPA, refer to @lc23 or to
 [What is an ANOPA?](../articles/A-WhatIsANOPA.html).

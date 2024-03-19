@@ -7,7 +7,7 @@
 #'
 #' @md
 #'
-#' @description The functions `toWide()`, `toLong()`, and `toCompiled()` 
+#' @description The functions 'toWide()', 'toLong()', and 'toCompiled()' 
 #'      converts the data into various formats.
 #' 
 #' @usage toWide(w)

@@ -18,8 +18,8 @@ the effect of Factor A within every level of the Factor B.}
 a model fit of the simple effect.
 }
 \description{
-The function \code{posthocProportions()} performs post-hoc analyses
-of proportions after an omnibus analysis has been obtained with \code{anopa()}
+The function 'posthocProportions()' performs post-hoc analyses
+of proportions after an omnibus analysis has been obtained with 'anopa()'
 according to the ANOPA framework. It is based on the tukey HSD test.
 See \insertCite{lc23b;textual}{ANOPA} for more.
 }
@@ -53,11 +53,7 @@ anopaPlot(w)
 
 # Let's execute the post-hoc tests
 e <- posthocProportions(w, ~ Difficulty | Class )
-#summary(e)
-
-# As a check, you can verify that the $F$s are decomposed additively
-#sum(e$omnibus[,1])
-w$omnibus[3,1]+w$omnibus[4,1] 
+summary(e)
 
 
 # -- SECOND EXAMPLE --
@@ -82,11 +78,8 @@ anopaPlot(w, ~ Trophism * Diel )
 
 # Let's analyse the simple effect of Tropism for every levels of Diel and Location
 e <- posthocProportions(w, ~ Tropism | Diel )
-#summary(e)
+summary(e)
 
-# Again, as a check, you can verify that the $F$s are decomposed additively
-w$omnibus[4,1]+w$omnibus[7,1] # B + B:C
-#sum(e$omnibus[,1])
 
 # You can ask easier outputs with
 summarize(w) # or summary(w) for the ANOPA table only

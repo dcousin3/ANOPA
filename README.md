@@ -63,11 +63,7 @@ anopaPlot(w, ~ SES)
 
 If the interaction had been significant, simple effects can be analyzed
 from the *expected marginal frequencies* with
-
-``` r
-#e <- emProportions(w, ~ SES | MofDiagnostic )
-#summary(e)
-```
+`e <- emProportions(w, ~ SES | MofDiagnostic )`.
 
 Follow-up analyses include contrasts examinations with
 `contrastProportions()`; finally, post-hoc pairwise comparisons can be
@@ -91,7 +87,7 @@ install.packages("ANOPA")
 library(ANOPA)
 ```
 
-The development version 0.1.1 can be accessed through GitHub:
+The development version 0.1.3 can be accessed through GitHub:
 
 ``` r
 devtools::install_github("dcousin3/ANOPA")

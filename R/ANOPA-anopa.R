@@ -3,8 +3,8 @@
 #'
 #' @md
 #'
-#' @description The function `anopa()` performs an ANOPA for designs with up to 4 factors
-#'      according to the `ANOPA` framework. See \insertCite{lc23;textual}{ANOPA} for more.
+#' @description The function 'anopa()' performs an ANOPA for designs with up to 4 factors
+#'      according to the 'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for more.
 #' 
 #'
 #' @param formula A formula with the factors on the left-hand side. See below for writing the 
@@ -371,10 +371,9 @@ getAfterNested <- function(frm) {
 		v1 <- f[[3]]
 	} else {
 		if (f[[3]][[1]] == "*") {
-			# cat("case frm2: ", f[[3]][[2]], "\n")
 			v1 <- f[[3]][[2]]
 		} else {
-			cat("ANOPA::internal (-1): Case Inexistant: ", "\n")
+			stop("ANOPA::internal(-1): Case non-existant: That should never happen")
 		}
 	}
 	return( paste(v1)  )
@@ -402,7 +401,7 @@ getAroundNested <- function(frm) {
 				v2 <- f[[2]][[length(f[[2]])]]
 			}
 		} else {
-			cat("ANOPA::internal (-2): Case Inexistant: ", "\n")
+			stop("ANOPA::internal (-2): Case non-existant: That should never happen")
 		}
 	}
 	return( c( paste(v1), paste(v2)) )

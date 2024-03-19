@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ANOPA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -162,14 +162,14 @@ obtained from a single observation.</p>
 <span><span class="co">##         Africa Nocturnal Detritivore 0 0</span></span>
 <span><span class="co">##         Africa Nocturnal    Omnivore 0 0</span></span>
 <span><span class="co">##  North America Nocturnal Detritivore 0 0</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ANOPAwarning("ANOPA::warning(1): Some cells have zero over zero</span></span>
-<span><span class="co">## data. Imputing..."): ANOPA::warning(1): Some cells have zero over zero data.</span></span>
-<span><span class="co">## Imputing...</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: ANOPA::warning(1): Some cells have zero over zero data. Imputing...</span></span></code></pre>
 <p>The <code>fyi</code> message lets you know that cells are missing;
 the <code>Warning</code> message lets you know that these cells were
-imputed.</p>
-<p>To see the result (using the uncorrected results as the samples are
-not small),</p>
+imputed (you can suppress messages with
+<code>options("ANOPA.feedback"="none")</code>.</p>
+<p>To see the result, use <code>summary(w)</code> (which shows the
+corrected and uncorrected statistics) or <code>uncorrected(w)</code> (as
+the sample is quite large, the correction will be immaterial…),</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/uncorrected.html">uncorrected</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                              MS  df        F   pvalue</span></span>
