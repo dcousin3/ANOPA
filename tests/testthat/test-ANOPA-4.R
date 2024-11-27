@@ -1,4 +1,4 @@
-context("ANOPA:: Testing anopaPlot function")
+context("ANOPA:: Testing anopaPlot() function")
     # expect_output( str(res), "data.frame")
     # expect_equal( "ggplot" %in% class(plt), TRUE)
     # expect_message( p <- superbPlot(dta2a, etc ))

@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ANOPA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
@@ -135,8 +135,8 @@ the second group, 2 out of 3 participants have failure.</p>
 show difference-adjusted 95% confidence intervals.
 </p>
 </div>
-<p>(one tip of the confidence intervals is so off the scale that it is
-missing.)</p>
+<p>(one tip of the confidence intervals is on the ceiling 1.00, seeming
+awkward.)</p>
 <p>Because the sample is so small, it is actually possible to enumerate
 all the possible results (there are 64 of them). If we allow no success
 or a single success in one group, and all success in the other group,
@@ -153,16 +153,16 @@ successes and the second, only failures (there is two such cases out of
 <span>  s   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">0</span><span class="op">)</span>,</span>
 <span>  n   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span>  </span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The analyse using ANOPA says:</p>
+<p>The analysis using ANOPA says:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="op">{</span><span class="va">s</span>;<span class="va">n</span><span class="op">}</span><span class="op">~</span><span class="va">grp</span>, <span class="va">laurencelle</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="op">{</span><span class="va">s</span>;<span class="va">n</span><span class="op">}</span> <span class="op">~</span> <span class="va">grp</span>, <span class="va">laurencelle</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##             MS  df        F        p correction    Fcorr pvalcorr</span></span>
 <span><span class="co">## grp   0.429938   1 6.019135 0.014152   1.166667 5.159259 0.023123</span></span>
 <span><span class="co">## Error 0.071429 Inf</span></span></code></pre>
 <p>that is, a significant result (and note that 2 out of 64 is indeed
-rare at the .05 threshold with a p of .031 = 2/64). The plot is
-congruent with this result:</p>
+rare at the .05 threshold with a <span class="math inline">\(p\)</span>
+of .031 = 2/64). The plot is congruent with this result:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/anopa_asn_trans1.html">anopaPlot</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">

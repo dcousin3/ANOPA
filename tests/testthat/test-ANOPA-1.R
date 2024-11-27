@@ -127,7 +127,7 @@ test_that("Testing the input format conversions (1/2)", {
 
 })
 
-test_that("Testing errors (2/2)", {
+test_that("Testing compiled formats (2/2)", {
 
 	# shortcuts... 
 	# 1B = 1 between-subject factor	
@@ -155,19 +155,22 @@ test_that("Testing errors (2/2)", {
 	cWB <- wtoc(wWB, c("bpre","bpost","b1week","b5week"), "n")
 	lWB <- wtol(wWB, c("bpre","bpost", "b1week", "b5week") )
 
-	# these errors are because compiled data cannot be restored into wide or long
+	# these are no longer errors with compiled data 
     c1W <- wtoc(w1W, c("bpre","b1week","b5week"), "n")
 	c2W <- wtoc(w2W, c("r11","r12","r13","r21","r22","r23"), "n")
 	cWB <- wtoc(wWB, c("bpre","bpost","b1week","b5week"), "n")
 
 	frmc1W <- {cbind(bpre,b1week,b5week);n;uAlpha} ~ . 
-	expect_error( r1Wa <- anopa(frmc1W, c1W, WSFactors = "moment(3)") )
-
+    r1Wa <- anopa(frmc1W, c1W, WSFactors = "moment(3)")
+	expect_equal( round(r1Wa$omnibus[1,1]-0.003512,7), 0, tol=0.00001)
+    
 	frmc2W <- {cbind(r11,r12,r13,r21,r22,r23);n;uAlpha} ~ .
-	expect_error( r2Wa <- anopa(frmc2W, c2W, WSFactors = c("G(3)", "F(2)") ))
+    r2Wa <- anopa(frmc2W, c2W, WSFactors = c("G(3)", "F(2)") )
+	expect_equal( round(r2Wa$omnibus[1,1]-0.050236,7), 0, tol=0.00001)
 
 	frmcWB <- {cbind(bpre,b1week,b5week); n; uAlpha} ~ Status
-	expect_error( rWBa <- anopa(frmcWB, cWB, WSFactors = "moment(3)"))
+    rWBa <- anopa(frmcWB, cWB, WSFactors = "moment(3)")
+	expect_equal( round(rWBa$omnibus[1,1]-0.009051,7), 0, tol=0.00001)
 
 })
 

@@ -19,7 +19,7 @@ according to the 'ANOPA' framework. See Laurencelle and Cousineau (2023)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ANOPA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
@@ -106,13 +106,17 @@ This is expressed as a vector of strings such as "Moment(2)".</p></dd>
     
 
 <p>An omnibus analyses of the given proportions. Each factor's significance is
-assessed, as well as their interactions when there is more than one factor. For
-decomposition of the main analyses, follow the analysis with <code><a href="emProportions.html">emProportions()</a></code>,
+assessed, as well as their interactions when there is more than one factor.
+The results are obtained with <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> or <code><a href="summarize.html">summarize()</a></code> as usual. If desired,
+the corrected-only statistics can be presented (Williams 1976)
+ using
+<code><a href="corrected.html">corrected()</a></code>; the uncorrected statistics only are obtained with <code><a href="uncorrected.html">uncorrected()</a></code>.
+For decomposition of the main analyses, follow the main analysis with <code><a href="emProportions.html">emProportions()</a></code>,
 <code><a href="contrastProportions.html">contrastProportions()</a></code>, or <code><a href="posthocProportions.html">posthocProportions()</a></code>)</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Note the following limitations:</p><ol><li><p>The main analysis performed by <code>anopa()</code> is currently restricted to four
+    <p>Note the following limitations:</p><ol><li><p>The main analysis performed by <code>anopa()</code> is currently restricted to three
 factors in total (between and/or within). Contact the author if you plan to analyse
 more complex designs.</p></li>
 <li><p>If you have repeated-measure design, the data <em>must</em> be provided in wide or
@@ -137,6 +141,10 @@ for more on data format and how to write their formula.</p>
 “Analysis of proportions using arcsine transform with any experimental design.”
 <em>Frontiers in Psychology</em>, <b>13</b>, 1045436.
 <a href="https://doi.org/10.3389/fpsyg.2022.1045436" class="external-link">doi:10.3389/fpsyg.2022.1045436</a>
+.<br><br> Williams DA (1976).
+“Improved likelihood ratio tests for complete contingency tables.”
+<em>Biometrika</em>, <b>63</b>(1), 33--37.
+<a href="https://doi.org/10.2307/2335081" class="external-link">doi:10.2307/2335081</a>
 .</p>
     </div>
 
@@ -257,7 +265,7 @@ for more on data format and how to write their formula.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error(between)                 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The above presents both the uncorrected statistics as well as the corrected</span></span></span>
-<span class="r-in"><span><span class="co"># ones for small samples [@w76]. You can obtain only the uncorrected...</span></span></span>
+<span class="r-in"><span><span class="co"># ones for small samples (Williams, 1976). You can obtain only the uncorrected...</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="uncorrected.html">uncorrected</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                              MS  df        F   pvalue</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Location               0.027449   2 0.961802 0.382203</span>
@@ -280,6 +288,40 @@ for more on data format and how to write their formula.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Trophism:Diel          0.073769   3 2.584868   1.012197 2.553721 0.053559</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Location:Trophism:Diel 0.011297   6 0.395837   1.055660 0.374967 0.895351</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error(between)         0.028539 Inf                                      </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Finally, the data may have repeated measures and still be accessible in a compiled </span></span></span>
+<span class="r-in"><span><span class="co"># format, as is the case of this short example:</span></span></span>
+<span class="r-in"><span><span class="va">minimalMxExampleCompiled</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        group frg.before frg.after Count     uAlpha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    control         49        44    81 -0.1833542</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 treatment1         10        15    21 -0.0300000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 treatment2          8        11    16  0.1344538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  treament3         11         5    30  0.3892216</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># As seen, it has one "group" factor (between) and two repeated measures (under the</span></span></span>
+<span class="r-in"><span><span class="co"># "foraging" or "frg" within factor). The groups are unequal, ranging form 16 to 81. </span></span></span>
+<span class="r-in"><span><span class="co"># Finally, as this is repeated measures, there are correlations in each group</span></span></span>
+<span class="r-in"><span><span class="co"># (generally weak except possibly for the "treatment3" group).</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Such a compiled structure can be provided to anopa() by specifying the </span></span></span>
+<span class="r-in"><span><span class="co"># repeated measures first (within cbind()), next the number of observation column, </span></span></span>
+<span class="r-in"><span><span class="co"># and finally, the column containing the measure of correlation (any names can be used):</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu">anopa</span><span class="op">(</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">frg.before</span>,<span class="va">frg.after</span><span class="op">)</span>; <span class="va">Count</span>; <span class="va">uAlpha</span><span class="op">}</span> <span class="op">~</span> <span class="va">group</span>, </span></span>
+<span class="r-in"><span>             <span class="va">minimalMxExampleCompiled</span>,</span></span>
+<span class="r-in"><span>             WSFactors <span class="op">=</span> <span class="st">"foraging(2)"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ANOPA::fyi: Here is how the within-subject variables are understood:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  foraging   Variable</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>         1 frg.before</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>         2  frg.after</span>
+<span class="r-in"><span><span class="fu"><a href="anopa_asn_trans1.html">anopaPlot</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="anopa-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      MS  df        F   pvalue correction    Fcorr pvalcorr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> foraging       0.002283   1 0.270746 0.602832   1.003378 0.269834 0.603443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> group          0.054518   3 5.732117 0.000644   1.016229 5.640576 0.000733</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> foraging:group 0.023024   3 2.730639 0.042208   1.136323 2.403047 0.065522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error(within)  0.008432 Inf                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error(between) 0.009511 Inf                                               </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># You can also ask easier outputs with:</span></span></span>

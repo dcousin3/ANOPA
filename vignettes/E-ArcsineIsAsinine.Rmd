@@ -51,7 +51,7 @@ summary( w )
 anopaPlot(w)
 ```
 
-(one tip of the confidence intervals is so off the scale that it is missing.)
+(one tip of the confidence intervals is on the ceiling 1.00, seeming awkward.)
 
 Because the sample is so small, it is actually possible to enumerate all the possible
 results (there are 64 of them). If we allow no success or a single success in one group,
@@ -70,15 +70,15 @@ laurencelle <- data.frame(
 )
 ```
 
-The analyse using ANOPA says:
+The analysis using ANOPA says:
 
 ```{r}
-l <- anopa( {s;n}~grp, laurencelle)
+l <- anopa( {s;n} ~ grp, laurencelle)
 summary(l)
 ```
 
 that is, a significant result (and note that 2 out of 64 is indeed rare at the .05 threshold
-with a p of .031 = 2/64).
+with a $p$ of .031 = 2/64).
 The plot is congruent with this result:
 
 ```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=3, fig.cap="**Figure 2**. The proportions for two extremely different groups. Error bars show difference-adjusted 95% confidence intervals."}

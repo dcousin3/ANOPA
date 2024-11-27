@@ -1,3 +1,8 @@
+# ANOPA 0.1.4 (November 2024)
+
+* Corrected a bug on `GRP()` with mixed design
+* Allowed compiled format inputs for `anopa()`
+
 # ANOPA 0.1.3 (March 2023)
 
 * removed some cats and a few `

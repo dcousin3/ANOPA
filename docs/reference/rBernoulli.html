@@ -20,7 +20,7 @@ The data are returned in the 'wide' format."><!-- mathjax --><script src="https:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ANOPA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
@@ -159,11 +159,11 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-in"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> A<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>,<span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">GRP</span><span class="op">(</span> <span class="va">design</span>, props <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,  <span class="fl">0.9</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">20</span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    id    A s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   2  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3   3  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4   4  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6   6  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7   7  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8   8  low 0</span>
@@ -171,32 +171,32 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 10  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 11 11  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12 12  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 13  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 13  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14 14  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15 15  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 16 16  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 17 17  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 18  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 18  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 19 19  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 20  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 20  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21 21 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 22 22 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 23 23 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 24 24 high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 25 high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 25 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 26 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27 27 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28 28 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 29 29 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 30 30 high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 31 high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 31 high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 32 32 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 33 33 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 34 34 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 35 35 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 36 36 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 37 37 high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 38 high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 38 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39 39 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40 40 high 1</span>
 <span class="r-in"><span></span></span>
@@ -210,7 +210,7 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     2 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3     3 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4     4 a  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5 a  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5 a  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6     6 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7     7 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8     8 a  low 0</span>
@@ -218,7 +218,7 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10   10 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 11   11 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12   12 a  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13 a  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14   14 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15   15 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 16   16 a  low 0</span>
@@ -229,8 +229,8 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21   21 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 22   22 a  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 23   23 a  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24   24 a  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25   25 a  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   24 a  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   25 a  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26   26 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27   27 a  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28   28 a  low 0</span>
@@ -249,26 +249,26 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41   41 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 42   42 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 43   43 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44   44 b  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45   45 b  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   44 b  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45   45 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 46   46 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 47   47 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48   48 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49   49 b  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48   48 b  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49   49 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 50   50 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 51   51 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52   52 b  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52   52 b  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 53   53 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 54   54 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 55   55 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 56   56 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 57   57 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 58   58 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59   59 b  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59   59 b  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 60   60 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62   62 b  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63   63 b  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62   62 b  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63   63 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 64   64 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 65   65 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 66   66 b  low 0</span>
@@ -280,96 +280,96 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 72   72 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 73   73 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 74   74 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 b  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 76   76 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 78   78 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 79   79 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 80   80 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 81   81 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82   82 c  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82   82 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 84   84 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 85   85 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 86   86 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 87   87 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87   87 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 91   91 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 94   94 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 95   95 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96   96 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96   96 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 97   97 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 99   99 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100 100 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 c  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 102 102 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 100 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102 102 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 103 103 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 104 104 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 105 105 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106 106 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 107 107 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107 107 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 108 108 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 109 109 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109 109 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 110 110 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 111 111 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 112 112 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 c  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 117 117 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118 118 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 118 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 119 119 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 120 120 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 121 121 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 122 122 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 123 123 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 124 124 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 125 125 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123 123 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 124 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125 125 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 126 126 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 127 127 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 128 128 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128 128 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 129 129 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 130 130 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 131 131 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131 131 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 132 132 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 133 133 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 134 134 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 135 135 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 136 136 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 135 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136 136 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 137 137 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 138 138 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 139 139 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139 139 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 140 140 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 141 141 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141 141 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 142 142 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 143 143 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 144 144 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144 144 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 145 145 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 146 146 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 147 147 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 148 148 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 149 149 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149 149 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 150 150 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 151 151 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 152 152 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 153 153 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 154 154 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153 153 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154 154 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 155 155 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 156 156 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 157 157 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 158 158 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 158 158 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 159 159 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 160 160 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 161 161 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 162 162 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 163 163 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 164 164 b high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164 164 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 165 165 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 166 166 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 167 167 b high 1</span>
@@ -378,49 +378,49 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 170 170 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 171 171 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 172 172 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 174 174 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 175 175 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 176 176 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 177 177 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 178 178 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 178 178 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 179 179 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 180 180 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 181 181 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 182 182 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 183 183 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 184 184 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 185 185 b high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 185 185 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 186 186 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 187 187 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 188 188 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 189 189 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 190 190 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 191 191 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 191 191 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 192 192 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 193 193 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 193 193 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 194 194 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 195 195 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 196 196 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 197 197 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 198 198 b high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 199 199 b high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198 198 b high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199 199 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 200 200 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 201 201 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 202 202 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 203 203 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 204 204 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 204 204 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 205 205 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 206 206 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 207 207 c high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 208 208 c high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 209 209 c high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 207 207 c high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 208 208 c high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 209 209 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 210 210 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 211 211 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 211 211 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 212 212 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 213 213 c high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213 213 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 214 214 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 215 215 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215 215 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 216 216 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 217 217 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 218 218 c high 1</span>
@@ -430,11 +430,11 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 222 222 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 223 223 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 224 224 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 225 225 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 226 226 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 225 225 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 226 226 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 227 227 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 228 228 c high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 229 229 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 229 229 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 230 230 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 231 231 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 232 232 c high 1</span>
@@ -455,9 +455,9 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   2  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3   3  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4   4  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6 high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   7 high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6 high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   7 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8   8 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9   9 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 10 high 1</span>
@@ -477,13 +477,13 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 24 24 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 25 25 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26 26 high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 27 high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 27 high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28 28 high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 29 29 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 30 30 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 31 31 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 32 32 high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 33 high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 33 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 34 34 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 35 35 high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 36 36 high 1</span>
@@ -497,60 +497,60 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-in"><span><span class="va">wsDesign</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> Moment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pre"</span>, <span class="st">"post"</span><span class="op">)</span> <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">GRP</span><span class="op">(</span> WSDesign<span class="op">=</span><span class="va">wsDesign</span>, props <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,  <span class="fl">0.9</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">10</span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    id s.pre s.post</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1     0      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2     0      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1     1      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2     0      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3   3     0      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   4     0      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   4     0      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5   5     0      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6     0      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   7     0      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6     1      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   7     0      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8   8     0      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9   9     0      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 10     1      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 10     0      0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># This last one has three factors, for a total of 3 x 2 x 2 = 12 cells</span></span></span>
 <span class="r-in"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> A<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>,<span class="st">"high"</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cat"</span>,<span class="st">"dog"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">GRP</span><span class="op">(</span> <span class="va">design</span>, n <span class="op">=</span> <span class="fl">30</span>, props <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">12</span><span class="op">)</span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      id A    B   C s</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     1 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2 a  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3     3 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5 a  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6     6 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7     7 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9     9 a  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11 a  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13   13 a  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14 a  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15   15 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16   16 a  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17   17 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   16 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   17 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 18   18 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 19   19 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 20   20 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21   21 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22   22 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   23 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   22 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   23 a  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 24   24 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25   25 a  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   25 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26   26 a  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27   27 a  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28   28 a  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   29 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   28 a  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   29 a  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 30   30 a  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 31   31 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 32   32 b  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33   33 b  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33   33 b  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 34   34 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 35   35 b  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36   36 b  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37   37 b  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38   38 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39   39 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   36 b  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   37 b  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   38 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39   39 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40   40 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41   41 b  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 42   42 b  low cat 0</span>
@@ -558,92 +558,92 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 44   44 b  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 45   45 b  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 46   46 b  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47   47 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48   48 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49   49 b  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   47 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48   48 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49   49 b  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 50   50 b  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51   51 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52   52 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53   53 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54   54 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55   55 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51   51 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52   52 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53   53 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54   54 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55   55 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 56   56 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 57   57 b  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 58   58 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59   59 b  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59   59 b  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 60   60 b  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 c  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 62   62 c  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63   63 c  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63   63 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 64   64 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65   65 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65   65 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 66   66 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 67   67 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 68   68 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 69   69 c  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70   70 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70   70 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 71   71 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72   72 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72   72 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 73   73 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 74   74 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 c  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76   76 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76   76 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 78   78 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 79   79 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 80   80 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 81   81 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 82   82 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 84   84 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 85   85 c  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85   85 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 86   86 c  low cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 87   87 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 91   91 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 94   94 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91   91 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94   94 a high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 95   95 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 96   96 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 97   97 a high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 99   99 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100 100 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 102 102 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 103 103 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 100 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102 102 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103 103 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 104 104 a high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 105 105 a high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106 106 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 107 107 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 108 108 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 109 109 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 110 110 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 111 111 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 112 112 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108 108 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109 109 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110 110 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111 111 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112 112 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 a high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 117 117 a high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118 118 a high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 119 119 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 117 a high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 118 a high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119 119 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 120 120 a high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 121 121 b high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 122 122 b high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122 122 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 123 123 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 124 124 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 125 125 b high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 126 126 b high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126 126 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 127 127 b high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 128 128 b high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128 128 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 129 129 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 130 130 b high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 131 131 b high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132 132 b high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131 131 b high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132 132 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 133 133 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 134 134 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 135 135 b high cat 1</span>
@@ -651,227 +651,227 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 137 137 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 138 138 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 139 139 b high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 140 140 b high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140 140 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 141 141 b high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 142 142 b high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 143 143 b high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142 142 b high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143 143 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 144 144 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 145 145 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 146 146 b high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 147 147 b high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 148 148 b high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 149 149 b high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 150 150 b high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148 148 b high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149 149 b high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150 150 b high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 151 151 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 152 152 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 152 152 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 153 153 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 154 154 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 155 155 c high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 156 156 c high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 156 156 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 157 157 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 158 158 c high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 159 159 c high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 159 159 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 160 160 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 161 161 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 161 161 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 162 162 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 163 163 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 164 164 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 165 165 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 166 166 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164 164 c high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165 165 c high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166 166 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 167 167 c high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 168 168 c high cat 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168 168 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 169 169 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 170 170 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 171 171 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171 171 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 172 172 c high cat 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 174 174 c high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 175 175 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 175 175 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 176 176 c high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 177 177 c high cat 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 177 177 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 178 178 c high cat 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 179 179 c high cat 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 180 180 c high cat 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 181 181 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 182 182 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 181 181 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 182 182 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 183 183 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 184 184 a  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 185 185 a  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 186 186 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 184 184 a  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 185 185 a  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 186 186 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 187 187 a  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 188 188 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 189 189 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 190 190 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 188 188 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 189 189 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 190 190 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 191 191 a  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 192 192 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 193 193 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 194 194 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 192 192 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 193 193 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 194 194 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 195 195 a  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 196 196 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 197 197 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 198 198 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 199 199 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197 197 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198 198 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199 199 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 200 200 a  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 201 201 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 202 202 a  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 202 202 a  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 203 203 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 204 204 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 205 205 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 206 206 a  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 205 205 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 206 206 a  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 207 207 a  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 208 208 a  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 209 209 a  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 210 210 a  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 211 211 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 212 212 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 213 213 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210 210 a  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 211 211 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 212 212 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213 213 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 214 214 b  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 215 215 b  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 216 216 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 217 217 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215 215 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216 216 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 217 217 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 218 218 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 219 219 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 220 220 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 221 221 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 222 222 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 222 222 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 223 223 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 224 224 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 225 225 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 226 226 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 227 227 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 228 228 b  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 229 229 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 228 228 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 229 229 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 230 230 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 231 231 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 232 232 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 233 233 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 234 234 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 235 235 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 232 232 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 233 233 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 234 234 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 235 235 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 236 236 b  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 237 237 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 238 238 b  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 238 238 b  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 239 239 b  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 240 240 b  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 241 241 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240 240 b  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 241 241 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 242 242 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 243 243 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 244 244 c  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 245 245 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 246 246 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 247 247 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 247 247 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 248 248 c  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 249 249 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 250 250 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 251 251 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 252 252 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 253 253 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 254 254 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 255 255 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 250 250 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 251 251 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252 252 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 253 253 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 254 254 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 255 255 c  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 256 256 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 257 257 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 258 258 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 259 259 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 257 257 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 258 258 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 259 259 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 260 260 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 261 261 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 262 262 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 261 261 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 262 262 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 263 263 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 264 264 c  low dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 265 265 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 264 264 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 265 265 c  low dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 266 266 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 267 267 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 268 268 c  low dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 267 267 c  low dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 268 268 c  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 269 269 c  low dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 270 270 c  low dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 271 271 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 271 271 a high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 272 272 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 273 273 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 274 274 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 275 275 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 273 273 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274 274 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 275 275 a high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 276 276 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 277 277 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 277 277 a high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 278 278 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 279 279 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 279 279 a high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 280 280 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 281 281 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 282 282 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281 281 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 282 282 a high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 283 283 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284 284 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 285 285 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 286 286 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 287 287 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 288 288 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 289 289 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 290 290 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 291 291 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 284 284 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 285 285 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 286 286 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 287 287 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 288 288 a high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 289 289 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 290 290 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 291 291 a high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 292 292 a high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 293 293 a high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 294 294 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 295 295 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 295 295 a high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 296 296 a high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 297 297 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 298 298 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 299 299 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 297 297 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 298 298 a high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 299 299 a high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 300 300 a high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 301 301 b high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 302 302 b high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 301 301 b high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 302 302 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 303 303 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 304 304 b high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 305 305 b high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 305 305 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 306 306 b high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 307 307 b high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 308 308 b high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 307 307 b high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 308 308 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 309 309 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 310 310 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 311 311 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 312 312 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 313 313 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 314 314 b high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 315 315 b high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 315 315 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 316 316 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 317 317 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 318 318 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 319 319 b high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 320 320 b high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 321 321 b high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 322 322 b high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 320 320 b high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 321 321 b high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 322 322 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 323 323 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 324 324 b high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 325 325 b high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 325 325 b high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 326 326 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 327 327 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 328 328 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 329 329 b high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 330 330 b high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 330 330 b high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 331 331 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 332 332 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 333 333 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 334 334 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 334 334 c high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 335 335 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 336 336 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 337 337 c high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 338 338 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 339 339 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 340 340 c high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 341 341 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 338 338 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 339 339 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 340 340 c high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 341 341 c high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 342 342 c high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 343 343 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 344 344 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 345 345 c high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 345 345 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 346 346 c high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 347 347 c high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 347 347 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 348 348 c high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 349 349 c high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 349 349 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 350 350 c high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 351 351 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 352 352 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 353 353 c high dog 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 354 354 c high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 352 352 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 353 353 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 354 354 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 355 355 c high dog 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 356 356 c high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 357 357 c high dog 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 358 358 c high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 359 359 c high dog 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 360 360 c high dog 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 359 359 c high dog 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 360 360 c high dog 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To specify unequal probabilities, use</span></span></span>
 <span class="r-in"><span><span class="va">design</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> A<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>,<span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -914,7 +914,7 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 34   34 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 35   35 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 36   36 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37   37 b  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   37 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 38   38 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39   39 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40   40 b  low 0</span>
@@ -938,62 +938,62 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 58   58 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 59   59 b  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 60   60 b  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 62   62 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 63   63 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64   64 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64   64 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 65   65 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 66   66 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 67   67 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 68   68 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69   69 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70   70 c  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71   71 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69   69 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70   70 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71   71 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 72   72 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 73   73 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 74   74 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76   76 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76   76 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 78   78 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 79   79 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80   80 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 81   81 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80   80 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81   81 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 82   82 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 84   84 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 85   85 c  low 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 86   86 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 87   87 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86   86 c  low 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87   87 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 91   91 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 94   94 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94   94 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 95   95 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 96   96 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 97   97 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 99   99 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97   97 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99   99 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 100 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 102 102 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 103 103 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 104 104 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 105 105 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105 105 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106 106 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 107 107 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 108 108 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107 107 a high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108 108 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 109 109 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 110 110 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 111 111 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110 110 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111 111 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 112 112 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 a high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 a high 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 a high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 117 117 a high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 118 118 a high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 119 119 a high 0</span>
@@ -1009,7 +1009,7 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 129 129 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 130 130 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 131 131 b high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132 132 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132 132 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 133 133 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 134 134 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 135 135 b high 0</span>
@@ -1017,14 +1017,14 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 137 137 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 138 138 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 139 139 b high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 140 140 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140 140 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 141 141 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 142 142 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 143 143 b high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 144 144 b high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144 144 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 145 145 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 146 146 b high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 147 147 b high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147 147 b high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 148 148 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 149 149 b high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 150 150 b high 0</span>
@@ -1039,24 +1039,24 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 159 159 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 160 160 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 161 161 c high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 162 162 c high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 162 162 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 163 163 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 164 164 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 165 165 c high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 166 166 c high 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166 166 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 167 167 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 168 168 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 169 169 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 170 170 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 171 171 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 172 172 c high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 174 174 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 175 175 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 176 176 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 177 177 c high 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 178 178 c high 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 179 179 c high 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 179 179 c high 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 180 180 c high 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The name of the column containing the proportions can be changed</span></span></span>
@@ -1074,23 +1074,23 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10   10 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 11   11 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12   12 a  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13 a  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   13 a  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14   14 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15   15 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 16   16 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 17   17 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 18   18 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 19   19 a  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20   20 a  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20   20 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21   21 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 22   22 a  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   23 a  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   23 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 24   24 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 25   25 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 26   26 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 27   27 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 28   28 a  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   29 a  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   29 a  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 30   30 a  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 31   31 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 32   32 b  low      0</span>
@@ -1103,12 +1103,12 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39   39 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40   40 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41   41 b  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42   42 b  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42   42 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 43   43 b  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44   44 b  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   44 b  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 45   45 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 46   46 b  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47   47 b  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   47 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 48   48 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 49   49 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 50   50 b  low      0</span>
@@ -1122,51 +1122,51 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 58   58 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 59   59 b  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 60   60 b  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 c  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61   61 c  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 62   62 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 63   63 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64   64 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64   64 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 65   65 c  low      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66   66 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66   66 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 67   67 c  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 68   68 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69   69 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69   69 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 70   70 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 71   71 c  low      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72   72 c  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72   72 c  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 73   73 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 74   74 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75   75 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 76   76 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 c  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77   77 c  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 78   78 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 79   79 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 80   80 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 81   81 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82   82 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82   82 c  low      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 83   83 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84   84 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 85   85 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 86   86 c  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84   84 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85   85 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86   86 c  low      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 87   87 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 91   91 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 a high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88   88 c  low      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89   89 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90   90 c  low      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91   91 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92   92 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93   93 a high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 94   94 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95   95 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96   96 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95   95 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96   96 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 97   97 a high      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 99   99 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98   98 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99   99 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 100 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 101 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 102 102 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 103 103 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103 103 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 104 104 a high      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 105 105 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105 105 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106 106 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 107 107 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 108 108 a high      0</span>
@@ -1174,18 +1174,18 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 110 110 a high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 111 111 a high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 112 112 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 a high      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 117 117 a high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 113 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 114 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 115 a high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 116 a high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 117 a high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 118 118 a high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 119 119 a high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 120 120 a high      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 121 121 b high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120 120 a high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121 121 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 122 122 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 123 123 b high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 124 124 b high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 124 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 125 125 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 126 126 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 127 127 b high      0</span>
@@ -1196,10 +1196,10 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 132 132 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 133 133 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 134 134 b high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 135 135 b high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 135 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 136 136 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 137 137 b high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 138 138 b high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138 138 b high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 139 139 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 140 140 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 141 141 b high      0</span>
@@ -1214,25 +1214,25 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 150 150 b high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 151 151 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 152 152 c high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 153 153 c high      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 154 154 c high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153 153 c high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154 154 c high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 155 155 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 156 156 c high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 157 157 c high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157 157 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 158 158 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 159 159 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 160 160 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 161 161 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 162 162 c high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 163 163 c high      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 163 163 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 164 164 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 165 165 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 166 166 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 167 167 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 168 168 c high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 169 169 c high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 169 169 c high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 170 170 c high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 171 171 c high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171 171 c high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 172 172 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 173 173 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 174 174 c high      0</span>
@@ -1240,13 +1240,13 @@ now bundled in the <code>superb</code> package (Cousineau et al. 2021)
 <span class="r-out co"><span class="r-pr">#&gt;</span> 176 176 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 177 177 c high      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 178 178 c high      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 179 179 c high      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 179 179 c high      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 180 180 c high      0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Examples of use of rBernoulli</span></span></span>
 <span class="r-in"><span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu">rBernoulli</span><span class="op">(</span><span class="fl">50</span>, <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.16</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

@@ -87,7 +87,7 @@ install.packages("ANOPA")
 library(ANOPA)
 ```
 
-The development version 0.1.3 can be accessed through GitHub:
+The development version 0.1.4 can be accessed through GitHub:
 
 ``` r
 devtools::install_github("dcousin3/ANOPA")

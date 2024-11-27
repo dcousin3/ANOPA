@@ -17,8 +17,11 @@ This is expressed as a vector of strings such as "Moment(2)".}
 }
 \value{
 An omnibus analyses of the given proportions. Each factor's significance is
-assessed, as well as their interactions when there is more than one factor. For
-decomposition of the main analyses, follow the analysis with \code{emProportions()},
+assessed, as well as their interactions when there is more than one factor.
+The results are obtained with \code{summary()} or \code{summarize()} as usual. If desired,
+the corrected-only statistics can be presented \insertCite{w76}{ANOPA} using
+\code{corrected()}; the uncorrected statistics only are obtained with \code{uncorrected()}.
+For decomposition of the main analyses, follow the main analysis with \code{emProportions()},
 \code{contrastProportions()}, or \code{posthocProportions()})
 }
 \description{
@@ -28,7 +31,7 @@ according to the 'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for mor
 \details{
 Note the following limitations:
 \enumerate{
-\item The main analysis performed by \code{anopa()} is currently restricted to four
+\item The main analysis performed by \code{anopa()} is currently restricted to three
 factors in total (between and/or within). Contact the author if you plan to analyse
 more complex designs.
 \item If you have repeated-measure design, the data \emph{must} be provided in wide or
@@ -104,11 +107,29 @@ getOption("ANOPA.zeros")
 summary(w) # or summarize(w)
 
 # The above presents both the uncorrected statistics as well as the corrected
-# ones for small samples [@w76]. You can obtain only the uncorrected...
+# ones for small samples (Williams, 1976). You can obtain only the uncorrected...
 uncorrected(w)
 
 #... or the corrected ones
 corrected(w)
+
+# Finally, the data may have repeated measures and still be accessible in a compiled 
+# format, as is the case of this short example:
+minimalMxExampleCompiled
+
+# As seen, it has one "group" factor (between) and two repeated measures (under the
+# "foraging" or "frg" within factor). The groups are unequal, ranging form 16 to 81. 
+# Finally, as this is repeated measures, there are correlations in each group
+# (generally weak except possibly for the "treatment3" group).
+
+# Such a compiled structure can be provided to anopa() by specifying the 
+# repeated measures first (within cbind()), next the number of observation column, 
+# and finally, the column containing the measure of correlation (any names can be used):
+v <- anopa( {cbind(frg.before,frg.after); Count; uAlpha} ~ group, 
+             minimalMxExampleCompiled,
+             WSFactors = "foraging(2)")
+anopaPlot(v)
+summary(v)
 
 
 # You can also ask easier outputs with:

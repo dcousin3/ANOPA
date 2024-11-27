@@ -16,12 +16,15 @@
 #'   This is expressed as a vector of strings such as "Moment(2)".
 #'
 #' @return An omnibus analyses of the given proportions. Each factor's significance is 
-#'    assessed, as well as their interactions when there is more than one factor. For 
-#'    decomposition of the main analyses, follow the analysis with `emProportions()`, 
+#'    assessed, as well as their interactions when there is more than one factor. 
+#'    The results are obtained with `summary()` or `summarize()` as usual. If desired,
+#'    the corrected-only statistics can be presented \insertCite{w76}{ANOPA} using
+#'    `corrected()`; the uncorrected statistics only are obtained with `uncorrected()`.
+#'    For decomposition of the main analyses, follow the main analysis with `emProportions()`, 
 #'    `contrastProportions()`, or `posthocProportions()`)
 #'
 #' @details Note the following limitations:
-#' 1. The main analysis performed by `anopa()` is currently restricted to four 
+#' 1. The main analysis performed by `anopa()` is currently restricted to three 
 #'   factors in total (between and/or within). Contact the author if you plan to analyse
 #'   more complex designs.
 #' 2. If you have repeated-measure design, the data *must* be provided in wide or
@@ -98,11 +101,29 @@
 #' summary(w) # or summarize(w)
 #'
 #' # The above presents both the uncorrected statistics as well as the corrected
-#' # ones for small samples [@w76]. You can obtain only the uncorrected...
+#' # ones for small samples (Williams, 1976). You can obtain only the uncorrected...
 #' uncorrected(w)
 #'
 #' #... or the corrected ones
 #' corrected(w)
+#'
+#' # Finally, the data may have repeated measures and still be accessible in a compiled 
+#' # format, as is the case of this short example:
+#' minimalMxExampleCompiled
+#' 
+#' # As seen, it has one "group" factor (between) and two repeated measures (under the
+#' # "foraging" or "frg" within factor). The groups are unequal, ranging form 16 to 81. 
+#' # Finally, as this is repeated measures, there are correlations in each group
+#' # (generally weak except possibly for the "treatment3" group).
+#' 
+#' # Such a compiled structure can be provided to anopa() by specifying the 
+#' # repeated measures first (within cbind()), next the number of observation column, 
+#' # and finally, the column containing the measure of correlation (any names can be used):
+#' v <- anopa( {cbind(frg.before,frg.after); Count; uAlpha} ~ group, 
+#'              minimalMxExampleCompiled,
+#'              WSFactors = "foraging(2)")
+#' anopaPlot(v)
+#' summary(v)
 #'
 #'
 #' # You can also ask easier outputs with:
@@ -135,7 +156,7 @@ anopa <- function(
     ##############################################################################
     # STEP 0: preliminary preparations...
     ##############################################################################
-	data <- as.data.frame(data) # coerce to data.frame if tibble or compatible
+	data     <- as.data.frame(data) # coerce to data.frame if tibble or compatible
 
 
     ##############################################################################
@@ -147,7 +168,7 @@ anopa <- function(
 
     # 1.2: has the formula 1 or more DV?
     if (is.one.sided( formula )) {
-            stop("ANOPA::error(12): Argument `formula` has no DV. Exiting...")
+        stop("ANOPA::error(12): Argument `formula` has no DV. Exiting...")
     }
 
     # 1.3: are the data actually data?
@@ -169,18 +190,28 @@ anopa <- function(
     # STEP 2: Manage WS factors
     ##############################################################################
     # 2.0: Keep only the columns named
-    data <- data[, names(data) %in% vars]
-	
+    data     <- data[, names(data) %in% vars]
+
+
 	# 2.1: get cbind variables if Wide (WS or MX) formats
-	if (has.cbind.terms(formula)) {
+	if (!in.formula(formula, "{") && has.cbind.terms(formula)) {
 		# extract vars from cbind
 		bvars <- c()
 		for (i in 2:length(formula[[2]])) 
 			bvars <- c(bvars, paste(formula[[2]][[i]]))
 		cleanedWSF <- cleanWSFactors(WSFactors, bvars)
 	}
-	
-	# 2.2: get WSfactors in Long format before they are erased
+
+	# 2.2: get cbind variables if Compiled (WS or MX)
+	if (in.formula(formula, "{") && has.cbind.terms(formula)) {
+		# extract vars from cbind
+		bvars <- c()
+		for (i in 2:length(formula[[2]][[2]])) 
+			bvars <- c(bvars, paste(formula[[2]][[2]][[i]]))
+		cleanedWSF <- cleanWSFactors(WSFactors, bvars)
+	}
+
+	# 2.3: get WSfactors in Long format before they are erased
 	if (has.nested.terms(formula)) {
 		tmp        <- getAroundNested(formula)
 		wsvars     <- unique(data[[paste(tmp[[2]])]])
@@ -197,11 +228,30 @@ anopa <- function(
 	BSFactors <- WSFactors <- c()
 	WSLevels  <- BSLevels  <- 1
 	WSDesign  <- data.frame()
+    compData  <- NULL 
+    countCol  <- "n"
+
 
     # 3.2: Convert data to wide format based on the format as infered from the formula
-	if (in.formula(formula, "{")&& has.cbind.terms(formula)) {
+	if (in.formula(formula, "{") && has.cbind.terms(formula)) {
 		# Case 1: Compiled (WS or MX)	template: {cbind(b1,..,bm);n;r} ~ Factors
-		stop("ANOPA::error(16): The compiled format must not contain repeated measures. Exiting...")
+		bracedvars <- c(paste(bvars), paste(formula[[2]][[3]]), paste(formula[[2]][[4]]))
+		BSFactors  <- complement(vars, bracedvars)
+        BSLevels   <- unlist(lapply(BSFactors, \(x) length(unique(data[,x])) ))
+        DVvars <- bvars # ??
+		WSFactors <- cleanedWSF[[1]]
+        WSLevels  <- cleanedWSF[[2]]
+        countCol  <- paste(formula[[2]][[3]])
+        
+        compData <- data # data are in compiled format
+        wideData <- lapply(1:(dim(data)[1]), doONEline, 
+                        DF = data, 
+                        BSfacts  = BSFactors, 
+                        WSfacts  = bvars, 
+                        CountCol = paste(formula[[2]][[3]]), 
+                        AlphaCol = paste(formula[[2]][[4]]) 
+                    )
+        wideData <- do.call(rbind, wideData)
 
 	} else if (in.formula(formula, "{")) { 
 		#case 1: Compiled (BS only)     template: {s;n} ~ Factors
@@ -221,7 +271,6 @@ anopa <- function(
 		WSLevels   <- cleanedWSF[[2]]
 		WSDesign   <- cleanedWSF[[3]]
 		DVvars     <- bvars
-
 		wideData <- data # nothing to do, already correct format
 
 		# computes correlation with unitaryAlpha
@@ -230,9 +279,7 @@ anopa <- function(
 			# adds a dummy BS factor
 			data[["dummyBSfactor"]] <- 1; factors <- "dummyBSfactor"
 		}
-		uAlpha <- plyr::ddply(data, factors, 
-						function(x) {unitaryAlpha(as.matrix(x[bvars]))}
-		)$V1
+		uAlpha <- plyr::ddply(data, factors, function(x) {unitaryAlpha(as.matrix(x[bvars]))} )$V1
 
 	} else if (has.nested.terms(formula)) {
 		#case 3: long (BS or WS or MX)
@@ -314,23 +361,24 @@ anopa <- function(
 	for (i in DVvars) 
 		wideData[[i]] <- as.numeric( wideData[[i]] )
 
-	# 4.2: compile the data
-	compData <- wtoc(wideData, DVvars, "n")
+	# 4.2: compile the data if was not given compiled
+    if (is.null(compData)) 
+        compData <- wtoc(wideData, DVvars, "n")
 
 	# 4.3: check for all sorts of missing (not there or there with zeros...)
 	compData <- checkmissingcellsBSFactors(compData, BSFactors, DVvars)
 	compData <- checkforZeros(compData, DVvars)
-    
+
     # 4.4: sort the data
 	if (length(BSFactors) > 0) 
 		compData <- compData[ do.call(order, data.frame(compData[,BSFactors]) ), ]
 
     # 4.4: perform the analysis based on the number of factors
     analysis <- switch( length(allFactors),
-        anopa1way(compData, DVvars, "n", BSFactors, WSFactors, WSLevels),
-        anopa2way(compData, DVvars, "n", BSFactors, WSFactors, WSLevels),
-        anopa3way(compData, DVvars, "n", BSFactors, WSFactors, WSLevels),
-        anopa4way(compData, DVvars, "n", BSFactors, WSFactors, WSLevels)
+        anopa1way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels),
+        anopa2way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels),
+        anopa3way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels),
+        anopa4way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels)
     )
 
 
@@ -358,7 +406,75 @@ anopa <- function(
 
 
 ##############################################################################
-# Subfunctions
+# Subfunctions to generate long from compiled
+##############################################################################
+
+getCorrStructure <- function(mat, targetUA) {
+    # This function is used when the design has repeated measures
+    # and the data are provided as compiled. In that case,
+    # the exact dispositions of 1s and 0s cannot be determined and
+    # so random rearrangments are tested to get uAlpha as close as possible.
+    bestDiff = 999
+    ncol = dim(mat)[2]
+    for (seed in 1:2000) {
+        set.seed(seed)
+        for (col in 2:ncol) {
+            mat[,col] = sample(mat[,col])
+        }
+        currentUA = unitaryAlpha(mat)
+        if (abs(currentUA - targetUA) < .0001) {
+            # close enough!
+            bestmat = mat
+            break
+        }
+        if (abs(currentUA - targetUA) < bestDiff) {
+            bestDiff = abs(currentUA - targetUA)
+            bestmat = mat
+        }
+    }
+    # check that correlation are not too far from target
+    if (abs(targetUA-unitaryAlpha(bestmat)) > 0.25) {
+        ANOPAwarning("ANOPA::warning(111): Cannot reconstitute the correlation structure. Consider using raw (wide or long) data...")
+    }
+    return(bestmat)
+}
+
+
+getBaseStructure <- function(line, cnt) {
+    # expand a line of the compiled data into a matrix
+    mat <- data.frame( toDelete123 = 1:cnt )
+    for (i in names(line)) {
+        mat[[i]] <- c(rep(1, round(line[i]) ), rep(0, round(cnt-line[i]) ))
+    }
+
+    # delete sentinel column
+    mat$toDelete123 <- NULL
+    mat
+}
+addBSfcStructure <- function(mat, bs) {
+    # adds to the mat the between-subject group(s)
+    if (!is.null(bs)) {
+        for (i in names(bs) )
+            mat[[i]] <- rep( bs[[i]], dim(mat)[1])
+    }
+    mat
+}
+
+doONEline <- function(lineno, DF, BSfacts, WSfacts, CountCol, AlphaCol) {
+    oneBScd <- DF[lineno, BSfacts, drop=FALSE]
+    oneline <- DF[lineno, WSfacts]
+    onecnt  <- DF[lineno, CountCol]
+    oneual  <- DF[lineno, AlphaCol]
+
+    mat1 <- getBaseStructure(oneline, onecnt)
+    mat2 <- getCorrStructure(mat1, oneual )
+    mat3 <- addBSfcStructure(mat2, oneBScd)
+    mat3
+}
+
+
+##############################################################################
+# Subfunctions for recognizing formats
 ##############################################################################
 
 getAfterNested <- function(frm) {
@@ -486,8 +602,11 @@ linesA1notInA2 <- function( a1, a2 ) {
 # harmonic mean
 hmean <- function(v) (length(v)/ sum(1/v)) 
 
+
+##############################################################################
 ##############################################################################
 # Analyses functions per se
+##############################################################################
 ##############################################################################
 
 
@@ -545,6 +664,7 @@ anopa1way <- function( cData, ss, n, bsfacts, wsfacts, unneeded ) {
 anopa2way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
 	# Two-way ANOPA (within, between, or mixed design)
 	# the observations are compiled into success (s) and number (n) per group and uAlpha when relevant
+#print("Begin anopa2way")
 
 	if (length(wsfacts) == 2) { # both within-subject factors
 		s      <- cData[ss]

@@ -13,6 +13,8 @@
 #'    - 'minimalWSExample': an example with a within-subject design (three measurements)
 #'    - 'twoWayWithinExample': an example with two within-subject factors 
 #'    - 'minimalMxExample': a mixed design having one within and one between-subject factors
+#'    - 'minimalMxExampleCompiled': a mixed design having one within and one 
+#'         between-subject factors but available in a compiled format (more compact).
 #'
 #' @docType data
 #'
@@ -50,3 +52,6 @@
 
 #' @rdname minimalExamples
 "minimalMxExample"
+
+#' @rdname minimalExamples
+"minimalMxExampleCompiled"

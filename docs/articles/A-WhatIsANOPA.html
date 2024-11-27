@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ANOPA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
@@ -473,36 +473,45 @@ that this solution was found by a vague intuition. Fisher is the first
 to propose trigonometric transformations for the study of statistics in
 1915. This approach was found fertile when applied to correlation
 testing, where the arctan transform (formally, the inverse hyperbolic
-tangent transformation) provided an excellent approximation .</p>
+tangent transformation) provided an excellent approximation <span class="citation">(Fisher, 1921)</span>.</p>
 <p>When Fisher considered the proportions, his first attempt was to
 suggest a cosine transform . Zubin later refined the approach by
 suggesting the arcsine transform . The basic form of the arcsine
-transform was later refined by Anscombe to the form we use in the ANOPA
-. Anscombe modifications, the addition of 3/8 to the number of success
-and 3/4 to the number of trials, led to a theoretical variance exactly
-equal to <span class="math inline">\(1/(4 \times n)\)</span>.</p>
+transform was further refined by Anscombe to the form we use in the
+ANOPA <span class="citation">(Anscombe, 1948)</span>. Anscombe
+modifications, the addition of 3/8 to the number of success and 3/4 to
+the number of trials, led to a theoretical variance exactly equal to
+<span class="math inline">\(1/(4 \times n)\)</span>.</p>
 <p>Formidable development in the early 90s showed that this transform
-has other important characteristics. For example, and derived that this
-transform will either underestimate the true probability or overestimate
-it. More importantly, Chen showed that no other transformation is known
-to fluctuate less than the arcsine transform around the exact
-probability. This transformation is therefore the best option when
-analyzing proportions.</p>
+has other important characteristics. For example, <span class="citation">Chen (1990)</span> and <span class="citation">Lehman
+&amp; Loh (1990)</span> derived that this transform will either
+underestimate the true probability or overestimate it. More importantly,
+Chen showed that no other transformation is known to fluctuate less than
+the arcsine transform around the exact probability. This transformation
+is therefore the best option when analyzing proportions.</p>
 <p>You can read more in <span class="citation">Laurencelle &amp;
 Cousineau (2023)</span>; also check <span class="citation">Chen
 (1990)</span> or <span class="citation">Lehman &amp; Loh (1990)</span>
-mathematical demonstrations showing the robustness of the ANOA. Finally,
-<span class="citation">Williams (1976)</span> explains the correction
-factor and its purpose.</p>
+for mathematical demonstrations showing the robustness of the ANOPA.
+Finally, <span class="citation">Williams (1976)</span> explains the
+correction factor and its purpose.</p>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-a48" class="csl-entry">
+Anscombe, F. J. (1948). The transformatin of poisson, binormial and
+negative-binomial data. <em>Biometrika</em>, <em>35</em>, 246–254. <a href="https://doi.org/10.1093/biomet/35.3-4.246" class="external-link">https://doi.org/10.1093/biomet/35.3-4.246</a>
+</div>
 <div id="ref-c90" class="csl-entry">
 Chen, H. (1990). The accuracy of approximate intervals for a binomial
 parameter. <em>Journal of the American Statistical Associtation</em>,
 <em>85</em>, 514–518. <a href="https://doi.org/10.1080/01621459.1990.10476229" class="external-link">https://doi.org/10.1080/01621459.1990.10476229</a>
+</div>
+<div id="ref-f21" class="csl-entry">
+Fisher, R. A. (1921). On the" probable error" of a coefficient of
+correlation deduced from a small sample. <em>Metron</em>, <em>1</em>.
 </div>
 <div id="ref-lc23" class="csl-entry">
 Laurencelle, L., &amp; Cousineau, D. (2023). Analysis of proportions

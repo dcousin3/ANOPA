@@ -133,13 +133,13 @@ GRP <- function(
 		WSDesign = NULL,  # idem
 		sname    = "s"    # name of the column containing the results 0|1
 	) {
-	
+
 	# 1- Validation of input
 	if (is.null(n))
 	    stop("ANOPA::GRP (1002): The sample size n is not provided. Exiting...")
 	if (is.null(BSDesign)&&is.null(WSDesign)) 
 		stop("ANOPA::GRP (1003): Both within subject and between subject factors are null. Provide at least one factor. Exiting...")
-		
+
 	# preparing the input to match GRD format
 	BSDasText <- mapply(\(x,y) {paste(x,"(",paste(y,collapse=","),")",sep="")}, 
 			names(BSDesign), 

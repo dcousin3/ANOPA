@@ -287,25 +287,25 @@ solution was found by a vague intuition. Fisher is the first to propose trigonom
 transformations for the study of statistics in 1915. This approach was found fertile 
 when applied to correlation testing, where the arctan transform (formally, the 
 inverse hyperbolic tangent transformation) provided an excellent approximation
-\insertCite{f21}{ANOPA}.
+[@f21].
 
 When Fisher considered the proportions, his first attempt was to suggest a cosine transform
 \insertCite{f22}{ANOPA}. Zubin later refined the approach by suggesting the arcsine
-transform \incertCite{z35}{ANOPA}. The basic form of the arcsine transform was later
-refined by Anscombe to the form we use in the ANOPA \insertCite{a48}{ANOPA}.
+transform \incertCite{z35}{ANOPA}. The basic form of the arcsine transform was further
+refined by Anscombe to the form we use in the ANOPA [@a48].
 Anscombe modifications, the addition of 3/8 to the number of success and 3/4 to the
 number of trials, led to a theoretical variance exactly equal to $1/(4 \times n)$.
 
 Formidable development in the early 90s showed that this transform has other
 important characteristics. 
-For example, \insertCite{c90;textual}{ANOPA} and \insertCite{ll90;textual}{ANOPA}
+For example, @c90 and @ll90
 derived that this transform will either underestimate the true probability or
 overestimate it. More importantly, Chen showed that no other transformation 
 is known to fluctuate less than the arcsine transform around the exact probability. 
 This transformation is therefore the best option when analyzing proportions.
 
-You can read more in @lc23; also check @c90 or @ll90 mathematical demonstrations
-showing the robustness of the ANOA. Finally, @w76 explains the correction factor 
+You can read more in @lc23; also check @c90 or @ll90 for mathematical demonstrations
+showing the robustness of the ANOPA. Finally, @w76 explains the correction factor 
 and its purpose.
 
 

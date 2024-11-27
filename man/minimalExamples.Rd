@@ -8,6 +8,7 @@
 \alias{minimalWSExample}
 \alias{twoWayWithinExample}
 \alias{minimalMxExample}
+\alias{minimalMxExampleCompiled}
 \title{A collection of minimal Examples from various designs with one or two factors.}
 \format{
 Objects of class data.frame:
@@ -19,6 +20,8 @@ An object of class \code{data.frame} with 19 rows and 3 columns.
 An object of class \code{data.frame} with 30 rows and 6 columns.
 
 An object of class \code{data.frame} with 27 rows and 5 columns.
+
+An object of class \code{data.frame} with 4 rows and 5 columns.
 }
 \usage{
 minimalBSExample
@@ -30,6 +33,8 @@ minimalWSExample
 twoWayWithinExample
 
 minimalMxExample
+
+minimalMxExampleCompiled
 }
 \description{
 The datasets present minimal examples that are analyzed with an
@@ -41,6 +46,8 @@ The five datasets are
 \item 'minimalWSExample': an example with a within-subject design (three measurements)
 \item 'twoWayWithinExample': an example with two within-subject factors
 \item 'minimalMxExample': a mixed design having one within and one between-subject factors
+\item 'minimalMxExampleCompiled': a mixed design having one within and one
+between-subject factors but available in a compiled format (more compact).
 }
 }
 \examples{
