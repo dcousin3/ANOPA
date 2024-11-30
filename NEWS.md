@@ -1,16 +1,16 @@
 # ANOPA 0.1.4 (November 2024)
 
-* Corrected a bug on `GRP()` with mixed design
-* Allowed compiled format inputs for `anopa()`
+* Corrected a bug on `GRP()` with mixed design;
+* Allowed compiled format inputs for `anopa()` having repeated measures;
+* Corrected a bug on the identity of the unitary Alpha column
 
 # ANOPA 0.1.3 (March 2023)
 
-* removed some cats and a few `
+* removed some cat's and a few `'s
 
 # ANOPA 0.1.2 (March 2023)
 
 * added \donttest{} to speed tests;
-
 * moved difference-adjustments within the CI.Atrans function.
 
 # ANOPA 0.1.1 (March 2023)

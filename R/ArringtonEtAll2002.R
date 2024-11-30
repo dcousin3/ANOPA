@@ -5,7 +5,7 @@
 #' three factors:
 #' 'Collection location' (3 levels: Africa, Central/South America, North America),
 #' 'Diel feeding behavior' (2 levels: diurnal, nocturnal),
-#' 'Trophic category' (4 levels: Detritivore, Invertivore, Omnivore, Piscivore).
+#' 'Trophic category' (4 levels: Detrivore, Invertivore, Omnivore, Piscivore).
 #' It is therefore a 3 × 2 × 4 design with 24 cells.
 #' The original data set also contains Order, Family and Species of the observed	
 #' fishes and can be obtained from

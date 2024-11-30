@@ -4,11 +4,11 @@
 #' @name ArticleExample3
 #'
 #' @description These are the data from the third example reported in 
-#'    \insertCite{lc23}{ANOPA}. It shows ficticious data with regards to 
+#'    \insertCite{lc23}{ANOPA}. It shows fictitious data with regards to 
 #'	  the proportion of patients suffering delirium tremens as a function 
-#'    of the drug adminstered (cBau, eaPoe, R&V, Placebo).
+#'    of the drug administered (cBau, eaPoe, R&V, Placebo).
 #'    The design is a within-subject design with 4 measurements (order of 
-#'    adminstration randomized).
+#'    administration randomized).
 #'
 #' @md
 #'

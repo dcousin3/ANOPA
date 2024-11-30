@@ -20,9 +20,9 @@ library(ANOPA)
 
 @a02 published a data set available from the web.
 It presents species of fish and what proportion of them were empty stomached 
-when catched. The dataset contained 36000+ catches, which where identified by
+when caugth. The dataset contained 36000+ catches, which where identified by
 their Location (Africa, North America, rest of America), by their Trophism
-(their diet, Detritivore, Invertivore, Omnivore, Piscivore) and by the moment
+(their diet, Detrivore, Invertivore, Omnivore, Piscivore) and by the moment
 of feeding (Diel: Diurnal or Nocturnal).
 
 The compiled scores can be consulted with

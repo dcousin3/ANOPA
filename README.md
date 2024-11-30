@@ -22,7 +22,7 @@ wise comparisons; Cousineau, Goulet, & Harding (2021)\]; (b) with tools
 to compute statistical power given some *a priori* expected proportions
 or sample size to reach a certain statistical power; (c) to generate
 random proportions if you wish to perform Monte Carlo simulations on
-proportions. In sum, eveything you need to analyse proportions!
+proportions. In sum, everything you need to analyse proportions!
 
 The main function is `anopa()` which returns an omnibus analysis of the
 proportions for the factors given. For example, if you have a data frame
@@ -73,7 +73,7 @@ Prior to running an experiment, you might consider some statistical
 power planning on proportions using `anopaPower2N()` or `anopaN2Power()`
 as long as you can anticipate the expected proportions. A convenient
 effect size, the f-square and eta-square can be obtained with
-`anopaPropTofsq()`.
+`anopaProp2fsq()`.
 
 Finally, `toCompiled()`, `toLong()` and `toWide()` can be used to
 present the proportion in other formats.

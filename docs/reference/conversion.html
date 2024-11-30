@@ -106,15 +106,15 @@ given using many formats. In what follows, <em>n</em> is the number of
 participants, <em>p</em> is the number of between-subject factor(s),
 $q$ is the number of repeated-measure factor(s).</p><ul><li><p>One basic format, called <code>wide</code>, has one line per
 participants, with a 1 if a "success" is observed
-or a 0 if no success is observed. What a succes is
+or a 0 if no success is observed. What a success is
 is entirely arbitrary. The proportion of success is then
 the number of 1s divided by the number of participants in each group.
 The data frame has $n$ lines and $p+q$ columns.</p></li>
 <li><p>A second format, called <code>long</code>, has, on a line, the
 factor name(s) and 1s or 0s to indicate success or not.
 The data fame has $n x q$ lines and
-4 columns (a Id column to identify the particpant; $p$ columns
-to identify the groups, one column to identify which whitin-subject
+4 columns (a Id column to identify the participant; $p$ columns
+to identify the groups, one column to identify which within-subject
 measure is given and finally, a 1 or 0 for the score of that measurement.</p></li>
 <li><p>A third format, called <code>compiled</code>, is to have a list of all
 the between-subject factors and the number of

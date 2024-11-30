@@ -66,7 +66,7 @@ library(ANOPA)
 In this format, there is one line per _subject_ and one column for each 
 measurements. The columns contain only 1s (`success`) or 0s (`failure). 
 
-If the particpant was measured multiple times, there is one (or some) within-subject
+If the participant was measured multiple times, there is one (or some) within-subject
 factor(s) resulting in multiple columns of measurements. In between-group design,
 there is only a single column of scores.
 
@@ -113,7 +113,7 @@ along with the number of levels each in a string.
 
 ## Second format: Long data format
 
-This format may be prefered for linear modelers (but it may rapidly becomes
+This format may be preferred for linear modelers (but it may rapidly becomes
 _very_ long!). There is always at least these columns: One Id column, one
 column to indicate a within-subject level, and one column to indicate the observed 
 score.  On the other hand, this format has fewer columns in repeated measure designs.
@@ -155,7 +155,7 @@ Hence, we no longer have access to the raw data. This format
 however has the advantage of being very compact, requiring
 few lines. Here is the data for the 2 between-subject factors example
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE}
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
 dataCompiled1
 ```
 
@@ -171,21 +171,29 @@ that cell. The notation {s;n} is read ``s over n`` (note the curly braces and se
 
 For the mixed design presented earlier, the data looks like:
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE}
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
 dataCompiled2
 ```
 
 where there are columns for the number of success for each repeated measures. A new
 columns appear ``uAlpha``. This column (called _unitary alpha_) is a measure of 
-correlation (between -1 and +1). In this ficticious example, the correlations are
+correlation (between -1 and +1). In this fictitious example, the correlations are
 near zero (negative actually) by chance as the data were generated randomly.
 
-It is not possible to run an ANOPA analysis at this time on compiled data
-when there are repeated measures (but this may change in a future version).
+To run an ANOPA on compiled data having repeated measures, use
+
+```{r, message=FALSE, warning=FALSE}
+w2Compiled <- anopa( {cbind(bpre, bpost, b1week, b5week); Count; uAlpha} ~ Status, 
+                    dataCompiled2, WSFactors = "Week(4)")
+summary(w2Compiled)
+```
+
+where `cbind()` lists all the within-subject success count columns, _Count_ is the column
+in the data.frame with the total number of observations, and _uAlpha_ is the column 
+containing the mean pairwise correlation measured with the unitary alpha.
 
 
-
-## Converting between formats
+# Converting between formats
 
 Once entered in an ``anopa()`` structure, it is possible to 
 convert to any format using ``toWide()``, ``toCompiled()``
@@ -197,10 +205,10 @@ toCompiled(w2)
 ```
 
 The compiled format is probably the most compact format, but the 
-wide format is the most explicite format (as we see all the subjects and
+wide format is the most explicit format (as we see all the subjects and
 their scores on a single line, one subject per line).
 
-## Getting the example data frame
+# Getting the example data frame
 
 Above, we used two examples. They are available in this package under the 
 names ``twoWayExample`` and ``minimalMxExample``. The first is available 
@@ -208,7 +216,7 @@ in compiled form, the second in wide form.
 
 We converted these data set in other formats using:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 w1 <- anopa( {success;total} ~ Class * Difficulty, twoWayExample)
 dataWide1     <- toWide(w1)
 dataCompiled1 <-toCompiled(w1)
@@ -220,7 +228,7 @@ dataCompiled2 <-toCompiled(w2)
 dataLong2     <- toLong(w2)
 ```
 
-## Multiple repeated-measure factors
+# Multiple repeated-measure factors
 
 One limitation is with regards to repeated measures: It is not possible
 to guess the name of the within-subject factors from the names of the columns. 
@@ -234,15 +242,16 @@ Within each triplet of column, the factor B goes from 1 to 3.
 
 
 ```{r, message=TRUE, warning=FALSE, echo=TRUE, eval=TRUE}
-w3 <- anopa( cbind(r11,r12,r12,r21,r22,r23) ~ . , 
+w3 <- anopa( cbind(r11,r12,r13,r21,r22,r23) ~ . , 
              twoWayWithinExample, 
-             WSFactors = c("A(3)","B(2)") 
+             WSFactors = c("B(3)","A(2)") 
             )
 toCompiled(w3)
 ```
 
-A "fyi" message is shown which lets you see how the variables are interpreted. Such
-messages can be inhibited by changing the option
+A "fyi" message is shown which lets you see how the variables are interpreted. Take the time
+to verify that the order of the variables within `cbind()` does match the expected order
+from `anopa()`.  Note that FYI messages can be inhibited by changing the option
 
 ```{r, message=TRUE, warning=FALSE, echo=TRUE, eval=TRUE}
 options("ANOPA.feedback" = "none")

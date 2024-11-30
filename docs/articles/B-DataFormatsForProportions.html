@@ -138,9 +138,10 @@ from the source repository
 <p>In this format, there is one line per <em>subject</em> and one column
 for each measurements. The columns contain only 1s
 (<code>success</code>) or 0s (`failure).</p>
-<p>If the particpant was measured multiple times, there is one (or some)
-within-subject factor(s) resulting in multiple columns of measurements.
-In between-group design, there is only a single column of scores.</p>
+<p>If the participant was measured multiple times, there is one (or
+some) within-subject factor(s) resulting in multiple columns of
+measurements. In between-group design, there is only a single column of
+scores.</p>
 <p>As an example, consider the following data for a between-subject
 factor design with two factors: Class (2 levels) and Difficulty (3
 levels) for 6 groups. There is an identical number of participants in
@@ -274,7 +275,7 @@ in a string.</p>
 <div class="section level3">
 <h3 id="second-format-long-data-format">Second format: Long data format<a class="anchor" aria-label="anchor" href="#second-format-long-data-format"></a>
 </h3>
-<p>This format may be prefered for linear modelers (but it may rapidly
+<p>This format may be preferred for linear modelers (but it may rapidly
 becomes <em>very</em> long!). There is always at least these columns:
 One Id column, one column to indicate a within-subject level, and one
 column to indicate the observed score. On the other hand, this format
@@ -316,6 +317,8 @@ replaced by a single count of success for each cell of the design.
 Hence, we no longer have access to the raw data. This format however has
 the advantage of being very compact, requiring few lines. Here is the
 data for the 2 between-subject factors example</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dataCompiled1</span></span></code></pre></div>
 <pre><code><span><span class="co">##   Class Difficulty success Count</span></span>
 <span><span class="co">## 1 First  Difficult       6    12</span></span>
 <span><span class="co">## 2 First       Easy      11    12</span></span>
@@ -324,13 +327,15 @@ data for the 2 between-subject factors example</p>
 <span><span class="co">## 5  Last       Easy      10    12</span></span>
 <span><span class="co">## 6  Last   Moderate       8    12</span></span></code></pre>
 <p>To use a compiled format in <code><a href="../reference/anopa.html">anopa()</a></code>, use</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">w1Compiled</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="op">{</span><span class="va">success</span>; <span class="va">Count</span><span class="op">}</span> <span class="op">~</span> <span class="va">Class</span> <span class="op">*</span> <span class="va">Difficulty</span>, <span class="va">dataCompiled1</span> <span class="op">)</span></span></code></pre></div>
 <p>where <code>succes</code> identifies in which column the total number
 of successes are stored. The column Count indicates the total number of
 observations in that cell. The notation {s;n} is read
 <code>s over n</code> (note the curly braces and semicolon).</p>
 <p>For the mixed design presented earlier, the data looks like:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dataCompiled2</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Status bpre bpost b1week b5week Count      uAlpha</span></span>
 <span><span class="co">## 1   Broken    5     5      6      5     8 -0.15204678</span></span>
 <span><span class="co">## 2      New    2     3      4      2    10 -0.03463203</span></span>
@@ -338,19 +343,32 @@ observations in that cell. The notation {s;n} is read
 <p>where there are columns for the number of success for each repeated
 measures. A new columns appear <code>uAlpha</code>. This column (called
 <em>unitary alpha</em>) is a measure of correlation (between -1 and +1).
-In this ficticious example, the correlations are near zero (negative
+In this fictitious example, the correlations are near zero (negative
 actually) by chance as the data were generated randomly.</p>
-<p>It is not possible to run an ANOPA analysis at this time on compiled
-data when there are repeated measures (but this may change in a future
-version).</p>
+<p>To run an ANOPA on compiled data having repeated measures, use</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">w2Compiled</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bpre</span>, <span class="va">bpost</span>, <span class="va">b1week</span>, <span class="va">b5week</span><span class="op">)</span>; <span class="va">Count</span>; <span class="va">uAlpha</span><span class="op">}</span> <span class="op">~</span> <span class="va">Status</span>, </span>
+<span>                    <span class="va">dataCompiled2</span>, WSFactors <span class="op">=</span> <span class="st">"Week(4)"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">w2Compiled</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                      MS  df        F   pvalue correction    Fcorr pvalcorr</span></span>
+<span><span class="co">## Week           0.006472   3 0.221708 0.881375   1.030864 0.215070 0.886009</span></span>
+<span><span class="co">## Status         0.174546   2 6.583566 0.001383   1.018673 6.462886 0.001560</span></span>
+<span><span class="co">## Week:Status    0.005486   6 0.187927 0.980311   1.445036 0.130050 0.992591</span></span>
+<span><span class="co">## Error(within)  0.029192 Inf                                               </span></span>
+<span><span class="co">## Error(between) 0.026512 Inf</span></span></code></pre>
+<p>where <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind()</a></code> lists all the within-subject success count
+columns, <em>Count</em> is the column in the data.frame with the total
+number of observations, and <em>uAlpha</em> is the column containing the
+mean pairwise correlation measured with the unitary alpha.</p>
 </div>
-<div class="section level3">
-<h3 id="converting-between-formats">Converting between formats<a class="anchor" aria-label="anchor" href="#converting-between-formats"></a>
-</h3>
+</div>
+<div class="section level2">
+<h2 id="converting-between-formats">Converting between formats<a class="anchor" aria-label="anchor" href="#converting-between-formats"></a>
+</h2>
 <p>Once entered in an <code><a href="../reference/anopa.html">anopa()</a></code> structure, it is possible to
 convert to any format using <code><a href="../reference/conversion.html">toWide()</a></code>,
 <code><a href="../reference/conversion.html">toCompiled()</a></code> and <code><a href="../reference/conversion.html">toLong()</a></code>. For example:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/conversion.html">toCompiled</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   Class Difficulty success Count</span></span>
 <span><span class="co">## 1 First  Difficult       6    12</span></span>
@@ -359,44 +377,37 @@ convert to any format using <code><a href="../reference/conversion.html">toWide(
 <span><span class="co">## 4  Last  Difficult       3    12</span></span>
 <span><span class="co">## 5  Last       Easy      10    12</span></span>
 <span><span class="co">## 6  Last   Moderate       8    12</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/conversion.html">toCompiled</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Status bpre bpost b1week b5week Count      uAlpha</span></span>
 <span><span class="co">## 1   Broken    5     5      6      5     8 -0.15204678</span></span>
 <span><span class="co">## 2      New    2     3      4      2    10 -0.03463203</span></span>
 <span><span class="co">## 3 Repaired    3     3      2      2     9 -0.10416667</span></span></code></pre>
 <p>The compiled format is probably the most compact format, but the wide
-format is the most explicite format (as we see all the subjects and
-their scores on a single line, one subject per line).</p>
+format is the most explicit format (as we see all the subjects and their
+scores on a single line, one subject per line).</p>
 </div>
-<div class="section level3">
-<h3 id="getting-the-example-data-frame">Getting the example data frame<a class="anchor" aria-label="anchor" href="#getting-the-example-data-frame"></a>
-</h3>
+<div class="section level2">
+<h2 id="getting-the-example-data-frame">Getting the example data frame<a class="anchor" aria-label="anchor" href="#getting-the-example-data-frame"></a>
+</h2>
 <p>Above, we used two examples. They are available in this package under
 the names <code>twoWayExample</code> and <code>minimalMxExample</code>.
 The first is available in compiled form, the second in wide form.</p>
 <p>We converted these data set in other formats using:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">w1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="op">{</span><span class="va">success</span>;<span class="va">total</span><span class="op">}</span> <span class="op">~</span> <span class="va">Class</span> <span class="op">*</span> <span class="va">Difficulty</span>, <span class="va">twoWayExample</span><span class="op">)</span></span>
 <span><span class="va">dataWide1</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conversion.html">toWide</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span>
 <span><span class="va">dataCompiled1</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/conversion.html">toCompiled</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span>
 <span><span class="va">dataLong1</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conversion.html">toLong</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">w2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bpre</span>, <span class="va">bpost</span>, <span class="va">b1week</span>, <span class="va">b5week</span><span class="op">)</span> <span class="op">~</span> <span class="va">Status</span>, <span class="va">minimalMxExample</span>, WSFactors <span class="op">=</span> <span class="st">"Moment(4)"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## ANOPA::fyi: Here is how the within-subject variables are understood:</span></span></code></pre>
-<pre><code><span><span class="co">##  Moment Variable</span></span>
-<span><span class="co">##       1     bpre</span></span>
-<span><span class="co">##       2    bpost</span></span>
-<span><span class="co">##       3   b1week</span></span>
-<span><span class="co">##       4   b5week</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dataWide2</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conversion.html">toWide</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span>
+<span><span class="va">w2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bpre</span>, <span class="va">bpost</span>, <span class="va">b1week</span>, <span class="va">b5week</span><span class="op">)</span> <span class="op">~</span> <span class="va">Status</span>, <span class="va">minimalMxExample</span>, WSFactors <span class="op">=</span> <span class="st">"Moment(4)"</span><span class="op">)</span></span>
+<span><span class="va">dataWide2</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conversion.html">toWide</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span>
 <span><span class="va">dataCompiled2</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/conversion.html">toCompiled</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span>
 <span><span class="va">dataLong2</span>     <span class="op">&lt;-</span> <span class="fu"><a href="../reference/conversion.html">toLong</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="multiple-repeated-measure-factors">Multiple repeated-measure factors<a class="anchor" aria-label="anchor" href="#multiple-repeated-measure-factors"></a>
-</h3>
+<div class="section level2">
+<h2 id="multiple-repeated-measure-factors">Multiple repeated-measure factors<a class="anchor" aria-label="anchor" href="#multiple-repeated-measure-factors"></a>
+</h2>
 <p>One limitation is with regards to repeated measures: It is not
 possible to guess the name of the within-subject factors from the names
 of the columns. This is why, as soon as there are more than one
@@ -405,29 +416,31 @@ measurement, the argument <code>WSFactors</code> must be added.</p>
 set <code>twoWayWithinExample</code> has 6 columns; the first three are
 for the factor A, level 1, and the last three are for factor A, level 2.
 Within each triplet of column, the factor B goes from 1 to 3.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">w3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">r11</span>,<span class="va">r12</span>,<span class="va">r12</span>,<span class="va">r21</span>,<span class="va">r22</span>,<span class="va">r23</span><span class="op">)</span> <span class="op">~</span> <span class="va">.</span> , </span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">w3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/anopa.html">anopa</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">r11</span>,<span class="va">r12</span>,<span class="va">r13</span>,<span class="va">r21</span>,<span class="va">r22</span>,<span class="va">r23</span><span class="op">)</span> <span class="op">~</span> <span class="va">.</span> , </span>
 <span>             <span class="va">twoWayWithinExample</span>, </span>
-<span>             WSFactors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A(3)"</span>,<span class="st">"B(2)"</span><span class="op">)</span> </span>
+<span>             WSFactors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"B(3)"</span>,<span class="st">"A(2)"</span><span class="op">)</span> </span>
 <span>            <span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ANOPA::fyi: Here is how the within-subject variables are understood:</span></span></code></pre>
-<pre><code><span><span class="co">##  A B Variable</span></span>
+<pre><code><span><span class="co">##  B A Variable</span></span>
 <span><span class="co">##  1 1      r11</span></span>
 <span><span class="co">##  2 1      r12</span></span>
-<span><span class="co">##  3 1      r12</span></span>
+<span><span class="co">##  3 1      r13</span></span>
 <span><span class="co">##  1 2      r21</span></span>
 <span><span class="co">##  2 2      r22</span></span>
 <span><span class="co">##  3 2      r23</span></span></code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/conversion.html">toCompiled</a></span><span class="op">(</span><span class="va">w3</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   r11 r12 r12.1 r21 r22 r23 Count    uAlpha</span></span>
-<span><span class="co">## 1  14   6     6  14  16  14    30 0.1074324</span></span></code></pre>
+<pre><code><span><span class="co">##   r11 r12 r13 r21 r22 r23 Count     uAlpha</span></span>
+<span><span class="co">## 1  14   6   8  14  16  14    30 0.08223684</span></span></code></pre>
 <p>A “fyi” message is shown which lets you see how the variables are
-interpreted. Such messages can be inhibited by changing the option</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+interpreted. Take the time to verify that the order of the variables
+within <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind()</a></code> does match the expected order from
+<code><a href="../reference/anopa.html">anopa()</a></code>. Note that FYI messages can be inhibited by
+changing the option</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="st">"ANOPA.feedback"</span> <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <p>To know more about analyzing proportions with ANOPA, refer to <span class="citation">Laurencelle &amp; Cousineau (2023)</span> or to <a href="../articles/A-WhatIsANOPA.html">What is an ANOPA?</a>.</p>
-</div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>

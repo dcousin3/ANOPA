@@ -12,7 +12,7 @@
 #'
 #' @param data Dataframe in one of wide, long, or compiled format;
 #'
-#' @param WSFactors For within-subjet designs, provide the factor names and their number of levels.
+#' @param WSFactors For within-subject designs, provide the factor names and their number of levels.
 #'   This is expressed as a vector of strings such as "Moment(2)".
 #'
 #' @return An omnibus analyses of the given proportions. Each factor's significance is 
@@ -25,7 +25,7 @@
 #'
 #' @details Note the following limitations:
 #' 1. The main analysis performed by `anopa()` is currently restricted to three 
-#'   factors in total (between and/or within). Contact the author if you plan to analyse
+#'   factors in total (between and/or within). Contact the author if you plan to analyze
 #'   more complex designs.
 #' 2. If you have repeated-measure design, the data *must* be provided in wide or
 #'   long format. The correlation between successes cannot be assessed once the data are 

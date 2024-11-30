@@ -17,8 +17,8 @@
 #'   is given using a vertical bar, e.g., " ~ factorA | factorB " to obtain 
 #'   the effect of Factor A within every level of the Factor B.
 #'
-#' @return An ANOPA table of the various simple main effets and if relevant,
-#'    of the simple interaction effets. 
+#' @return An ANOPA table of the various simple main effects and if relevant,
+#'    of the simple interaction effects. 
 #' 
 #' @details `emProportions()` computes expected marginal proportions and 
 #'   analyzes the hypothesis of equal proportion. 

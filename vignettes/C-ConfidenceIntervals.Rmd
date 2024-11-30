@@ -25,7 +25,7 @@ to make confidence intervals for proportions.
 
 For proportions, ANOPA is based on the Anscombe transform 
 \insertCite{a48}{ANOPA}. This measure has a known theoretical 
-standard error which depends only on sampe size $n$:
+standard error which depends only on sample size $n$:
 
 $$SE_{A}(n) = 1/\sqrt{4(n+1/2)}.$$ 
 
@@ -40,7 +40,8 @@ A + z_{0.5-\gamma/2} \times SE_{A}(n), \; A + z_{0.5+\gamma/2} \times SE_{A}(n)
 \right]$$
 
 in which $SE_{A}(n)$ is the theoretical standard error based
-only on $n$, and $\gamma$ is the desired confidence level (often .95).
+only on $n$, and $\gamma$ is the desired confidence level (often .95). The use of a $z$ score ensues 
+from the fact that the theoretical variance is known.
 
 This technique returns _stand-alone_ confidence intervals, that is, intervals
 which can be used to compare the proportion to a fixed point. However,
@@ -58,7 +59,7 @@ a measure of correlation in a matrix containing repeated measures
 
 Finally, the above returns confidence intervals for the *transformed* scores. 
 However, when used in a plot, it is typically more convenient to plot
-proportions (from 0 to 1) rather than Anscombe-scores (from 0 to $\pi/2 \approx$ 1.57).
+proportions (ranging from 0 to 1) rather than Anscombe-scores (ranging from 0 to $\pi/2 \approx$ 1.57).
 Thus, it is possible to rescale the vertical axis using the inverse Anscombe
 transform and be shown proportions.
 

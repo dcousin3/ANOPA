@@ -14,7 +14,7 @@ vignette: >
 
 Some authors documented that analyses of proportions can be performed 
 with as few as 3 participants per group [e.g., @wh11]. 
-Some also reported finiding multiple configurations with significant results
+Some also reported finding multiple configurations with significant results
 using logistic regressions.
 
 We do not think this is sensible. 

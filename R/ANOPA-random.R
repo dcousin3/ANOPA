@@ -140,6 +140,13 @@ GRP <- function(
 	if (is.null(BSDesign)&&is.null(WSDesign)) 
 		stop("ANOPA::GRP (1003): Both within subject and between subject factors are null. Provide at least one factor. Exiting...")
 
+    # if messages are inhibited, inhibit them in superb as well
+    if ("none" %in% getOption("ANOPA.feedback") ) {
+        old <- options() 
+        on.exit(options(old)) 
+        options("superb.feedback" = "none")
+    }
+    
 	# preparing the input to match GRD format
 	BSDasText <- mapply(\(x,y) {paste(x,"(",paste(y,collapse=","),")",sep="")}, 
 			names(BSDesign), 

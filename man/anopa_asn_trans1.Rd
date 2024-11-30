@@ -25,7 +25,7 @@ how many additional observations to add, and with how many successes.
 If for example, the option is (by default) \code{c(0.05, 1)}, then
 20 cases will be added, only one being a success (respecting the .05 target).
 \emph{Keep in mind that imputations has never been studies with regards to proportions
-so be mindfull that the default optin has never been tested nor validated.}}
+so be mindful that the default optin has never been tested nor validated.}}
 
 \item{showPlotOnly}{(optional, default True) shows only the plot or else
 shows the numbers needed to make the plot yourself.}
@@ -46,7 +46,7 @@ a ggplot2 object of the given proportions.
 The function 'anopaPlot()' performs a plot of proportions for designs
 with up to 4 factors according to the
 'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for more. The plot is
-realized using the 'suberb' library; see \insertCite{cgh21;textual}{ANOPA}.
+realized using the 'superb' library; see \insertCite{cgh21;textual}{ANOPA}.
 It uses the arc-sine transformation 'A()'.
 }
 \details{

@@ -15,8 +15,8 @@ is given using a vertical bar, e.g., " ~ factorA | factorB " to obtain
 the effect of Factor A within every level of the Factor B.}
 }
 \value{
-An ANOPA table of the various simple main effets and if relevant,
-of the simple interaction effets.
+An ANOPA table of the various simple main effects and if relevant,
+of the simple interaction effects.
 }
 \description{
 The function 'emProportions()' performs a \emph{simple effect} analyses

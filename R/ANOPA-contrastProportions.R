@@ -19,7 +19,7 @@
 #' @details `contrastProportions()` computes the _F_s for the contrasts,
 #'   testing the hypothesis that it equals zero.
 #'   The contrasts are each 1 degree of freedom, and the sum of the contrasts' 
-#'   degrees of freedom totalize the effect-being-decomposed's degree of freedom.
+#'   degrees of freedom totalize the degrees of freedom of the effect being decomposed.
 #'
 #' @references
 #' \insertAllCited{}

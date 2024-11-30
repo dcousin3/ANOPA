@@ -31,15 +31,15 @@ $q$ is the number of repeated-measure factor(s).
 \itemize{
 \item One basic format, called \code{wide}, has one line per
 participants, with a 1 if a "success" is observed
-or a 0 if no success is observed. What a succes is
+or a 0 if no success is observed. What a success is
 is entirely arbitrary. The proportion of success is then
 the number of 1s divided by the number of participants in each group.
 The data frame has $n$ lines and $p+q$ columns.
 \item A second format, called \code{long}, has, on a line, the
 factor name(s) and 1s or 0s to indicate success or not.
 The data fame has $n x q$ lines and
-4 columns (a Id column to identify the particpant; $p$ columns
-to identify the groups, one column to identify which whitin-subject
+4 columns (a Id column to identify the participant; $p$ columns
+to identify the groups, one column to identify which within-subject
 measure is given and finally, a 1 or 0 for the score of that measurement.
 \item A third format, called \code{compiled}, is to have a list of all
 the between-subject factors and the number of

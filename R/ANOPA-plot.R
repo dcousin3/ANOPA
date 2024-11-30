@@ -8,7 +8,7 @@
 #' @description The function 'anopaPlot()' performs a plot of proportions for designs 
 #'      with up to 4 factors according to the
 #'      'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for more. The plot is 
-#'      realized using the 'suberb' library; see \insertCite{cgh21;textual}{ANOPA}.
+#'      realized using the 'superb' library; see \insertCite{cgh21;textual}{ANOPA}.
 #'      It uses the arc-sine transformation 'A()'.
 #'
 #'   
@@ -31,7 +31,7 @@
 #'		If for example, the option is (by default) `c(0.05, 1)`, then
 #'		20 cases will be added, only one being a success (respecting the .05 target).
 #'      _Keep in mind that imputations has never been studies with regards to proportions
-#'      so be mindfull that the default optin has never been tested nor validated._
+#'      so be mindful that the default optin has never been tested nor validated._
 #' @param showPlotOnly (optional, default True) shows only the plot or else 
 #'       shows the numbers needed to make the plot yourself.
 #' @param plotStyle (optional; default "line") How to plot the proportions;

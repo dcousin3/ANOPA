@@ -12,7 +12,7 @@ formula to match the data format.}
 
 \item{data}{Dataframe in one of wide, long, or compiled format;}
 
-\item{WSFactors}{For within-subjet designs, provide the factor names and their number of levels.
+\item{WSFactors}{For within-subject designs, provide the factor names and their number of levels.
 This is expressed as a vector of strings such as "Moment(2)".}
 }
 \value{
@@ -32,7 +32,7 @@ according to the 'ANOPA' framework. See \insertCite{lc23;textual}{ANOPA} for mor
 Note the following limitations:
 \enumerate{
 \item The main analysis performed by \code{anopa()} is currently restricted to three
-factors in total (between and/or within). Contact the author if you plan to analyse
+factors in total (between and/or within). Contact the author if you plan to analyze
 more complex designs.
 \item If you have repeated-measure design, the data \emph{must} be provided in wide or
 long format. The correlation between successes cannot be assessed once the data are

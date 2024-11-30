@@ -2,7 +2,7 @@ Package: ANOPA
 Type: Package
 Title: Analyses of Proportions using Anscombe Transform
 Version: 0.1.4
-Date: 2024-11-26
+Date: 2024-11-30
 Authors@R: c(
              person("Denis", "Cousineau", email = "denis.cousineau@uottawa.ca",
                     role = c("aut", "ctb", "cre")),

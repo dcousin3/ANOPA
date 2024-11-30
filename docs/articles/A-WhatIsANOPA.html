@@ -206,10 +206,10 @@ one line per participant giving the observations would look like:</p>
 </tbody>
 </table>
 <p>This long table can easily be reduced by “compiling” the results,
-that is, by counting the numer of participants per group who experienced
-and illumination. Because the group sizes may not be equal, counting the
-number of participants in each group is also needed. We would then
-observe</p>
+that is, by counting the number of participants per group who
+experienced and illumination. Because the group sizes may not be equal,
+counting the number of participants in each group is also needed. We
+would then observe</p>
 <table class="table">
 <colgroup>
 <col width="24%">
@@ -242,6 +242,11 @@ observe</p>
 <td>5</td>
 <td>27</td>
 </tr>
+<tr class="odd">
+<td align="left">:—————-</td>
+<td>————————-</td>
+<td>—————————</td>
+</tr>
 </tbody>
 </table>
 <p>From these data, we may wonder if the four interventions are equally
@@ -270,9 +275,13 @@ the case:</p>
 <td align="left">Controlling breath</td>
 <td>18.5%</td>
 </tr>
+<tr class="odd">
+<td align="left">:—————-</td>
+<td>—————————</td>
+</tr>
 </tbody>
 </table>
-<p>In all likelihood, solving Sudokos puts participants in a better
+<p>In all likelihood, solving Sudokus puts participants in a better
 mental disposition to have an illumination whereas controlling ones’
 breath might be the worst intervention to favor illuminations.</p>
 <p>But how can we be confident of the reliability of this observation?
@@ -304,7 +313,7 @@ very far from 5%. A contrario, if the population true proportion is 50%,
 then on a sample of 20 participants, a larger range of observed
 proportions are possible. This simple illustration shows that the
 possible variance in the scores are not homogeneous: few variance is
-expected for extreme proportions and more variance is expceted for
+expected for extreme proportions and more variance is expected for
 proportions in the middle of the range (near 50%).</p>
 <p>Because the purpose of the analysis is to see if the proportions
 might be different, it means that we envision that they occupy some
@@ -323,7 +332,7 @@ ANOVA. As the error term is known, the denominator of the ANOVA is
 calculated without degrees of freedom (we set them to <span class="math inline">\(\infty\)</span> to denote this).</p>
 <p>Recent works (see last section) confirms that this transformation is
 actually the most accurate approximation we know to this day and that
-there is very little room to find a more accurate transfomraiton.</p>
+there is very little room to find a more accurate transformation.</p>
 </div>
 <div class="section level2">
 <h2 id="analyzing-the-data">Analyzing the data<a class="anchor" aria-label="anchor" href="#analyzing-the-data"></a>
@@ -355,7 +364,7 @@ observations, for example</p>
 <p>The first argument is a formula which describes how the data are
 presented (before the ~) and what are the factors in the design (after
 the ~). Here, because the observations are actually described over two
-colums (the number of 1s and the total number of participants in each
+columns (the number of 1s and the total number of participants in each
 group), we use the <code>{s;n}</code> notation which can be read as “s
 over n” (note the curly braces and the semi-colon which is not standard
 notation in R). The second argument is the data frame, here in compiled
@@ -376,7 +385,7 @@ Such confidence intervals allows comparing between-conditions using the
 golden rule: <em>if a result is not included in the confidence interval
 of another score, then the two conditions are likely significantly
 different</em>. In the above plot, we see that the Breath condition is
-not included in the Sudoky condition, so that we can expect these two
+not included in the Sudoku condition, so that we can expect these two
 conditions to differ significantly, and as such, the ANOPA to show a
 significant rejection of the null hypothesis that all the proportion are
 equal.</p>
@@ -414,7 +423,7 @@ Difference (HSD) procedure.</p>
 <code class="sourceCode R"><span><span class="co"># posthocProportions( w )  ## not yet bundled in the library</span></span></code></pre></div>
 <p>As seen, the Breath condition differs significantly from the Sudoku
 condition. Also the Crosswords condition also differs from the Sudoku
-conditions. Thease are the only two conditions for which a difference
+conditions. These are the only two conditions for which a difference
 seems statistically warranted.</p>
 <p>This is it. Enjoy!</p>
 <p>The vignette <a href="../articles/D-ArringtonExample.html">ArringtonExample</a> examines
@@ -450,7 +459,7 @@ help you…</p>
 <div class="section level2">
 <h2 id="why-infinite-degrees-of-freedom-optional">Why infinite degrees of freedom? (optional)<a class="anchor" aria-label="anchor" href="#why-infinite-degrees-of-freedom-optional"></a>
 </h2>
-<p>For some, this notation may seems bizzare, or arbitrary. However, it
+<p>For some, this notation may seems bizarre, or arbitrary. However, it
 is formally an exact notation. An equivalent notation relates the <span class="math inline">\(t\)</span> tests and the <span class="math inline">\(z\)</span> tests. As is well-known, the <span class="math inline">\(t\)</span> test is used when the population
 variance<br>
 is unknown and estimated from the sample’s variance. In this test, this
@@ -466,7 +475,7 @@ can replace the degrees of freedom with infinity.</p>
 the denominator’s degree of freedom with infinity.</p>
 </div>
 <div class="section level2">
-<h2 id="why-the-arcsin-transform-optional">Why the arcsin transform? (optional)<a class="anchor" aria-label="anchor" href="#why-the-arcsin-transform-optional"></a>
+<h2 id="why-the-arcsine-transform-optional">Why the arcsine transform? (optional)<a class="anchor" aria-label="anchor" href="#why-the-arcsine-transform-optional"></a>
 </h2>
 <p>This transformation may seem quite arbitrary. Its origin shows indeed
 that this solution was found by a vague intuition. Fisher is the first
@@ -481,7 +490,7 @@ transform was further refined by Anscombe to the form we use in the
 ANOPA <span class="citation">(Anscombe, 1948)</span>. Anscombe
 modifications, the addition of 3/8 to the number of success and 3/4 to
 the number of trials, led to a theoretical variance exactly equal to
-<span class="math inline">\(1/(4 \times n)\)</span>.</p>
+<span class="math inline">\(1/(4 \times n + 2)\)</span>.</p>
 <p>Formidable development in the early 90s showed that this transform
 has other important characteristics. For example, <span class="citation">Chen (1990)</span> and <span class="citation">Lehman
 &amp; Loh (1990)</span> derived that this transform will either

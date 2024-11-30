@@ -117,8 +117,8 @@ herein is that no correlations is added when repeated measures are
 used.</p>
 <p>We suggests here to shut down error and feedback messages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="st">"ANOPA.feedback"</span> <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dcousin3.github.io/ANOPA/">ANOPA</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dcousin3.github.io/ANOPA/">ANOPA</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="st">"ANOPA.feedback"</span> <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span></span>
 <span><span class="va">nsim</span>   <span class="op">&lt;-</span> <span class="fl">1000</span>     <span class="co"># increase for more reliable simulations.</span></span>
 <span><span class="va">theN</span>   <span class="op">&lt;-</span> <span class="fl">20</span>       <span class="co"># number of simulated participants</span></span></code></pre></div>
@@ -360,7 +360,11 @@ varied.</p>
 <div class="section level2">
 <h2 id="the-end">The end<a class="anchor" aria-label="anchor" href="#the-end"></a>
 </h2>
-<p>Let’s restore the warnings and messages before leaving:</p>
+<p>To gain more confidence, increase the number of simulations markedly
+and reduce tolerance around .05. A decent Monte Carlo simulations should
+be based on some 50,000 simulations (not 20!) with tolerance below
+.001.</p>
+<p>Before leaving, let’s restore the warnings and messages:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="st">"ANOPA.feedback"</span> <span class="op">=</span> <span class="st">'all'</span><span class="op">)</span></span></code></pre></div>
 </div>

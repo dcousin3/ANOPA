@@ -34,8 +34,8 @@ correlations is added when repeated measures are used.
 We suggests here to shut down error and feedback messages:
 
 ```{r, warning=FALSE, message=FALSE}
-options("ANOPA.feedback" = 'none')
 library(ANOPA)
+options("ANOPA.feedback" = 'none')
 library(testthat)
 nsim   <- 1000     # increase for more reliable simulations.
 theN   <- 20       # number of simulated participants
@@ -287,7 +287,11 @@ expect_equal( typeI, .05, tolerance = 0.035)
 
 # The end
 
-Let's restore the warnings and messages before leaving:
+To gain more confidence, increase the number of simulations markedly and reduce tolerance around .05. 
+A decent Monte Carlo simulations should be based on some 50,000 simulations (not 20!) with tolerance
+below .001.
+
+Before leaving, let's restore the warnings and messages:
 
 ```{r}
 options("ANOPA.feedback" = 'all')
