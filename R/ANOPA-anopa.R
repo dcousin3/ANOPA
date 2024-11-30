@@ -230,6 +230,7 @@ anopa <- function(
 	WSDesign  <- data.frame()
     compData  <- NULL 
     countCol  <- "n"
+    alphaCol  <- "uAlpha"
 
 
     # 3.2: Convert data to wide format based on the format as infered from the formula
@@ -242,6 +243,7 @@ anopa <- function(
 		WSFactors <- cleanedWSF[[1]]
         WSLevels  <- cleanedWSF[[2]]
         countCol  <- paste(formula[[2]][[3]])
+        alphaCol  <- paste(formula[[2]][[4]]) 
         
         compData <- data # data are in compiled format
         wideData <- lapply(1:(dim(data)[1]), doONEline, 
@@ -375,10 +377,10 @@ anopa <- function(
 
     # 4.4: perform the analysis based on the number of factors
     analysis <- switch( length(allFactors),
-        anopa1way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels),
-        anopa2way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels),
-        anopa3way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels),
-        anopa4way(compData, DVvars, countCol, BSFactors, WSFactors, WSLevels)
+        anopa1way(compData, DVvars, countCol, alphaCol, BSFactors, WSFactors, WSLevels),
+        anopa2way(compData, DVvars, countCol, alphaCol, BSFactors, WSFactors, WSLevels),
+        anopa3way(compData, DVvars, countCol, alphaCol, BSFactors, WSFactors, WSLevels),
+        anopa4way(compData, DVvars, countCol, alphaCol, BSFactors, WSFactors, WSLevels)
     )
 
 
@@ -610,18 +612,18 @@ hmean <- function(v) (length(v)/ sum(1/v))
 ##############################################################################
 
 
-anopa1way <- function( cData, ss, n, bsfacts, wsfacts, unneeded ) {
+anopa1way <- function( cData, ss, ncol, acol, bsfacts, wsfacts, unneeded ) {
 	# One-way ANOPA (either within- or between-subject design)
 	# The observations are compiled into success (s) and number (n) per group and uAlpha when relevant
 
 	if (length(wsfacts) == 1) { # within-subject design
 		s     <- cData[ss]
-		n     <- rep(cData[[n]], length(ss))
+		n     <- rep(cData[[ncol]], length(ss))
 		facts <- wsfacts
-		corlt <- cData[["uAlpha"]]		
+		corlt <- cData[[acol]]		
 	} else { # between-subject design
 		s     <- cData[[ss]]
-		n     <- cData[[n]]
+		n     <- cData[[ncol]]
 		facts <- bsfacts
 		corlt <- 0
 	}
@@ -661,26 +663,26 @@ anopa1way <- function( cData, ss, n, bsfacts, wsfacts, unneeded ) {
 }
 
 
-anopa2way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
+anopa2way <- function( cData, ss, ncol, acol, bsfacts, wsfacts, wslevls ) {
 	# Two-way ANOPA (within, between, or mixed design)
 	# the observations are compiled into success (s) and number (n) per group and uAlpha when relevant
 #print("Begin anopa2way")
 
 	if (length(wsfacts) == 2) { # both within-subject factors
 		s      <- cData[ss]
-		n      <- rep(cData[[n]], length(ss))
-		corlt  <- cData[["uAlpha"]]
+		n      <- rep(cData[[ncol]], length(ss))
+		corlt  <- cData[[acol]]
 		facts  <- wsfacts
 		f1levl <- wslevls[2]
 	} else if (length(wsfacts) == 1) { # mixed, within-between, design
 		s      <- unlist(cData[ss]) # i.e., flatten
-		n      <- rep(cData[[n]], length(ss))
-		corlt  <- rep(cData[["uAlpha"]], wslevls[1])
+		n      <- rep(cData[[ncol]], length(ss))
+		corlt  <- rep(cData[[acol]], wslevls[1])
 		facts <- c(wsfacts, bsfacts)
 		f1levl <- wslevls
 	} else { # both between-subject factors
 		s      <- cData[[ss]]
-		n      <- cData[[n]]
+		n      <- cData[[ncol]]
 		corlt  <- 0
 		facts  <- bsfacts
 		f1levl <- length(unique(cData[[bsfacts[1]]]))
@@ -761,14 +763,14 @@ anopa2way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
 }
 
 
-anopa3way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
+anopa3way <- function( cData, ss, ncol, acol, bsfacts, wsfacts, wslevls ) {
 	# Three-way ANOPA (any design with within or between subject factors)
 	# the observations are compiled into success (s) and number (n) per group and uAlpha when relevant
 
 	if (length(wsfacts) == 3) { # entirely within-subject factors
 		s      <- cData[ss]
-		n      <- rep(cData[[n]], length(ss))
-		corlt  <- cData[["uAlpha"]]
+		n      <- rep(cData[[ncol]], length(ss))
+		corlt  <- cData[[acol]]
 		facts  <- wsfacts
 		lvlp <- 1:wslevls[1]  # first is always within
 		lvlq <- 1:wslevls[2]
@@ -779,8 +781,8 @@ anopa3way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
 
 	} else 	if (length(wsfacts) == 2) { # mixed, 2 within-subject factors
 		s      <- cData[ss]
-		n      <- rep(cData[[n]], length(ss))
-		corlt  <- cData[["uAlpha"]]
+		n      <- rep(cData[[ncol]], length(ss))
+		corlt  <- cData[[acol]]
 		facts  <- c(wsfacts, bsfacts)
 		lvlp <- 1:wslevls[1]
 		lvlq <- 1:wslevls[2]
@@ -792,8 +794,8 @@ anopa3way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
 
 	} else if (length(wsfacts) == 1) { # mixed, 1 within-subject factor
 		s      <- c(t(cData[ss])) # i.e., flatten
-		n      <- rep(cData[[n]], length(ss))
-		corlt  <- rep(cData[["uAlpha"]], wslevls[1])
+		n      <- rep(cData[[ncol]], length(ss))
+		corlt  <- rep(cData[[acol]], wslevls[1])
 
 		facts <- c(wsfacts, bsfacts)
 		lvlp <- 1:wslevls[1]
@@ -806,7 +808,7 @@ anopa3way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
 
 	} else { # entirely between-subject factors
 		s      <- cData[[ss]]
-		n      <- cData[[n]]
+		n      <- cData[[ncol]]
 		corlt  <- 0
 		facts  <- bsfacts
 		lvlp <- unique(cData[[bsfacts[1]]])
@@ -934,7 +936,7 @@ anopa3way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
 }
 
 
-anopa4way <- function( cData, ss, n, bsfacts, wsfacts, wslevls ) {
+anopa4way <- function( cData, ss, ncol, acol, bsfacts, wsfacts, wslevls ) {
 
 	return("Not programmed so far. Contact Denis Cousineau if needed.")
 
