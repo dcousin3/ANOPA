@@ -12,9 +12,9 @@
 #'      It uses the arc-sine transformation 'A()'.
 #'
 #'   
-#' @usage anopaPlot(w, formula, confidenceLevel = .95, allowImputing = FALSE,
+#' @usage anopaPlot(w, formula = NULL, confidenceLevel = .95, allowImputing = FALSE,
 #' 		showPlotOnly = TRUE, plotStyle = "line", 
-#'      errorbarParams  = list( width =0.5, linewidth=0.75 ), ...) 
+#'      errorbarParams  = list( width =0.85, linewidth=0.75 ), ...) 
 #'
 #'
 #' @param w An ANOPA object obtained with `anopa()`;
@@ -155,7 +155,7 @@ anopaPlot <- function(w,
 				allowImputing   = FALSE,
                 showPlotOnly    = TRUE,
                 plotStyle       = "line",                             # lines by default
-                errorbarParams  = list( width =0.5, linewidth=0.75 ), # thicker error bars
+                errorbarParams  = list( width =0.85, linewidth=0.75 ), # thicker error bars  
                 ...  # will be transmitted to superb as is
 ){
 

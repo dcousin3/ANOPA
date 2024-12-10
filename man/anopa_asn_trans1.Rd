@@ -5,9 +5,9 @@
 \alias{anopaPlot}
 \title{anopaPlot: Easy plotting of proportions.}
 \usage{
-anopaPlot(w, formula, confidenceLevel = .95, allowImputing = FALSE,
+anopaPlot(w, formula = NULL, confidenceLevel = .95, allowImputing = FALSE,
 		showPlotOnly = TRUE, plotStyle = "line", 
-     errorbarParams  = list( width =0.5, linewidth=0.75 ), ...)
+     errorbarParams  = list( width =0.85, linewidth=0.75 ), ...)
 }
 \arguments{
 \item{w}{An ANOPA object obtained with \code{anopa()};}

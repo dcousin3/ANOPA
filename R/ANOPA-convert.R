@@ -213,8 +213,8 @@ ctow <- function(d, ss, n) {
     res <- as.data.frame(lapply(y, rep, d[[n]]))
     for (i in ss) {
         res[[i]] <- c(unlist(mapply( 
-						\(s,n) c(rep(1,s),rep(0,n-s)), 
-						d[[i]], d[[n]]
+						\(s,n) {c(rep(1,round(s)),rep(0,round(n)-round(s)))}, 
+						d[[i]], d[[n]], SIMPLIFY=FALSE
 					)))
     }
     return(res)

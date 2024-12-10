@@ -218,7 +218,6 @@ anopa <- function(
 		cleanedWSF <- cleanWSFactors(WSFactors, wsvars)
 	}
 
-
     ##############################################################################
     # STEP 3: Harmonize the data format to wide
     ##############################################################################

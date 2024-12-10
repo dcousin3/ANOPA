@@ -1,4 +1,8 @@
-# ANOPA 0.1.4 (November 2024)
+# ANOPA 0.2.1 (December 2024)
+
+* Corrected a bug regarding conversion to long involving `wtoc()`
+
+# ANOPA 0.2.0 (November 2024)
 
 * Corrected a bug on `GRP()` with mixed design;
 * Allowed compiled format inputs for `anopa()` having repeated measures;
