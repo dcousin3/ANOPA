@@ -5,7 +5,7 @@
 #'
 #' @description These are the data from the first example reported in 
 #'    \insertCite{lc23}{ANOPA}. It shows fictitious data with regards to 
-#'	  the proportion of incubation as a function of the distracting task.
+#'    the proportion of incubation as a function of the distracting task.
 #'    The design is a between-subject design with 4 groups.
 #'
 #' @md

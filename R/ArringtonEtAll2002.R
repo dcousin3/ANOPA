@@ -7,7 +7,7 @@
 #' 'Diel feeding behavior' (2 levels: diurnal, nocturnal),
 #' 'Trophic category' (4 levels: Detrivore, Invertivore, Omnivore, Piscivore).
 #' It is therefore a 3 × 2 × 4 design with 24 cells.
-#' The original data set also contains Order, Family and Species of the observed	
+#' The original data set also contains Order, Family and Species of the observed    
 #' fishes and can be obtained from
 #' https://figshare.com/collections/HOW_OFTEN_DO_FISHES_RUN_ON_EMPTY_/3297635
 #' It was commented in \insertCite{wh11;textual}{ANOPA}.

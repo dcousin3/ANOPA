@@ -85,13 +85,13 @@
 
 # a Bernoulli random success/failure generator
 rBernoulli <- function(n, p = 0.5) {
-	(stats::runif(n) < p) + 0 #converts to numeric
+    (stats::runif(n) < p) + 0 #converts to numeric
 }
 
 
 # `gSwitch()` is a generalized form of switch which can switch based on 
 #     an exact match with scalars or with vectors.
-# @param .default	default expression if none of the formulas in ... applies
+# @param .default    default expression if none of the formulas in ... applies
 # # Examples of use of gSwitch with a scalar (first) and a 2-dim vector (second)
 # gSwitch( 12, 10~"a", 11~"b", 12~"c")
 # gSwitch( c(1,2), c(1,1)~ 11, c(1,2) ~ 12, c(1,3) ~ 13)
@@ -110,35 +110,35 @@ rBernoulli <- function(n, p = 0.5) {
 # match one of the proposed alternative or else .default is returned.
 # The alternatives are given as formulas of the form: toMatch ~ replacement:
 gSwitch <- function(EXPR, ..., .default = -99 ){
-	alt <- list(...)
-	if (!(all(sapply(alt, is.formula))))
-		stop("ANOPA::GRP: not all alternatives are formulas. Exiting...")
-	if (any(sapply(alt, is.one.sided)))
-		stop("ANOPA::GRP: not all alternatives are two-sided ~. Exiting...")
-	res <- sapply(alt, \(x) identical(eval(x[[2]]), EXPR ) )
-	pos <- which( TRUE == res )
-	if (length(pos) == 0) 
-		return (eval(.default))
-	else
-		return(eval(alt[[pos]][[3]]))
+    alt <- list(...)
+    if (!(all(sapply(alt, is.formula))))
+        stop("ANOPA::GRP: not all alternatives are formulas. Exiting...")
+    if (any(sapply(alt, is.one.sided)))
+        stop("ANOPA::GRP: not all alternatives are two-sided ~. Exiting...")
+    res <- sapply(alt, \(x) identical(eval(x[[2]]), EXPR ) )
+    pos <- which( TRUE == res )
+    if (length(pos) == 0) 
+        return (eval(.default))
+    else
+        return(eval(alt[[pos]][[3]]))
 }
 
 
 # the main function here: Generating Random Proportions
 # (or more precisely, of success or failure, coded as 1 or 0 resp.)
 GRP <- function( 
-		props,            # proportions of success in the population
-		n,                # sample size.
-		BSDesign = NULL,  # a list of factors with each a vector of levels
-		WSDesign = NULL,  # idem
-		sname    = "s"    # name of the column containing the results 0|1
-	) {
+        props,            # proportions of success in the population
+        n,                # sample size.
+        BSDesign = NULL,  # a list of factors with each a vector of levels
+        WSDesign = NULL,  # idem
+        sname    = "s"    # name of the column containing the results 0|1
+    ) {
 
-	# 1- Validation of input
-	if (is.null(n))
-	    stop("ANOPA::GRP (1002): The sample size n is not provided. Exiting...")
-	if (is.null(BSDesign)&&is.null(WSDesign)) 
-		stop("ANOPA::GRP (1003): Both within subject and between subject factors are null. Provide at least one factor. Exiting...")
+    # 1- Validation of input
+    if (is.null(n))
+        stop("ANOPA::GRP (1002): The sample size n is not provided. Exiting...")
+    if (is.null(BSDesign)&&is.null(WSDesign)) 
+        stop("ANOPA::GRP (1003): Both within subject and between subject factors are null. Provide at least one factor. Exiting...")
 
     # if messages are inhibited, inhibit them in superb as well
     if ("none" %in% getOption("ANOPA.feedback") ) {
@@ -147,39 +147,39 @@ GRP <- function(
         options("superb.feedback" = "none")
     }
     
-	# preparing the input to match GRD format
-	BSDasText <- mapply(\(x,y) {paste(x,"(",paste(y,collapse=","),")",sep="")}, 
-			names(BSDesign), 
-			BSDesign )
-	WSDasText<- mapply(\(x,y) {paste(x,"(",paste(y,collapse=","),")",sep="")}, 
-			names(WSDesign), 
-			WSDesign )
-	wholeDesign <- c(BSDesign, WSDesign)
+    # preparing the input to match GRD format
+    BSDasText <- mapply(\(x,y) {paste(x,"(",paste(y,collapse=","),")",sep="")}, 
+            names(BSDesign), 
+            BSDesign )
+    WSDasText<- mapply(\(x,y) {paste(x,"(",paste(y,collapse=","),")",sep="")}, 
+            names(WSDesign), 
+            WSDesign )
+    wholeDesign <- c(BSDesign, WSDesign)
 
-	## 2- Expanding the design into cells
-	levels <- sapply(wholeDesign, length, simplify = TRUE)
-	nlevels <- prod(levels)
-	if (length(props)!=nlevels)
-	   stop("ANOPA::GRP (1001): The number of proportions given does not match the number of cells in the design. Exiting...")
-	res <- expand.grid(wholeDesign)
+    ## 2- Expanding the design into cells
+    levels <- sapply(wholeDesign, length, simplify = TRUE)
+    nlevels <- prod(levels)
+    if (length(props)!=nlevels)
+       stop("ANOPA::GRP (1001): The number of proportions given does not match the number of cells in the design. Exiting...")
+    res <- expand.grid(wholeDesign)
 
-	# 3- Assemble a gSwitch expression
-	fct <- function(line) {
-		paste("    c('",paste(line[(1:length(line)-1)], collapse="','"),
-			          "') ~ ", line[length(line)], sep="")
-	}
-	lines <- apply(as.matrix(cbind(res, props)), 1, fct) 
-	gswit <- paste("ANOPA:::gSwitch( c(",paste(names(res), collapse=","), "), \n", 
-					paste(lines, collapse=",\n"), ",\n    .default = -99\n)", sep="")
+    # 3- Assemble a gSwitch expression
+    fct <- function(line) {
+        paste("    c('",paste(line[(1:length(line)-1)], collapse="','"),
+                      "') ~ ", line[length(line)], sep="")
+    }
+    lines <- apply(as.matrix(cbind(res, props)), 1, fct) 
+    gswit <- paste("ANOPA:::gSwitch( c(",paste(names(res), collapse=","), "), \n", 
+                    paste(lines, collapse=",\n"), ",\n    .default = -99\n)", sep="")
 
-	# 4- All done! send this to GRD
-	superb::GRD( SubjectsPerGroup= n,
-		BSFactors  = BSDasText,
-		WSFactors  = WSDasText,
-		RenameDV   = sname,
-		Population = list(
-			scores = paste("rBernoulli(1, p=",gswit,")")
-		)
-	)
+    # 4- All done! send this to GRD
+    superb::GRD( SubjectsPerGroup= n,
+        BSFactors  = BSDasText,
+        WSFactors  = WSDasText,
+        RenameDV   = sname,
+        Population = list(
+            scores = paste("rBernoulli(1, p=",gswit,")")
+        )
+    )
 }
 

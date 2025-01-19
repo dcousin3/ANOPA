@@ -10,7 +10,7 @@
 #'      of trials\} = \{s; n\} (where the symbol ";" is to be read "over".
 #'      The function 'varA()' returns the theoretical variance from
 #'      the pair \{s; n\}. Both functions are central to the ANOPA
-#'	    \insertCite{lc23}{ANOPA}. It was originally proposed by 
+#'        \insertCite{lc23}{ANOPA}. It was originally proposed by 
 #'      \insertCite{z35}{ANOPA} and formalized by \insertCite{a48}{ANOPA}.
 #'
 #' @usage A(s, n)
@@ -35,7 +35,7 @@
 #'     are both very large, so that for example `A(1000,1000) = 1.55`. The
 #'     midpoint is always 0.786 irrespective of the number of trials
 #'     `A(0.5 * n, n) = 0.786`.
-#'	   The function `varA()` returns the theoretical variance of an Anscombe
+#'     The function `varA()` returns the theoretical variance of an Anscombe
 #'     transformed score. It is exact as `n` gets large, and overestimate variance
 #'     when `n` is small. Therefore, a test based on this transform is either exact
 #'     or conservative.

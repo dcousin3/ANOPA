@@ -51,13 +51,13 @@ As the results suggest (consult the first three columns), there is
 a main effect of the factor SES (F(2, inf) = 6.395, p = .002).
 A plot of the proportions can be obtained easily with 
 
-```{r, message=FALSE, warning=FALSE, fig.width=5.25, fig.height=3}
+```{r, fig.alt="anopa plot of proportions with confidence intervals", message=FALSE, warning=FALSE, fig.width=5.25, fig.height=3}
 anopaPlot(w) 
 ```
 
 or just the main effect figure with 
 
-```{r, message=FALSE, warning=FALSE, fig.width=4, fig.height=3}
+```{r, fig.alt = "anopa plot of proportions with confidence intervals", message=FALSE, warning=FALSE, fig.width=4, fig.height=3}
 anopaPlot(w, ~ SES)
 ```
 

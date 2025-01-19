@@ -76,12 +76,12 @@ ANOPA.env <- new.env(parent = emptyenv())
 .onLoad <- function(libname, pkgname) {    
     # Set the default feedback messages displayed and the number of digits:
     # You can use 'all' to see all the messages, or 'none'.
-	# Also set the replacement if a between-subject cell is missing.
+    # Also set the replacement if a between-subject cell is missing.
     options( 
-		ANOPA.feedback = c('design','warnings','summary'), 
-		ANOPA.digits = 4,
-		ANOPA.zeros = c(0.05, 1) # a very small number of success onto a single try
-	)
+        ANOPA.feedback = c('design','warnings','summary'), 
+        ANOPA.digits = 4,
+        ANOPA.zeros = c(0.05, 1) # a very small number of success onto a single try
+    )
 
 }
 

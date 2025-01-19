@@ -9,14 +9,14 @@
 #   type          : "ANOPAomnibus" or "ANOPAsimpleeffects"
 #   formula       : The formula given to anopa
 #   BSfactColumns : Between factor column names
-#	BSfactNlevels :     number of levels for each between factor,
+#   BSfactNlevels :     number of levels for each between factor,
 #   WSfactColumns : Within factor column names,
-#	WSfactDesign  :    how the columns are assigned to a level of the within factors,
-#	WSfactNlevels :    number of levels for each within factor,
-#	DVvariables   : The dependent variable(s),
+#   WSfactDesign  :    how the columns are assigned to a level of the within factors,
+#   WSfactNlevels :    number of levels for each within factor,
+#   DVvariables   : The dependent variable(s),
 #   wideData      : Wide data are needed for plots to compute correlations
-#   compData	  : Compiled data are used for analyzes
-#	omnibus	      : Results of the omnibus analysis
+#   compData      : Compiled data are used for analyzes
+#   omnibus       : Results of the omnibus analysis
 #
 ##############################################################################
 #'
@@ -88,7 +88,7 @@ print.ANOPAtable <- function(x, ...) {
     r <- x
     class(r) <- "data.frame"
     print( as.matrix(round(r, 
-			getOption("ANOPA.digits")+2), 
+            getOption("ANOPA.digits")+2), 
             digits = getOption("ANOPA.digits"), scientific = FALSE
           ), na.print="", quote = FALSE )
 }
@@ -96,12 +96,12 @@ print.ANOPAtable <- function(x, ...) {
 #' @method summarize ANOPAobject 
 #' @export 
 summarize.ANOPAobject <-  function(object, ...) {
-    if (length(object$omnibus) == 1) 
-        print(object$omnibus)
-    else {
+    if (object$type == "ANOPAsimpleeffects") 
+        u <- object$simpleeffects
+    else if (object$type == "ANOPAomnibus")
         u <- object$omnibus
-        class(u) <- c("ANOPAtable", class(u))
-    }
+
+    class(u) <- c("ANOPAtable", class(u))
     return(u)
 }
 
@@ -138,12 +138,12 @@ corrected <- function(object, ...) {  UseMethod("corrected") }
 corrected.default <- function(object, ...) { print(object) } 
 #' @export 
 corrected.ANOPAobject <- function(object, ...) {
-    if (length(object$omnibus) == 1) 
-        print(object$omnibus)
-    else {
+    if (object$type == "ANOPAsimpleeffects") 
+        u <- object$simpleeffects[,c(1,2,3,5,6,7)]
+    else if (object$type == "ANOPAomnibus")
         u <- object$omnibus[,c(1,2,3,5,6,7)]
-        class(u) <- c("ANOPAtable", class(u))
-    }
+        
+    class(u) <- c("ANOPAtable", class(u))
     return(u)
 }
 
@@ -170,11 +170,11 @@ uncorrected <- function(object, ...) {  UseMethod("uncorrected") }
 uncorrected.default <- function(object, ...) { print(object) } 
 #' @export 
 uncorrected.ANOPAobject <- function(object, ...) {
-    if (length(object$omnibus) == 1) 
-        print(object$omnibus)
-    else {
+    if (object$type == "ANOPAsimpleeffects") 
+        u <- object$simpleeffects[,c(1,2,3,4)]
+    else if (object$type == "ANOPAomnibus")
         u <- object$omnibus[,c(1,2,3,4)]
-        class(u) <- c("ANOPAtable", class(u))
-    }
+        
+    class(u) <- c("ANOPAtable", class(u))
     return(u)
 }

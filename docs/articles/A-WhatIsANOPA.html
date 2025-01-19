@@ -4,103 +4,72 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>What is an Analysis of Proportions using the Anscombe Transform? • ANOPA</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="What is an Analysis of Proportions using the Anscombe Transform?">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="What is an Analysis of Proportions using the Anscombe Transform?">
+<meta name="description" content="This vignette describes what an analysis of proportion is.
+">
 <meta property="og:description" content="This vignette describes what an analysis of proportion is.
 ">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">ANOPA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
-      </span>
-    </div>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/A-WhatIsANOPA.html">What is an Analysis of Proportions using the Anscombe Transform?</a>
-    </li>
-    <li>
-      <a href="../articles/B-DataFormatsForProportions.html">Data formats for proportions</a>
-    </li>
-    <li>
-      <a href="../articles/C-ConfidenceIntervals.html">Confidence intervals with proportions</a>
-    </li>
-    <li>
-      <a href="../articles/D-ArringtonExample.html">Analyzing proportions with the Arrington et al. 2002 example</a>
-    </li>
-    <li>
-      <a href="../articles/E-ArcsineIsAsinine.html">Is the ArcSine transformation so asinine in the end?</a>
-    </li>
-    <li>
-      <a href="../articles/F-TestingTypeIError.html">Testing type-I error rates</a>
-    </li>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
+    <a class="navbar-brand me-2" href="../index.html">ANOPA</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/A-WhatIsANOPA.html">What is an Analysis of Proportions using the Anscombe Transform?</a></li>
+    <li><a class="dropdown-item" href="../articles/B-DataFormatsForProportions.html">Data formats for proportions</a></li>
+    <li><a class="dropdown-item" href="../articles/C-ConfidenceIntervals.html">Confidence intervals with proportions</a></li>
+    <li><a class="dropdown-item" href="../articles/D-ArringtonExample.html">Analyzing proportions with the Arrington et al. 2002 example</a></li>
+    <li><a class="dropdown-item" href="../articles/E-ArcsineIsAsinine.html">Is the ArcSine transformation so asinine in the end?</a></li>
+    <li><a class="dropdown-item" href="../articles/F-TestingTypeIError.html">Testing type-I error rates</a></li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/dcousin3/ANOPA/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/dcousin3/ANOPA/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>What is an Analysis of Proportions using the
-Anscombe Transform?</h1>
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+
+      <h1>What is an Analysis of Proportions using the Anscombe Transform?</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/dcousin3/ANOPA/blob/HEAD/../vignettes/A-WhatIsANOPA.Rmd" class="external-link"><code>../vignettes/A-WhatIsANOPA.Rmd</code></a></small>
-      <div class="hidden name"><code>A-WhatIsANOPA.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/dcousin3/ANOPA/blob/HEAD/vignettes/A-WhatIsANOPA.Rmd" class="external-link"><code>vignettes/A-WhatIsANOPA.Rmd</code></a></small>
+      <div class="d-none name"><code>A-WhatIsANOPA.Rmd</code></div>
     </div>
 
     
@@ -323,13 +292,16 @@ We therefore need a “variance-stabilizing” approach.</p>
 transform) is precisely this: replace proportions with an alternate
 measure which has the same expected variance irrespective of the
 population variance . Anscombe showed that the variance of this
-transformed proportions is a constant <span class="math inline">\(1/(4
-(n+1/2))\)</span> determined only by the number of observations. Thus,
-we have a variance- stabilizing transformation. As an added bonus, not
-only are the variances stabilized, but we actually know their values.
-Hence, it is no longer necessary to estimate the “error term” in an
-ANOVA. As the error term is known, the denominator of the ANOVA is
-calculated without degrees of freedom (we set them to <span class="math inline">\(\infty\)</span> to denote this).</p>
+transformed proportions is a constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">1/(4 (n+1/2))</annotation></semantics></math>
+determined only by the number of observations. Thus, we have a variance-
+stabilizing transformation. As an added bonus, not only are the
+variances stabilized, but we actually know their values. Hence, it is no
+longer necessary to estimate the “error term” in an ANOVA. As the error
+term is known, the denominator of the ANOVA is calculated without
+degrees of freedom (we set them to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>
+to denote this).</p>
 <p>Recent works (see last section) confirms that this transformation is
 actually the most accurate approximation we know to this day and that
 there is very little room to find a more accurate transformation.</p>
@@ -403,14 +375,17 @@ equal.</p>
 <span><span class="co">## DistractingTask 0.036803   3 3.512416   1.035704 3.391331 0.017144</span></span>
 <span><span class="co">## Error           0.010478 Inf</span></span></code></pre>
 <p>As seen, the (uncorrected) effect of the <em>Distracting Task</em> is
-significant (<span class="math inline">\(F(3, \infty) = 3.51\)</span>,
-<span class="math inline">\(p = .014\)</span>). Because for small
-samples, the <em>F</em> distribution is biased up, an adjusted version
-can be consulted (last three columns). The results is nearly the same
-here (<span class="math inline">\(F(3, \infty) = 3.39\)</span>, <span class="math inline">\(p = 0.017\)</span>) because this sample is far
-from being small. The correction is obtained with Williams’ method and
-reduces the <em>F</em> by 3.6% (column <code>correction</code> shows
-1.0357).</p>
+significant
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>3.51</mn></mrow><annotation encoding="application/x-tex">F(3, \infty) = 3.51</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>.014</mn></mrow><annotation encoding="application/x-tex">p = .014</annotation></semantics></math>).
+Because for small samples, the <em>F</em> distribution is biased up, an
+adjusted version can be consulted (last three columns). The results is
+nearly the same here
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>3.39</mn></mrow><annotation encoding="application/x-tex">F(3, \infty) = 3.39</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.017</mn></mrow><annotation encoding="application/x-tex">p = 0.017</annotation></semantics></math>)
+because this sample is far from being small. The correction is obtained
+with Williams’ method and reduces the <em>F</em> by 3.6% (column
+<code>correction</code> shows 1.0357).</p>
 </div>
 <div class="section level2">
 <h2 id="post-hoc-test">Post-hoc test<a class="anchor" aria-label="anchor" href="#post-hoc-test"></a>
@@ -460,17 +435,30 @@ help you…</p>
 <h2 id="why-infinite-degrees-of-freedom-optional">Why infinite degrees of freedom? (optional)<a class="anchor" aria-label="anchor" href="#why-infinite-degrees-of-freedom-optional"></a>
 </h2>
 <p>For some, this notation may seems bizarre, or arbitrary. However, it
-is formally an exact notation. An equivalent notation relates the <span class="math inline">\(t\)</span> tests and the <span class="math inline">\(z\)</span> tests. As is well-known, the <span class="math inline">\(t\)</span> test is used when the population
-variance<br>
+is formally an exact notation. An equivalent notation relates the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+tests and the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+tests. As is well-known, the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+test is used when the population variance<br>
 is unknown and estimated from the sample’s variance. In this test, this
 variance can be seen as the “error term”. However, when the population
 variance is known, we can use this information and the test then becomes
-a <span class="math inline">\(z\)</span> test. Yet, the <span class="math inline">\(t\)</span> distribution (and the critical value of
-this test) is identical to a standardized Normal distribution when the
-degrees of freedom in the <span class="math inline">\(t\)</span>
-distribution tends to infinity. In other words, a <span class="math inline">\(z\)</span> test is the same as a <span class="math inline">\(t\)</span> test when there is no uncertainty in
-the error term. And when there is no uncertainty in the error term, we
-can replace the degrees of freedom with infinity.</p>
+a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+test. Yet, the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+distribution (and the critical value of this test) is identical to a
+standardized Normal distribution when the degrees of freedom in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+distribution tends to infinity. In other words, a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+test is the same as a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+test when there is no uncertainty in the error term. And when there is
+no uncertainty in the error term, we can replace the degrees of freedom
+with infinity.</p>
 <p>This rationale is the same in the ANOPA which explains why we note
 the denominator’s degree of freedom with infinity.</p>
 </div>
@@ -490,7 +478,7 @@ transform was further refined by Anscombe to the form we use in the
 ANOPA <span class="citation">(Anscombe, 1948)</span>. Anscombe
 modifications, the addition of 3/8 to the number of success and 3/4 to
 the number of trials, led to a theoretical variance exactly equal to
-<span class="math inline">\(1/(4 \times n + 2)\)</span>.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo>×</mo><mi>n</mi><mo>+</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">1/(4 \times n + 2)</annotation></semantics></math>.</p>
 <p>Formidable development in the early 90s showed that this transform
 has other important characteristics. For example, <span class="citation">Chen (1990)</span> and <span class="citation">Lehman
 &amp; Loh (1990)</span> derived that this transform will either
@@ -538,35 +526,26 @@ contingency tables. <em>Biometrika</em>, <em>63</em>(1), 33–37. <a href="https
 </div>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>Developed by Denis Cousineau, Louis Laurencelle.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>Developed by Denis Cousineau, Louis Laurencelle.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
-  
 
 
-  
+
 
   </body>
 </html>

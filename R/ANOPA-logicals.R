@@ -1,4 +1,4 @@
-####################################################################################
+    ####################################################################################
 ## @name logicalfunctions
 ##
 ## @title logical functions for formulas
@@ -18,6 +18,7 @@
 ## @usage has.cbind.terms(frm)
 ## @usage in.formula(frm, whatsym)
 ## @usage sub.formulas(frm, head)
+## @usage sub.formula.locations(frm, head)
 ##
 ## @param frm a formula;
 ## @param whatsym a symbol to search in the formula;
@@ -26,7 +27,8 @@
 ## @return `is.formula(frm)`, `has.nested.terms(frm)`, and `has.cbind.terms(frm)`
 ##      returns TRUE if frm is a formula, contains a '|' or a 'cbind' respectively;
 ##      `in.formula(frm, whatsym)` returns TRUE if the symbol `whatsym` is somewhere in 'frm';
-##      `sub.formulas(frm, head)` returns a list of all the sub-formulas which contains `head`.
+##      `sub.formulas(frm, head)` returns a list of all the sub-formulas which contains `head`;
+##      `sub.formula.locations(frm, head)` returns the locations of such subformulas.
 ##
 ## @details These functions are for internal use only.
 ##
@@ -41,6 +43,7 @@
 ##  
 ## sub.formulas( cbind(succ1, succ2, succ3) ~ Difficulty, "cbind" )
 ##  
+## sub.formula.locations( cbind(succ1, succ2, succ3) ~ Difficulty, "cbind" )
 ##
 ##################################################################################
 ##
@@ -72,6 +75,10 @@ has.cbind.terms <- function( frm ) {
     if(!is.formula(frm)) return(FALSE)
     return ( in.formula(frm, "cbind"))
 }
+has.crange.terms <- function( frm ) {
+    if(!is.formula(frm)) return(FALSE)
+    return ( in.formula(frm, "crange"))
+}
 
 # performs a depth-first search in the language structure.
 in.formula <- function( frm, whatsym) {
@@ -84,20 +91,30 @@ in.formula <- function( frm, whatsym) {
                 return(TRUE)
         }
     }
-    
     return(FALSE)        
 }
 
-## Lists all the locations of head of a subformula in formula
+## Lists all the subformulas with a certain head in formula
 sub.formulas <- function( frm, head ) {
     if (!in.formula( frm, head)) stop("error! head not in frm")
     res <- rrapply::rrapply( frm,
-            condition = function(x) x == head,
-            f = function(x, .xpos) .xpos,
-            how = "flatten"
+                condition = function(x) x == head,
+                f = function(x, .xpos) .xpos,
+                how = "flatten"
     )
     # grab the terms, removing last index to have the subformula
     lapply(res, function(i) frm[[i[1:(length(i)-1)]]])
+
+}
+sub.formula.locations <- function( frm, head ) {
+    if (!in.formula( frm, head)) stop("error! head not in frm")
+    res <- rrapply::rrapply( frm,
+                condition = function(x) x == head,
+                f = function(x, .xpos) .xpos,
+                how = "flatten"
+    )
+    # removing last index to have the subformula
+    lapply(res, function(i) i[1:(length(i)-1)])
 
 }
 

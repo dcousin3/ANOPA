@@ -8,7 +8,7 @@
 #' @description The function 'anopaN2Power()' performs an analysis of statistical power
 #'      according to the 'ANOPA' framework. See \insertCite{lc23b;textual}{ANOPA} for more.
 #'      'anopaPower2N()' computes the sample size to reach a given power.
-#'		Finally, 'anopaProp2fsq()' computes the f^2 effect size from a set of proportions.
+#'        Finally, 'anopaProp2fsq()' computes the f^2 effect size from a set of proportions.
 #'
 #' @usage anopaPower2N(power, P, f2, alpha)
 #' @usage anopaN2Power(N, P, f2, alpha)
@@ -28,7 +28,7 @@
 #' @return `anopaPower2N()` returns a sample size to reach a given power level.
 #'         `anopaN2Power()` returns statistical power from a given sample size.
 #'         `anopaProp2fsq()` returns $f^2$ the effect size from a set of proportions 
-#'			and sample sizes.
+#'            and sample sizes.
 #'
 #' @details Note that for `anopaProp2fsq()`, the expected effect size $f^2$ 
 #'    depends weakly on the sample sizes. Indeed, the Anscombe transform
@@ -100,23 +100,23 @@ anopaPower2N <- function(power, P, f2, alpha = .05) {
 # 3- propTof2 computes f^2 from proportions/nbre of success using 
 #    approximation of Eq. (17) or exact formula
 anopaProp2fsq <- function(props, ns, unitaryAlpha = NULL, method = "approximation") {
-	if (is.null(props))
-		stop("ANOPA::effect size: Empty vector of propoprtions. Exiting...")
-	if (is.null(ns))
-		stop("ANOPA::effect size: Empty vector of sample sizes. Exiting...")
-	if (length(props)!=length(ns))
-		stop("ANOPA::effect size: Number of proportions not equalt to number of sample sizes. Exiting...")
-	if (!(method %in% c("approximation","exact")) )
-		stop("ANOPA::effect size: Methods are 'approximation' or 'exact' only. Exiting...")
-	if (all(props<1)) props = props * ns
-	if (!(is.null(unitaryAlpha))) {if ((unitaryAlpha< -1)|(unitaryAlpha>1))
-		stop("ANOPA::effect size: unitary Alpha must be between -1 and 1. Exiting...")
-	}
-	if (is.null(unitaryAlpha)) {m = 1} else {m = 1/sqrt(1-unitaryAlpha)}
-	p <- length(props)
-	if (method =="approximation") {
-		return( m^2 * 4 * (p-1)/p * stats::var( mapply(A, props, ns) ) )
-	} else {
-		return( m^2 * (p-1) * stats::var( mapply(A, props, ns) ) / sum( ns / (4*(ns+1/2))) )
-	}
+    if (is.null(props))
+        stop("ANOPA::effect size: Empty vector of propoprtions. Exiting...")
+    if (is.null(ns))
+        stop("ANOPA::effect size: Empty vector of sample sizes. Exiting...")
+    if (length(props)!=length(ns))
+        stop("ANOPA::effect size: Number of proportions not equalt to number of sample sizes. Exiting...")
+    if (!(method %in% c("approximation","exact")) )
+        stop("ANOPA::effect size: Methods are 'approximation' or 'exact' only. Exiting...")
+    if (all(props<1)) props = props * ns
+    if (!(is.null(unitaryAlpha))) {if ((unitaryAlpha< -1)|(unitaryAlpha>1))
+        stop("ANOPA::effect size: unitary Alpha must be between -1 and 1. Exiting...")
+    }
+    if (is.null(unitaryAlpha)) {m = 1} else {m = 1/sqrt(1-unitaryAlpha)}
+    p <- length(props)
+    if (method =="approximation") {
+        return( m^2 * 4 * (p-1)/p * stats::var( mapply(A, props, ns) ) )
+    } else {
+        return( m^2 * (p-1) * stats::var( mapply(A, props, ns) ) / sum( ns / (4*(ns+1/2))) )
+    }
 }

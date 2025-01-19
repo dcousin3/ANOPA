@@ -40,8 +40,8 @@
 
 
 unitaryAlpha <- function(m) {
-	k <- dim(m)[2]
-	V <- var(apply(m, 1, FUN=sum))
-	S <- sum(apply(m, 2, FUN=var))
-	(V-S)/((k-1)*S)
+    k <- dim(m)[2]
+    V <- var(apply(m, 1, FUN=sum))
+    S <- sum(apply(m, 2, FUN=var))
+    (V-S)/((k-1)*S)
 }

@@ -12,7 +12,9 @@ emProportions(w, formula)
 \item{formula}{A formula which indicates what simple effect to analyze.
 Only one simple effect formula at a time can be analyzed. The formula
 is given using a vertical bar, e.g., " ~ factorA | factorB " to obtain
-the effect of Factor A within every level of the Factor B.}
+the effect of Factor A within every level of the Factor B. The dependent
+variable(s) (lhs of equation) are not needed as they are memorized
+in the w object.}
 }
 \value{
 An ANOPA table of the various simple main effects and if relevant,
@@ -79,7 +81,7 @@ anopaPlot(w, ~ Trophism * Diel )
 # Are you looking for a thesis topic?).
 
 # Let's analyse the simple effect of Trophism for every levels of Diel and Location
-e <- emProportions(w, ~ Trophism | Diel )
+e <- emProportions(w, ~ Trophism * Location | Diel )
 summary(e)
 
 

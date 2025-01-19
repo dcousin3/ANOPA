@@ -6,7 +6,7 @@
 \title{anopaPlot: Easy plotting of proportions.}
 \usage{
 anopaPlot(w, formula = NULL, confidenceLevel = .95, allowImputing = FALSE,
-		showPlotOnly = TRUE, plotStyle = "line", 
+     showPlotOnly = TRUE, plotLayout = "line", 
      errorbarParams  = list( width =0.85, linewidth=0.75 ), ...)
 }
 \arguments{
@@ -30,13 +30,13 @@ so be mindful that the default optin has never been tested nor validated.}}
 \item{showPlotOnly}{(optional, default True) shows only the plot or else
 shows the numbers needed to make the plot yourself.}
 
-\item{plotStyle}{(optional; default "line") How to plot the proportions;
+\item{plotLayout}{(optional; default "line") How to plot the proportions;
 see superb for other layouts (e.g., "line").}
 
 \item{errorbarParams}{(optional; default list( width =0.5, linewidth=0.75 ) ) is
 a list of attributes used to plot the error bars. See superb for more.}
 
-\item{...}{Other directives sent to superb(), typically 'plotStyle',
+\item{...}{Other directives sent to superb(), typically 'plotLayout',
 'errorbarParams', etc.}
 }
 \value{
@@ -87,10 +87,10 @@ anopaPlot(w, allowImputing = TRUE)
 \donttest{anopaPlot(w, ~ Diel * Trophism * Location )}
 
 # Change the style for a plot with bars instead of lines
-\donttest{anopaPlot(w, plotStyle = "bar")}
+\donttest{anopaPlot(w, plotLayout = "bar")}
 
 # Changing the error bar style
-\donttest{anopaPlot(w, plotStyle = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )}
+\donttest{anopaPlot(w, plotLayout = "bar", errorbarParams = list( width =0.1, linewidth=0.1 ) )}
 
 # Illustrating the main effect of Location (not interacting with other factors)
 # and the interaction Diel * Trophism separately

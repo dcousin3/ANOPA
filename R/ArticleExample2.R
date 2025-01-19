@@ -5,7 +5,7 @@
 #'
 #' @description These are the data from the second example reported in 
 #'    \insertCite{lc23}{ANOPA}. It shows fictitious data with regards to 
-#'	  the proportion of graduation for persons with dyslexia as a function 
+#'    the proportion of graduation for persons with dyslexia as a function 
 #'    of the moment of diagnostic (early or late) and the socoi-economic status (SES).
 #'    The design is a between-subject design with 2 x 3 = 6 groups.
 #'

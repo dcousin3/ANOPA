@@ -150,37 +150,37 @@ colSums = function (x) {
 ### CONVERSIONS from wide to ...
 ###################################################################################
 
-# wide => compiled:		DONE
+# wide => compiled:        DONE
 #    ss: all the column names of repeated measures
 #    n:  a novel name to contain the total number of observation per cell
 #    for WS design, it adds the unitary Alpha to the groups.
 wtoc <- function(d, ss, n) {
     factors  <- names(d)[!(names(d) %in% ss )]
-	if (length(factors)==0) {
-		# add a dummy BS factor
-		d[["dummyBSfactor"]] <- 1
-		factors = "dummyBSfactor"
-	}
+    if (length(factors)==0) {
+        # add a dummy BS factor
+        d[["dummyBSfactor"]] <- 1
+        factors = "dummyBSfactor"
+    }
 
-	res <- plyr::ddply(d, factors, function(x) colSums(x[ss]))
-	res[[n]] <- plyr::ddply(d, factors, function(x) dim(x[ss])[1])$V1
-	names(res)[names(res)=="V1"] <- n
+    res <- plyr::ddply(d, factors, function(x) colSums(x[ss]))
+    res[[n]] <- plyr::ddply(d, factors, function(x) dim(x[ss])[1])$V1
+    names(res)[names(res)=="V1"] <- n
 
-	if (length(ss)>1) {
-		# adds correlation with unitaryAlpha
-		res[["uAlpha"]] <- plyr::ddply(d, factors, 
-			function(x) {unitaryAlpha(as.matrix(x[ss]))}
-		)$V1
-		names(res)[names(res)=="V1"]="uAlpha"
-	}
+    if (length(ss)>1) {
+        # adds correlation with unitaryAlpha
+        res[["uAlpha"]] <- plyr::ddply(d, factors, 
+            function(x) {unitaryAlpha(as.matrix(x[ss]))}
+        )$V1
+        names(res)[names(res)=="V1"]="uAlpha"
+    }
 
-	# remove the dummy factor if needed
-	res[["dummyBSfactor"]] <- NULL
+    # remove the dummy factor if needed
+    res[["dummyBSfactor"]] <- NULL
 
     return(res)
 }
 
-# wide => long: 		DONE
+# wide => long:         DONE
 #    ss: all the column names of repeated measures
 #    the columns Id and Variables will be added
 wtol <- function(d, ss ) {
@@ -204,23 +204,23 @@ wtol <- function(d, ss ) {
 ### CONVERSIONS from compiled to ...
 ###################################################################################
 
-# compiled => wide: 	DONE 	possible iif no repeated measures
-# 	ss: the repeated measures (should be of length 1)
+# compiled => wide:     DONE     possible iif no repeated measures
+#     ss: the repeated measures (should be of length 1)
 #   n:  the total number of observations per cell
 ctow <- function(d, ss, n) {
-	if (length(ss)>1) stop("ANOPA::error(99): internal error. Exiting...")
+    if (length(ss)>1) stop("ANOPA::error(99): internal error. Exiting...")
     y  <- d[,!(names(d)%in%c(ss,n)), drop=FALSE]
     res <- as.data.frame(lapply(y, rep, d[[n]]))
     for (i in ss) {
         res[[i]] <- c(unlist(mapply( 
-						\(s,n) {c(rep(1,round(s)),rep(0,round(n)-round(s)))}, 
-						d[[i]], d[[n]], SIMPLIFY=FALSE
-					)))
+                        \(s,n) {c(rep(1,round(s)),rep(0,round(n)-round(s)))}, 
+                        d[[i]], d[[n]], SIMPLIFY=FALSE
+                    )))
     }
     return(res)
 }
 
-# compiled => long:		DONE
+# compiled => long:        DONE
 ctol <- function( d, ss, n ) {
   tmp <- ctow(d, ss, n)
   res <- wtol(tmp, ss )
@@ -232,7 +232,7 @@ ctol <- function( d, ss, n ) {
 ### CONVERSIONS from long to ...
 ###################################################################################
 
-# long => wide			DONE
+# long => wide            DONE
 #    idcol: name of participant identifier
 #    condcol: the column containing the measure's name
 #    scol:    column containing the success
@@ -246,10 +246,10 @@ ltow <- function(d, idcol, condcol, scol ){
 
 }
 
-# long => compiled		DONE
+# long => compiled        DONE
 ltoc <- function(d, idcol, condcol, scol, n) {
-	t1  <- ltow(d, idcol, condcol, scol )
-	ss  <- unique(d[[condcol]])
+    t1  <- ltow(d, idcol, condcol, scol )
+    ss  <- unique(d[[condcol]])
     res <- wtoc(t1, ss, n)
     return(res)
 }

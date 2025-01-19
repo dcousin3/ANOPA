@@ -51,7 +51,7 @@ the proportions can be obtained easily with
 anopaPlot(w) 
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+<img src="README_files/figure-gfm/unnamed-chunk-3-1.png" alt="anopa plot of proportions with confidence intervals"  />
 
 or just the main effect figure with
 
@@ -59,7 +59,7 @@ or just the main effect figure with
 anopaPlot(w, ~ SES)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+<img src="README_files/figure-gfm/unnamed-chunk-4-1.png" alt="anopa plot of proportions with confidence intervals"  />
 
 If the interaction had been significant, simple effects can be analyzed
 from the *expected marginal frequencies* with
@@ -87,7 +87,7 @@ install.packages("ANOPA")
 library(ANOPA)
 ```
 
-The development version 0.2.1 can be accessed through GitHub:
+The development version 0.2.2 can be accessed through GitHub:
 
 ``` r
 devtools::install_github("dcousin3/ANOPA")

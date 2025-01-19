@@ -1,4 +1,6 @@
 ---
+template:
+  bootstrap: 5
 title: ANOPA
 url: https://dcousin3.github.io/ANOPA
 reference:

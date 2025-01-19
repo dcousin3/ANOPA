@@ -14,9 +14,10 @@ vignette: >
 
 ```{r, echo = FALSE, message = FALSE, results = 'hide', warning = FALSE}
 cat("this is hidden; general initializations.\n")
-library(ANOPA)
-
 ```
+
+_DISCLAIMER: This example is not terrific because there are empty cells. If you know 
+of a better example of proportions with three factors, do not hesitate to let me know._
 
 @a02 published a data set available from the web.
 It presents species of fish and what proportion of them were empty stomached 
@@ -27,6 +28,8 @@ of feeding (Diel: Diurnal or Nocturnal).
 
 The compiled scores can be consulted with
 ```{r}
+library(ANOPA)
+
 ArringtonEtAl2002
 ```
 
@@ -53,7 +56,7 @@ getOption("ANOPA.zeros")
 The analysis is obtained with
 
 ```{r}
-w <- anopa( {s; n} ~  Location * Diel * Trophism, ArringtonEtAl2002)
+w <- anopa( {s; n} ~  Trophism * Location * Diel, ArringtonEtAl2002)
 ```
 
 The `fyi` message lets you know that cells are missing; the `Warning` message lets you 
@@ -67,15 +70,17 @@ or `uncorrected(w)` (as the sample is quite large, the correction will be immate
 uncorrected(w)
 ```
 
+ 
 These suggests an interaction Diel : Trophism close to significant.
 
-You can easily make a plot with all the factors using
+You can easily make a plot with all the 2 x 3 x 4 cells of the design using
 
 ```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=5, fig.cap="**Figure 1**. The proportions in the Arrington et al. 2002 data. Error bars show difference-adjusted 95% confidence intervals."}
 anopaPlot(w)
 ```
 
-The missing cells are absent from the plot. To highlight the interaction, restrict the plot to
+
+To highlight the interaction, restrict the plot to
 
 ```{r, message=FALSE, warning=FALSE, fig.width=5, fig.height=3, fig.cap="**Figure 1**. The proportions as a function of class and Difficulty. Error bars show difference-adjusted 95% confidence intervals."}
 anopaPlot(w, ~ Trophism * Location)
@@ -88,9 +93,82 @@ This can be confirmed by examining simple effects (a.k.a. expected marginal anal
 
 ```{r}
 e <- emProportions( w, ~ Location * Trophism | Diel  ) 
+uncorrected(e)
 ```
 
-(but it will have to wait for the next version of ANOPA ;-)
+As seen, we get a table with effects for each levels of Diel.
+
+For the Diurnal fishes, there is a strong effect of Trophism. However, there is
+no detectable effect of Location. Finally, there is no interaction.
+
+For the Nocturnal fishes, nothing is significant.
+
+These results don't quite match the proportions illustrated in the simple effect 
+plot below. The reason is that the simple effect analyses uses a pooled 
+measure of error (the Mean squared error). Sadly, this pooled measured 
+incorporate cells for which the imputations gave tiny sample sizes (n=1).
+The presence of these three empty cells are very detrimental to the analyses,
+because if we except these cells, the sample is astonishinly large.
+
+
+
+The missing cells are merged with regular cells in the simple effect plots. 
+
+```{r, message=FALSE, warning=FALSE, fig.width=15, fig.height=5, fig.cap="**Figure 2**. The proportions with arrows highlighting the missing data"}
+library(ggplot2)   # for ylab(), annotate()
+library(ggh4x)     # for at_panel()
+library(gridExtra) # for grid.arrange()
+
+#Add annotations to show where missing cells are...
+annotationsA <- list(
+    annotate("segment", linewidth=1.25, x = 1.5, y = 0.45, xend = 1, yend = 0.15, color="green", arrow = arrow()),
+    annotate("segment", linewidth=1.25, x = 1.5, y = 0.45, xend = 1, yend = 0.10, color="red", arrow = arrow()),
+    annotate("segment", linewidth=1.25, x = 1.5, y = 0.45, xend = 2.8, yend = 0.25, color="red", arrow = arrow()),
+    annotate("text", x = 1.5, y = 0.5, label = "No observations")
+)
+annotationsB <- list(
+    annotate("segment", linewidth=2, x = 2.2, y = 0.08, xend = 1.95, yend = 0.04, color="red", arrow = arrow()),
+    annotate("segment", linewidth=2, x = 2.2, y = 0.12, xend = 2.05, yend = 0.36, color="blue", arrow = arrow()),
+    annotate("text", x = 2.0, y = 0.1, label = "Merge an imputed cell\nwith a regular cell")
+)
+annotationsC <- list(
+    annotate("segment", linewidth=2, x = 1.4, y = 0.275, xend = 1.9, yend = 0.285, color="red", arrow = arrow()),
+    annotate("segment", linewidth=2, x = 1.4, y = 0.275, xend = 2.0, yend = 0.16, color="blue", arrow = arrow()),
+    annotate("text", x = 1., y = 0.275, label = "Merge an imputed cell\nwith a regular cell")
+)
+
+pla <- anopaPlot(w, ~ Trophism * Location * Diel)+  
+  ylab("Proportion empty stomach") +
+  lapply(annotationsA,  \(ann) {at_panel(ann, Diel == "Nocturnal")})
+
+plb <- anopaPlot(w, ~ Diel * Trophism ) +  
+  ylab("Proportion empty stomach") +
+  annotationsB
+
+plc <- anopaPlot(w, ~ Diel * Location ) +  
+  ylab("Proportion empty stomach") +
+  annotationsC
+
+grid.arrange( pla, plb, plc, ncol = 3 )
+```
+
+Suppose we wish to impute the missing cells with the harmonic mean number
+of success (21.6) and the harmonic mean number of observations per cell (286.9), 
+we could use from the package `psych` 
+
+```{r, message=FALSE, warning=FALSE}
+library(psych)
+
+options("ANOPA.zeros" = c(harmonic.mean(ArringtonEtAl2002$s), harmonic.mean(ArringtonEtAl2002$n)))
+```
+
+prior to running the above analyses. In which case it is found that
+all the effects are massively significant, another way to see that
+the sample size is huge (over 36,000 fishes measured).
+
+
+
+
 
 
 # References

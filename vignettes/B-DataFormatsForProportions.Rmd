@@ -108,7 +108,12 @@ It is necessary to (a) group all the measurement columns using `cbind()`;
 (b) indicate the within-subject factor(s) using the argument `WSFactors`
 along with the number of levels each in a string.
 
+Alternatively, `cbind()` can be replaced by `crange()` with the first and last variable
+to be binded. The in-between variables will be taken from the `data.frame()`.
 
+```{r, message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+w2bis <- anopa( crange(bpre, b5week) ~ Status, dataWide2, WSFactors = "Moment(4)" )
+```
 
 
 ## Second format: Long data format
@@ -191,6 +196,14 @@ summary(w2Compiled)
 where `cbind()` lists all the within-subject success count columns, _Count_ is the column
 in the data.frame with the total number of observations, and _uAlpha_ is the column 
 containing the mean pairwise correlation measured with the unitary alpha.
+
+Here again, `crange()` can be used in place of `cbind()` with
+
+```{r, message=FALSE, warning=FALSE}
+w2Compiledbis <- anopa( {crange(bpre, b5week); Count; uAlpha} ~ Status, 
+                    dataCompiled2, WSFactors = "Week(4)")
+summary(w2Compiledbis)
+```
 
 
 # Converting between formats
